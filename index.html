@@ -1,113 +1,554 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ankush Chowrasia</title>
-    <!-- Add your favicon link here -->
+    <title>Ankush Chowrasia | Portfolio</title>
     <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1wp2Xy-O1LLW322HP_xeePB00hbYDRm4m"> 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #f8f9fa;
-            --text-primary: #212529;
-            --card-bg: #ffffff;
-            --card-shadow: rgba(0, 0, 0, 0.1);
+            --bg-primary: #0a0e27;
+            --bg-secondary: #151932;
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+            --accent-purple: #a78bfa;
+            --accent-blue: #60a5fa;
+            --accent-pink: #f472b6;
+            --accent-orange: #fb923c;
+            --accent-cyan: #22d3ee;
+            --accent-green: #34d399;
+            --card-bg: rgba(30, 41, 59, 0.5);
+            --card-shadow: rgba(167, 139, 250, 0.1);
         }
 
-        .dark {
-            --bg-primary: #121212;
-            --text-primary: #f8f9fa;
-            --card-bg: #1e1e1e;
-            --card-shadow: rgba(0, 0, 0, 0.3);
+        .light {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --accent-purple: #8b5cf6;
+            --accent-blue: #3b82f6;
+            --accent-pink: #ec4899;
+            --accent-orange: #f97316;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --card-shadow: rgba(139, 92, 246, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            background-color: var(--bg-primary);
+            background: var(--bg-primary);
             color: var(--text-primary);
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.5s ease;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+            top: -250px;
+            left: -250px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(45deg, var(--accent-pink), var(--accent-orange));
+            bottom: -200px;
+            right: -200px;
+            animation-delay: 5s;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-green));
+            top: 50%;
+            left: 50%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(100px, 100px) rotate(90deg); }
+            50% { transform: translate(200px, 50px) rotate(180deg); }
+            75% { transform: translate(50px, 150px) rotate(270deg); }
+        }
+
+        /* Glass morphism effect */
+        .glass {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px var(--card-shadow);
+        }
+
+        /* Header Styles */
+        header {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(10, 14, 39, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .light header {
+            background: rgba(248, 250, 252, 0.8);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Navigation Links */
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 0;
             transition: all 0.3s ease;
         }
 
-        .portfolio-card {
-            background-color: var(--card-bg);
-            box-shadow: 0 4px 6px var(--card-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
+            transition: width 0.3s ease;
         }
 
-        .portfolio-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px var(--card-shadow);
+        .nav-link:hover::before {
+            width: 100%;
         }
 
-        .gallery-container {
-            background-color: var(--bg-primary);
-            transition: background-color 0.3s ease;
-        }
-
+        /* Mode Toggle */
         .mode-toggle {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .mode-toggle:hover {
-            transform: scale(1.1);
+        .mode-toggle-circle {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .nav-link {
+        .light .mode-toggle-circle {
+            transform: translateX(30px);
+        }
+
+        /* Hero Section */
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            animation: fadeInUp 1s ease-out;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .hero-cta {
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating Animation */
+        @keyframes floatingSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating {
+            animation: floatingSlow 3s ease-in-out infinite;
+        }
+
+        /* Button Styles */
+        .btn-gradient {
+            position: relative;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-pink));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-gradient:hover::before {
+            opacity: 1;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(167, 139, 250, 0.4);
+        }
+
+        /* Card Styles */
+        .portfolio-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
         }
 
-        .nav-link::after {
+        .portfolio-card::before {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
+            top: 0;
             left: 0;
-            background-color: currentColor;
-            transition: width 0.3s ease;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
         }
 
-        .nav-link:hover::after {
-            width: 100%;
+        .portfolio-card:hover::before {
+            opacity: 0.1;
         }
-        
-        /* Modal styles */
+
+        .portfolio-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 60px var(--card-shadow);
+        }
+
+        .portfolio-card img {
+            transition: all 0.5s ease;
+        }
+
+        .portfolio-card:hover img {
+            transform: scale(1.1) rotate(2deg);
+        }
+
+        /* Profile Image */
+        .profile-img {
+            border: 5px solid transparent;
+            background: linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box,
+                        linear-gradient(135deg, var(--accent-purple), var(--accent-blue), var(--accent-pink)) border-box;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Modal Styles */
         .modal-backdrop {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            animation: modalSlideIn 0.4s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Form Styles */
+        .form-input {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            padding: 1rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.2);
+        }
+
+        /* Social Icons */
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            opacity: 0;
             transition: opacity 0.3s ease;
         }
-        .modal-content {
-            transition: transform 0.3s ease;
+
+        .social-icon:hover::before {
+            opacity: 1;
         }
 
-        .font-montserrat {
-            font-family: 'Montserrat', sans-serif;
+        .social-icon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(167, 139, 250, 0.3);
+        }
+
+        .social-icon i {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Section Headers */
+        .section-header {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue), var(--accent-pink));
+            border-radius: 2px;
+        }
+
+        /* Scroll Animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* AI Response Container */
+        .ai-response {
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.1), rgba(96, 165, 250, 0.1));
+            border: 1px solid rgba(167, 139, 250, 0.3);
+            animation: fadeInScale 0.5s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: var(--accent-purple);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Particle effect */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Badge styles */
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin: 0.25rem;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--accent-purple), var(--accent-blue));
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--accent-blue), var(--accent-pink));
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .gradient-orb {
+                filter: blur(60px);
+            }
         }
     </style>
 </head>
-<body class="font-sans antialiased">
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
     <!-- Header -->
-    <header class="py-6 px-4 sm:px-8 lg:px-12 sticky top-0 z-50 bg-[var(--bg-primary)] bg-opacity-80 backdrop-blur-sm">
+    <header class="py-4 px-4 sm:px-8 lg:px-12 sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold tracking-tight font-montserrat">Ankush Chowrasia</a>
+            <a href="#" class="text-2xl font-bold tracking-tight gradient-text font-montserrat">Ankush Chowrasia</a>
             
-            <div class="flex items-center">
+            <div class="flex items-center gap-6">
                 <!-- Desktop Navigation -->
                 <nav class="hidden md:flex space-x-8">
-                    <a href="#" class="nav-link">Home</a>
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="#achievement" class="nav-link">Achievement</a>
-                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#" class="nav-link font-medium">Home</a>
+                    <a href="#about" class="nav-link font-medium">About</a>
+                    <a href="#achievement" class="nav-link font-medium">Achievement</a>
+                    <a href="#contact" class="nav-link font-medium">Contact</a>
                 </nav>
                 
-                <div class="flex items-center space-x-4 ml-8">
-                    <button id="modeToggle" class="mode-toggle p-2 rounded-full">
-                        <i class="fas fa-moon text-xl"></i>
-                    </button>
+                <div class="flex items-center gap-4">
+                    <div id="modeToggle" class="mode-toggle">
+                        <div class="mode-toggle-circle">
+                            <i class="fas fa-moon text-xs"></i>
+                        </div>
+                    </div>
                     <!-- Mobile Menu Button -->
                     <button id="mobileMenuButton" class="md:hidden p-2">
                         <i class="fas fa-bars text-xl"></i>
@@ -116,99 +557,156 @@
             </div>
         </div>
         <!-- Mobile Navigation -->
-        <nav id="mobileMenu" class="md:hidden hidden mt-4">
-            <a href="#" class="block py-2 px-4 nav-link">Home</a>
-            <a href="#about" class="block py-2 px-4 nav-link">About</a>
-            <a href="#achievement" class="block py-2 px-4 nav-link">Achievement</a>
-            <a href="#contact" class="block py-2 px-4 nav-link">Contact</a>
+        <nav id="mobileMenu" class="md:hidden hidden mt-4 space-y-2">
+            <a href="#" class="block py-2 px-4 nav-link font-medium rounded-lg hover:bg-white/5">Home</a>
+            <a href="#about" class="block py-2 px-4 nav-link font-medium rounded-lg hover:bg-white/5">About</a>
+            <a href="#achievement" class="block py-2 px-4 nav-link font-medium rounded-lg hover:bg-white/5">Achievement</a>
+            <a href="#contact" class="block py-2 px-4 nav-link font-medium rounded-lg hover:bg-white/5">Contact</a>
         </nav>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section class="py-20 px-4 sm:px-8 lg:px-12">
+        <section class="py-20 px-4 sm:px-8 lg:px-12 min-h-[80vh] flex items-center justify-center">
             <div class="container mx-auto text-center">
-                <h1 class="text-4xl md:text-6xl font-light mb-6 font-montserrat">Ankush Chowrasia</h1>
-                <p class="text-lg md:text-xl max-w-2xl mx-auto opacity-80 mb-10"> Aspiring Attorney | AI Enthusiastic | Aspiring Researcher | Youtuber.</p>
-                <a href="#achievement" class="inline-block px-8 py-3 border border-current rounded-full hover:bg-black hover:text-white hover:border-black dark:hover:bg-white dark:hover:text-black transition-colors">View Achievements</a>
+                <h1 class="hero-title gradient-text font-montserrat mb-6">Ankush Chowrasia</h1>
+                <p class="hero-subtitle text-xl md:text-2xl max-w-3xl mx-auto mb-4" style="color: var(--text-secondary);">
+                    Aspiring Attorney | AI Enthusiastic | Aspiring Researcher | Youtuber.
+                </p>
+                <div class="hero-cta flex flex-wrap justify-center gap-4 mt-10">
+                    <span class="badge floating">🎓 Class 11 Student</span>
+                    <span class="badge floating" style="animation-delay: 0.2s;">⚖️ Future Lawyer</span>
+                    <span class="badge floating" style="animation-delay: 0.4s;">🤖 AI Explorer</span>
+                    <span class="badge floating" style="animation-delay: 0.6s;">⚽ Football Enthusiast</span>
+                </div>
+                <a href="#achievement" class="btn-gradient inline-block mt-10 text-white no-underline">
+                    View Achievements <i class="fas fa-arrow-right ml-2"></i>
+                </a>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-16 px-4 sm:px-8 lg:px-12 bg-white dark:bg-gray-900">
-            <div class="container mx-auto max-w-4xl">
-                <h2 class="text-3xl font-light mb-12 text-center">About Me</h2>
-                <div class="flex flex-col md:flex-row items-center gap-12">
-                    <div class="md:w-1/3 flex justify-center">
-                        <img src="https://lh3.googleusercontent.com/d/1wp2Xy-O1LLW322HP_xeePB00hbYDRm4m" alt="Ankush Chowrasia Profile Picture" class="w-56 h-56 rounded-full object-cover shadow-lg">
-                    </div>
-                    <div class="md:w-2/3">
-                        <p class="mb-4">My name is Ankush Chowrasia, and I am a Class 11 student with a deep interest in exploring the world of ideas, technology, and society. Alongside my academic journey in the Arts stream, I am passionate about understanding how Artificial Intelligence can be used meaningfully for career development and personal growth. This project reflects my attempt to combine my curiosity about social issues with the skills I have gained in generative AI.</p>
-                        <p class="mb-4">Beyond academics, I aspire to pursue a career in law, where I can use my knowledge, a-nalytical thinking, and sense of justice to make a difference. Football has always been a source of inspiration and discipline for me, teaching me the value of teamwork and resilience. This work is the result of both my personal efforts and my continuous learning in applying AI tools productively.</p>
+        <section id="about" class="py-20 px-4 sm:px-8 lg:px-12 scroll-reveal">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 section-header gradient-text font-montserrat">About Me</h2>
+                <div class="glass rounded-3xl p-8 md:p-12">
+                    <div class="flex flex-col md:flex-row items-center gap-12">
+                        <div class="md:w-1/3 flex justify-center">
+                            <img src="https://lh3.googleusercontent.com/d/1wp2Xy-O1LLW322HP_xeePB00hbYDRm4m" 
+                                 alt="Ankush Chowrasia Profile Picture" 
+                                 class="w-64 h-64 rounded-full object-cover profile-img">
+                        </div>
+                        <div class="md:w-2/3 space-y-6">
+                            <p class="text-lg leading-relaxed" style="color: var(--text-secondary);">
+                                My name is Ankush Chowrasia, and I am a Class 11 student with a deep interest in exploring the world of ideas, technology, and society. Alongside my academic journey in the Arts stream, I am passionate about understanding how Artificial Intelligence can be used meaningfully for career development and personal growth. This project reflects my attempt to combine my curiosity about social issues with the skills I have gained in generative AI.
+                            </p>
+                            <p class="text-lg leading-relaxed" style="color: var(--text-secondary);">
+                                Beyond academics, I aspire to pursue a career in law, where I can use my knowledge, analytical thinking, and sense of justice to make a difference. Football has always been a source of inspiration and discipline for me, teaching me the value of teamwork and resilience. This work is the result of both my personal efforts and my continuous learning in applying AI tools productively.
+                            </p>
+                            <div class="flex flex-wrap gap-3 mt-6">
+                                <div class="px-4 py-2 rounded-full glass">
+                                    <i class="fas fa-graduation-cap mr-2" style="color: var(--accent-purple);"></i>
+                                    Arts Stream
+                                </div>
+                                <div class="px-4 py-2 rounded-full glass">
+                                    <i class="fas fa-gavel mr-2" style="color: var(--accent-blue);"></i>
+                                    Future Attorney
+                                </div>
+                                <div class="px-4 py-2 rounded-full glass">
+                                    <i class="fas fa-robot mr-2" style="color: var(--accent-pink);"></i>
+                                    AI Explorer
+                                </div>
+                                <div class="px-4 py-2 rounded-full glass">
+                                    <i class="fas fa-futbol mr-2" style="color: var(--accent-green);"></i>
+                                    Football Lover
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Achievement Section -->
-        <section id="achievement" class="achievement-container py-16 px-4 sm:px-8 lg:px-12">
+        <section id="achievement" class="py-20 px-4 sm:px-8 lg:px-12 scroll-reveal">
             <div class="container mx-auto">
-                <div class="flex justify-between items-center mb-12">
-                    <h2 class="text-3xl font-light">Achievements</h2>
-                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 section-header gradient-text font-montserrat">Achievements</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Gallery Item 1 -->
-                    <div class="portfolio-card rounded-lg overflow-hidden group">
+                    <div class="portfolio-card group cursor-pointer">
                         <div class="relative overflow-hidden">
-                            <img src="https://lh3.googleusercontent.com/d/1gGz8Vz-vASEbI3r2ZZcM8gZAaYAZiCud" alt="AI FOR ALL" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
-                                <button class="view-project-btn opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 text-white bg-black bg-opacity-70 px-4 py-2 rounded-full" 
+                            <img src="https://lh3.googleusercontent.com/d/1gGz8Vz-vASEbI3r2ZZcM8gZAaYAZiCud" 
+                                 alt="AI FOR ALL" 
+                                 class="w-full h-64 object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+                                <button class="view-project-btn btn-gradient text-white px-6 py-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300" 
                                         data-title="AI FOR ALL" 
                                         data-details="This certificate was awarded by the Ministry of Education and Intel for successfully completing the 'AI For All' program. The course provided a foundational understanding of Artificial Intelligence and its real-world applications."
                                         data-proof-link="https://ai-for-all.in/#/badge?id=U2FsdGVkX1p1L2u3SPexZOwo9ns1L2a3S4hTjBA6rNs1L2a3S4hwpLyZnMyGXcLBv1J2x1I95NhEWVQlnObML1">
-                                    View Project
+                                    View Details <i class="fas fa-arrow-right ml-2"></i>
                                 </button>
                             </div>
                         </div>
-                        <div class="p-4">
-                            <h3 class="text-xl font-light mb-2">AI FOR ALL</h3>
-                            <p class="text-sm opacity-70">By Ministry of Education and Intel</p>
+                        <div class="p-6 relative z-10">
+                            <h3 class="text-xl font-bold mb-2">AI FOR ALL</h3>
+                            <p class="text-sm mb-3" style="color: var(--text-secondary);">By Ministry of Education and Intel</p>
+                            <div class="flex items-center gap-2">
+                                <span class="px-3 py-1 text-xs rounded-full" style="background: rgba(167, 139, 250, 0.2); color: var(--accent-purple);">
+                                    <i class="fas fa-certificate mr-1"></i> Certified
+                                </span>
+                            </div>
                         </div>
                     </div>
+
                     <!-- Gallery Item 2 -->
-                    <div class="portfolio-card rounded-lg overflow-hidden group">
+                    <div class="portfolio-card group cursor-pointer">
                         <div class="relative overflow-hidden">
-                            <img src="https://lh3.googleusercontent.com/d/1Y6E1ieyCjxsr3adkOQwMw2D9nJso48NS" alt="Generative AI" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
-                                <button class="view-project-btn opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 text-white bg-black bg-opacity-70 px-4 py-2 rounded-full" 
+                            <img src="https://lh3.googleusercontent.com/d/1Y6E1ieyCjxsr3adkOQwMw2D9nJso48NS" 
+                                 alt="Generative AI" 
+                                 class="w-full h-64 object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+                                <button class="view-project-btn btn-gradient text-white px-6 py-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300" 
                                         data-title="Generative AI" 
                                         data-details="Completed Google's course on Generative AI, gaining insights into the principles and applications of creating new content with AI, from text to images."
                                         data-proof-link="https://www.cloudskillsboost.google/public_profiles/27c75b1d-1c65-42f0-b354-bfd925ee078e/badges/17732468?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share">
-                                    View Project
+                                    View Details <i class="fas fa-arrow-right ml-2"></i>
                                 </button>
                             </div>
                         </div>
-                        <div class="p-4">
-                            <h3 class="text-xl font-light mb-2">Generative AI</h3>
-                            <p class="text-sm opacity-70">By Google</p>
+                        <div class="p-6 relative z-10">
+                            <h3 class="text-xl font-bold mb-2">Generative AI</h3>
+                            <p class="text-sm mb-3" style="color: var(--text-secondary);">By Google</p>
+                            <div class="flex items-center gap-2">
+                                <span class="px-3 py-1 text-xs rounded-full" style="background: rgba(96, 165, 250, 0.2); color: var(--accent-blue);">
+                                    <i class="fas fa-certificate mr-1"></i> Certified
+                                </span>
+                            </div>
                         </div>
                     </div>
-                     <!-- Gallery Item 3 -->
-                    <div class="portfolio-card rounded-lg overflow-hidden group">
+
+                    <!-- Gallery Item 3 -->
+                    <div class="portfolio-card group cursor-pointer">
                         <div class="relative overflow-hidden">
-                            <img src="https://lh3.googleusercontent.com/d/1RBiWf8o6lVpI5irtComSPxYhqwNC_Ugm" alt="Large Language Model" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
-                                <button class="view-project-btn opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 text-white bg-black bg-opacity-70 px-4 py-2 rounded-full" 
+                            <img src="https://lh3.googleusercontent.com/d/1RBiWf8o6lVpI5irtComSPxYhqwNC_Ugm" 
+                                 alt="Large Language Model" 
+                                 class="w-full h-64 object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+                                <button class="view-project-btn btn-gradient text-white px-6 py-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300" 
                                         data-title="Large Language Model" 
                                         data-details="A deep dive into the architecture and functionality of Large Language Models (LLMs), provided by Google. This course covered the technology behind models like Gemini."
                                         data-proof-link="https://www.cloudskillsboost.google/public_profiles/27c75b1d-1c65-42f0-b354-bfd925ee078e/badges/17984568?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share">
-                                    View Project
+                                    View Details <i class="fas fa-arrow-right ml-2"></i>
                                 </button>
                             </div>
                         </div>
-                        <div class="p-4">
-                            <h3 class="text-xl font-light mb-2">Large Language Model</h3>
-                            <p class="text-sm opacity-70">By Google</p>
+                        <div class="p-6 relative z-10">
+                            <h3 class="text-xl font-bold mb-2">Large Language Model</h3>
+                            <p class="text-sm mb-3" style="color: var(--text-secondary);">By Google</p>
+                            <div class="flex items-center gap-2">
+                                <span class="px-3 py-1 text-xs rounded-full" style="background: rgba(244, 114, 182, 0.2); color: var(--accent-pink);">
+                                    <i class="fas fa-certificate mr-1"></i> Certified
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -216,86 +714,168 @@
         </section>
 
         <!-- AI Career Counselor Section -->
-        <section id="ai-counselor" class="py-16 px-4 sm:px-8 lg:px-12 bg-white dark:bg-gray-900">
+        <section id="ai-counselor" class="py-20 px-4 sm:px-8 lg:px-12 scroll-reveal">
             <div class="container mx-auto max-w-4xl">
-                <h2 class="text-3xl font-light mb-4 text-center"> NexTGen AI </h2>
-                <p class="text-center mb-8 opacity-70">Curious about the intersection of law, AI . This is the new project of Ankush Chowrasia , The latest version will be published soon </p>
-                
-                <div class="space-y-4">
-                    <div>
-                        <label for="ai-question" class="block mb-2 text-sm">Your Question:</label>
-                        <input type="text" id="ai-question" placeholder="e.g., How will AI change the legal profession?" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:bg-gray-800 dark:border-gray-700 dark:focus:ring-white">
+                <div class="glass rounded-3xl p-8 md:p-12">
+                    <div class="text-center mb-10">
+                        <div class="inline-block mb-4">
+                            <div class="w-20 h-20 mx-auto rounded-full flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));">
+                                <i class="fas fa-robot text-4xl text-white"></i>
+                            </div>
+                        </div>
+                        <h2 class="text-4xl md:text-5xl font-bold mb-4 gradient-text font-montserrat">NexTGen AI</h2>
+                        <p class="text-lg" style="color: var(--text-secondary);">
+                            Curious about the intersection of law, AI. This is the new project of Ankush Chowrasia, The latest version will be published soon
+                        </p>
                     </div>
-                    <button id="ask-ai-btn" class="flex items-center justify-center px-8 py-3 bg-black text-white rounded-full hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition-colors disabled:opacity-50">
-                        Ask AI
-                        <span id="ai-loading-spinner" class="hidden ml-2 inline-block w-4 h-4 border-2 border-t-transparent border-white dark:border-black rounded-full animate-spin"></span>
-                    </button>
-                </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <label for="ai-question" class="block mb-3 text-sm font-semibold uppercase tracking-wide" style="color: var(--accent-purple);">
+                                <i class="fas fa-lightbulb mr-2"></i>Your Question:
+                            </label>
+                            <input type="text" 
+                                   id="ai-question" 
+                                   placeholder="e.g., How will AI change the legal profession?" 
+                                   class="form-input w-full">
+                        </div>
+                        <button id="ask-ai-btn" class="btn-gradient w-full md:w-auto text-white flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed">
+                            <i class="fas fa-paper-plane"></i>
+                            Ask AI
+                            <span id="ai-loading-spinner" class="hidden w-5 h-5 spinner"></span>
+                        </button>
+                    </div>
 
-                <div id="ai-response-container" class="mt-8 p-6 bg-gray-100 dark:bg-gray-800 rounded-lg hidden">
-                    <h4 class="font-bold mb-2 text-lg">AI Response:</h4>
-                    <p id="ai-response-text" class="opacity-90 whitespace-pre-wrap leading-relaxed"></p>
+                    <div id="ai-response-container" class="mt-8 p-6 rounded-2xl hidden ai-response">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));">
+                                <i class="fas fa-brain text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold mb-3 text-lg">AI Response:</h4>
+                                <p id="ai-response-text" class="whitespace-pre-wrap leading-relaxed" style="color: var(--text-secondary);"></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-16 px-4 sm:px-8 lg:px-12">
+        <section id="contact" class="py-20 px-4 sm:px-8 lg:px-12 scroll-reveal">
             <div class="container mx-auto max-w-4xl">
-                <h2 class="text-3xl font-light mb-4 text-center">Get In Touch</h2>
-                <p class="text-center mb-8 opacity-70">Feel free to reach out via the form below or connect with me on social media.</p>
-                <div class="flex justify-center space-x-8 mb-12">
-                    <a href="https://www.linkedin.com/in/ankushchowrasia27/" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100 transition-opacity"><i class="fab fa-linkedin-in text-3xl"></i></a>
-                    <a href="https://www.instagram.com/ankushchowrasia/" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100 transition-opacity"><i class="fab fa-instagram text-3xl"></i></a>
-                    <a href="https://www.facebook.com/profile.php?id=100074737849819" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100 transition-opacity"><i class="fab fa-facebook-f text-3xl"></i></a>
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 section-header gradient-text font-montserrat">Get In Touch</h2>
+                <p class="text-center mb-12 text-lg" style="color: var(--text-secondary);">
+                    Feel free to reach out via the form below or connect with me on social media.
+                </p>
+                
+                <!-- Social Icons -->
+                <div class="flex justify-center gap-6 mb-12">
+                    <a href="https://www.linkedin.com/in/ankushchowrasia27/" target="_blank" rel="noopener noreferrer" class="social-icon">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com/ankushchowrasia/" target="_blank" rel="noopener noreferrer" class="social-icon">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=100074737849819" target="_blank" rel="noopener noreferrer" class="social-icon">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
                 </div>
-                <!-- Updated form to point to Formspree -->
-                <form id="contactForm" action="https://formspree.io/f/xdkwzggb" method="POST" class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="name" class="block mb-2 text-sm">Name</label>
-                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:bg-gray-800 dark:border-gray-700 dark:focus:ring-white" required>
+                
+                <!-- Contact Form -->
+                <div class="glass rounded-3xl p-8 md:p-12">
+                    <form id="contactForm" action="https://formspree.io/f/xdkwzggb" method="POST" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block mb-2 text-sm font-semibold uppercase tracking-wide" style="color: var(--accent-purple);">
+                                    <i class="fas fa-user mr-2"></i>Name
+                                </label>
+                                <input type="text" 
+                                       id="name" 
+                                       name="name" 
+                                       class="form-input w-full" 
+                                       required>
+                            </div>
+                            <div>
+                                <label for="email" class="block mb-2 text-sm font-semibold uppercase tracking-wide" style="color: var(--accent-blue);">
+                                    <i class="fas fa-envelope mr-2"></i>Email
+                                </label>
+                                <input type="email" 
+                                       id="email" 
+                                       name="email" 
+                                       class="form-input w-full" 
+                                       required>
+                            </div>
                         </div>
                         <div>
-                            <label for="email" class="block mb-2 text-sm">Email</label>
-                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:bg-gray-800 dark:border-gray-700 dark:focus:ring-white" required>
+                            <label for="message" class="block mb-2 text-sm font-semibold uppercase tracking-wide" style="color: var(--accent-pink);">
+                                <i class="fas fa-comment-dots mr-2"></i>Message
+                            </label>
+                            <textarea id="message" 
+                                      name="message" 
+                                      rows="6" 
+                                      class="form-input w-full resize-none" 
+                                      required></textarea>
                         </div>
+                        <button type="submit" class="btn-gradient text-white w-full md:w-auto px-12">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Send Message
+                        </button>
+                    </form>
+                    <div id="formSuccessMessage" class="hidden mt-6 p-4 rounded-lg text-center" style="background: rgba(52, 211, 153, 0.2); color: var(--accent-green);">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        Thank you for your message! I'll get back to you soon.
                     </div>
-                    <div>
-                        <label for="message" class="block mb-2 text-sm">Message</label>
-                        <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black dark:bg-gray-800 dark:border-gray-700 dark:focus:ring-white" required></textarea>
-                    </div>
-                    <button type="submit" class="px-8 py-3 bg-black text-white rounded-full hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition-colors">Send Message</button>
-                </form>
-                <!-- This success message is now handled by Formspree, but can be kept for other uses if needed -->
-                <div id="formSuccessMessage" class="hidden mt-6 text-center text-green-600 dark:text-green-400">Thank you for your message! I'll get back to you soon.</div>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="py-8 px-4 sm:px-8 lg:px-12 border-t border-gray-200 dark:border-gray-800">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
-            <p class="mb-4 md:mb-0 text-sm opacity-70">&copy; <span id="currentYear">2025</span> Ankush Chowrasia. All rights reserved.</p>
-            <div class="flex space-x-6">
-                <a href="https://www.instagram.com/ankushchowrasia/" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100 transition-opacity"><i class="fab fa-instagram text-xl"></i></a>
-                <a href="https://www.linkedin.com/in/ankushchowrasia27/" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100 transition-opacity"><i class="fab fa-linkedin-in text-xl"></i></a>
-                <a href="https://www.facebook.com/profile.php?id=100074737849819" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100 transition-opacity"><i class="fab fa-facebook-f text-xl"></i></a>
+    <!-- Footer -->
+    <footer class="py-12 px-4 sm:px-8 lg:px-12 border-t" style="border-color: rgba(255, 255, 255, 0.1);">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-center md:text-left">
+                    <p class="text-sm mb-2" style="color: var(--text-secondary);">
+                        © <span id="currentYear">2025</span> Ankush Chowrasia. All rights reserved.
+                    </p>
+                    </p>
+                </div>
+                <div class="flex gap-4">
+                    <a href="https://www.instagram.com/ankushchowrasia/" target="_blank" rel="noopener noreferrer" class="social-icon w-10 h-10">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ankushchowrasia27/" target="_blank" rel="noopener noreferrer" class="social-icon w-10 h-10">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=100074737849819" target="_blank" rel="noopener noreferrer" class="social-icon w-10 h-10">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
     
     <!-- Project Details Modal -->
-    <div id="projectModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 modal-backdrop p-4 hidden">
-        <div class="bg-[var(--card-bg)] rounded-lg shadow-xl w-full max-w-2xl mx-auto modal-content transform scale-95">
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 id="modalTitle" class="text-2xl font-light">Project Title</h3>
-                    <button id="closeModal" class="p-2 -mr-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
-                        <i class="fas fa-times text-xl"></i>
+    <div id="projectModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden modal-backdrop" style="background: rgba(0, 0, 0, 0.8);">
+        <div class="glass rounded-3xl w-full max-w-2xl mx-auto modal-content overflow-hidden">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="flex-1">
+                        <h3 id="modalTitle" class="text-3xl font-bold gradient-text mb-2">Project Title</h3>
+                        <div class="h-1 w-20 rounded-full" style="background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));"></div>
+                    </div>
+                    <button id="closeModal" class="p-2 rounded-full hover:bg-white/10 transition-colors">
+                        <i class="fas fa-times text-2xl"></i>
                     </button>
                 </div>
-                <p id="modalDetails" class="opacity-80"></p>
-                <a id="modalProofLink" href="#" target="_blank" rel="noopener noreferrer" class="inline-block mt-6 px-6 py-2 bg-black text-white rounded-full hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition-colors hidden">
+                <p id="modalDetails" class="text-lg leading-relaxed mb-8" style="color: var(--text-secondary);"></p>
+                <a id="modalProofLink" 
+                   href="#" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="btn-gradient inline-block text-white hidden">
+                    <i class="fas fa-external-link-alt mr-2"></i>
                     View Certificate
                 </a>
             </div>
@@ -305,7 +885,7 @@
     <script>
     // Function to call Gemini API with exponential backoff
     async function generateContentWithBackoff(prompt, maxRetries = 3) {
-        const apiKey = ""; // If you want to use models other than gemini-2.5-flash-preview-05-20, provide an API key here. Otherwise, leave this as-is.
+        const apiKey = ""; 
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
         
         const systemPrompt = "You are an expert career counselor specializing in the intersection of law, artificial intelligence, and technology. Provide concise, helpful, and encouraging advice to a high school student exploring these fields. Frame your answers in 2-3 short paragraphs.";
@@ -317,7 +897,7 @@
             },
         };
 
-        let delay = 1000; // Start with 1 second delay
+        let delay = 1000;
         for (let i = 0; i < maxRetries; i++) {
             try {
                 const response = await fetch(apiUrl, {
@@ -328,10 +908,8 @@
 
                 if (!response.ok) {
                     if (response.status >= 500) {
-                         // Server error, retry
                         throw new Error(`Server error: ${response.status}`);
                     } else {
-                        // Client error, don't retry
                         throw new Error(`API request failed with status ${response.status}`);
                     }
                 }
@@ -341,40 +919,38 @@
                 if (candidate && candidate.content?.parts?.[0]?.text) {
                     return candidate.content.parts[0].text;
                 } else {
-                    // If the response is valid but doesn't contain text (e.g., safety block), stop retrying.
                     return "I am unable to provide a response to this question.";
                 }
             } catch (error) {
                 console.error(`Attempt ${i + 1} failed:`, error.message);
                 if (i === maxRetries - 1) {
-                    // Last attempt failed
                     throw error;
                 }
                 await new Promise(resolve => setTimeout(resolve, delay));
-                delay *= 2; // Double the delay for the next attempt
+                delay *= 2;
             }
         }
     }
 
-
     document.addEventListener('DOMContentLoaded', () => {
         // --- Dark Mode Toggle ---
         const modeToggle = document.getElementById('modeToggle');
-        const icon = modeToggle.querySelector('i');
+        const modeToggleCircle = modeToggle.querySelector('.mode-toggle-circle');
+        const icon = modeToggleCircle.querySelector('i');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
         function setMode(isDark) {
-            document.body.classList.toggle('dark', isDark);
-            icon.classList.toggle('fa-sun', isDark);
-            icon.classList.toggle('fa-moon', !isDark);
+            document.body.classList.toggle('light', !isDark);
+            icon.classList.toggle('fa-sun', !isDark);
+            icon.classList.toggle('fa-moon', isDark);
             localStorage.setItem('darkMode', isDark);
         }
 
         const savedMode = localStorage.getItem('darkMode');
-        setMode(savedMode === 'true' || (savedMode === null && prefersDark.matches));
+        setMode(savedMode === 'false' ? false : (savedMode === 'true' || (savedMode === null && prefersDark.matches)));
 
         modeToggle.addEventListener('click', () => {
-            setMode(!document.body.classList.contains('dark'));
+            setMode(document.body.classList.contains('light'));
         });
 
         // --- Mobile Menu ---
@@ -388,23 +964,37 @@
         document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                mobileMenu.classList.add('hidden'); // Close mobile menu on click
+                mobileMenu.classList.add('hidden');
                 const targetElement = document.querySelector(this.getAttribute('href'));
                 if (targetElement) {
                     targetElement.scrollIntoView({
-                        behavior: 'smooth'
+                        behavior: 'smooth',
+                        block: 'start'
                     });
                 }
             });
         });
 
+        // --- Scroll Reveal Animation ---
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+
         // --- Dynamic Copyright Year ---
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // --- Contact Form ---
-        // The form submission is now handled by Formspree's server.
-        // The previous JavaScript logic for handling form submission has been removed.
-        
         // --- Project Modal Logic ---
         const projectModal = document.getElementById('projectModal');
         const modalContent = projectModal.querySelector('.modal-content');
@@ -413,7 +1003,6 @@
         const closeModal = document.getElementById('closeModal');
         const viewProjectButtons = document.querySelectorAll('.view-project-btn');
         const modalProofLink = document.getElementById('modalProofLink');
-        const modalBackdrop = projectModal;
 
         function openModal(title, details, proofLink) {
             modalTitle.textContent = title;
@@ -427,22 +1016,17 @@
             }
 
             projectModal.classList.remove('hidden');
-            setTimeout(() => {
-                if (modalBackdrop) modalBackdrop.classList.remove('opacity-0');
-                if (modalContent) modalContent.classList.remove('scale-95');
-            }, 10);
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModalHandler() {
-            if (modalBackdrop) modalBackdrop.classList.add('opacity-0');
-            if (modalContent) modalContent.classList.add('scale-95');
-            setTimeout(() => {
-                projectModal.classList.add('hidden');
-            }, 300);
+            projectModal.classList.add('hidden');
+            document.body.style.overflow = '';
         }
 
         viewProjectButtons.forEach(button => {
-            button.addEventListener('click', () => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
                 const title = button.dataset.title;
                 const details = button.dataset.details;
                 const proofLink = button.dataset.proofLink;
@@ -457,6 +1041,13 @@
             }
         });
 
+        // ESC key to close modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !projectModal.classList.contains('hidden')) {
+                closeModalHandler();
+            }
+        });
+
         // --- AI Counselor Logic ---
         const askAiBtn = document.getElementById('ask-ai-btn');
         const aiQuestionInput = document.getElementById('ai-question');
@@ -464,10 +1055,19 @@
         const aiResponseText = document.getElementById('ai-response-text');
         const aiLoadingSpinner = document.getElementById('ai-loading-spinner');
 
+        // Allow Enter key to submit
+        aiQuestionInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !askAiBtn.disabled) {
+                askAiBtn.click();
+            }
+        });
+
         askAiBtn.addEventListener('click', async () => {
             const question = aiQuestionInput.value.trim();
             if (!question) {
                 aiQuestionInput.focus();
+                aiQuestionInput.classList.add('animate-pulse');
+                setTimeout(() => aiQuestionInput.classList.remove('animate-pulse'), 1000);
                 return;
             }
 
@@ -484,14 +1084,68 @@
                 console.error("Failed to get AI response:", error);
                 aiResponseText.textContent = "Sorry, I couldn't get a response. Please check the console for details and try again later.";
             } finally {
-                // Hide loading state
                 askAiBtn.disabled = false;
                 aiLoadingSpinner.classList.add('hidden');
             }
         });
-        
+
+        // --- Particle Effect on Mouse Move ---
+        let particleTimeout;
+        document.addEventListener('mousemove', (e) => {
+            clearTimeout(particleTimeout);
+            particleTimeout = setTimeout(() => {
+                createParticle(e.clientX, e.clientY);
+            }, 100);
+        });
+
+        function createParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            const colors = ['var(--accent-purple)', 'var(--accent-blue)', 'var(--accent-pink)', 'var(--accent-cyan)'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            const size = Math.random() * 5 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            particle.style.background = color;
+            particle.style.opacity = '0.6';
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.style.transition = 'all 1s ease-out';
+                particle.style.transform = `translate($${Math.random() * 100 - 50}px,$$ {Math.random() * 100 - 50}px)`;
+                particle.style.opacity = '0';
+            }, 10);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 1000);
+        }
+
+        // --- Form Success Message (if Formspree redirects back) ---
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'true') {
+            document.getElementById('formSuccessMessage').classList.remove('hidden');
+            document.getElementById('contactForm').reset();
+        }
+
+        // --- Animate elements on load ---
+        setTimeout(() => {
+            revealElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        }, 300);
     });
     </script>
 </body>
 </html>
+
+
 
