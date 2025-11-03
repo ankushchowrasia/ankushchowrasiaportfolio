@@ -12,33 +12,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #0a0e27;
-            --bg-secondary: #151932;
+            --bg-primary: #000000;
+            --bg-secondary: #0a0a0a;
             --text-primary: #ffffff;
-            --text-secondary: #a0aec0;
-            --accent-purple: #a78bfa;
-            --accent-blue: #60a5fa;
-            --accent-pink: #f472b6;
-            --accent-orange: #fb923c;
-            --accent-cyan: #22d3ee;
-            --accent-green: #34d399;
-            --card-bg: rgba(30, 41, 59, 0.5);
-            --card-shadow: rgba(167, 139, 250, 0.1);
+            --text-secondary: #b8b8b8;
+            --accent-blue: #0066ff;
+            --accent-blue-light: #3385ff;
+            --accent-blue-dark: #0047b3;
+            --accent-blue-bright: #1e90ff;
+            --accent-white: #ffffff;
+            --card-bg: rgba(15, 15, 15, 0.8);
+            --card-shadow: rgba(0, 102, 255, 0.15);
         }
 
         .light {
-            --bg-primary: #f8fafc;
-            --bg-secondary: #ffffff;
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --accent-purple: #8b5cf6;
-            --accent-blue: #3b82f6;
-            --accent-pink: #ec4899;
-            --accent-orange: #f97316;
-            --accent-cyan: #06b6d4;
-            --accent-green: #10b981;
-            --card-bg: rgba(255, 255, 255, 0.8);
-            --card-shadow: rgba(139, 92, 246, 0.1);
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --text-primary: #000000;
+            --text-secondary: #666666;
+            --accent-blue: #0066ff;
+            --accent-blue-light: #3385ff;
+            --accent-blue-dark: #0047b3;
+            --accent-blue-bright: #1e90ff;
+            --accent-white: #000000;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --card-shadow: rgba(0, 102, 255, 0.2);
         }
 
         * {
@@ -70,14 +68,14 @@
             position: absolute;
             border-radius: 50%;
             filter: blur(80px);
-            opacity: 0.6;
+            opacity: 0.4;
             animation: float 20s infinite ease-in-out;
         }
 
         .orb-1 {
             width: 500px;
             height: 500px;
-            background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+            background: radial-gradient(circle, var(--accent-blue), var(--accent-blue-dark));
             top: -250px;
             left: -250px;
             animation-delay: 0s;
@@ -86,7 +84,7 @@
         .orb-2 {
             width: 400px;
             height: 400px;
-            background: linear-gradient(45deg, var(--accent-pink), var(--accent-orange));
+            background: radial-gradient(circle, var(--accent-blue-light), var(--accent-blue));
             bottom: -200px;
             right: -200px;
             animation-delay: 5s;
@@ -95,7 +93,7 @@
         .orb-3 {
             width: 350px;
             height: 350px;
-            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-green));
+            background: radial-gradient(circle, var(--accent-blue-bright), var(--accent-blue-light));
             top: 50%;
             left: 50%;
             animation-delay: 10s;
@@ -113,7 +111,7 @@
             background: var(--card-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.2);
             box-shadow: 0 8px 32px var(--card-shadow);
         }
 
@@ -121,14 +119,14 @@
         header {
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            background: rgba(10, 14, 39, 0.8);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid rgba(0, 102, 255, 0.2);
             animation: slideDown 0.8s ease-out;
         }
 
         .light header {
-            background: rgba(248, 250, 252, 0.8);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(0, 102, 255, 0.2);
         }
 
         @keyframes slideDown {
@@ -144,7 +142,7 @@
 
         /* Gradient Text */
         .gradient-text {
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue), var(--accent-pink));
+            background: linear-gradient(135deg, var(--accent-blue-light), var(--accent-blue-bright), var(--accent-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -171,7 +169,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-blue-light));
             transition: width 0.3s ease;
         }
 
@@ -184,7 +182,7 @@
             position: relative;
             width: 60px;
             height: 30px;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-blue-dark));
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -249,7 +247,7 @@
         /* Button Styles */
         .btn-gradient {
             position: relative;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-blue-dark));
             padding: 1rem 2.5rem;
             border-radius: 50px;
             font-weight: 600;
@@ -265,7 +263,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-pink));
+            background: linear-gradient(135deg, var(--accent-blue-light), var(--accent-blue-bright));
             z-index: -1;
             opacity: 0;
             transition: opacity 0.3s ease;
@@ -277,14 +275,14 @@
 
         .btn-gradient:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(167, 139, 250, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.5);
         }
 
         /* Card Styles */
         .portfolio-card {
             background: var(--card-bg);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.2);
             border-radius: 20px;
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -298,7 +296,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-blue-light));
             opacity: 0;
             transition: opacity 0.4s ease;
             z-index: 0;
@@ -311,6 +309,7 @@
         .portfolio-card:hover {
             transform: translateY(-15px) scale(1.02);
             box-shadow: 0 20px 60px var(--card-shadow);
+            border-color: var(--accent-blue);
         }
 
         .portfolio-card img {
@@ -325,7 +324,7 @@
         .profile-img {
             border: 5px solid transparent;
             background: linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box,
-                        linear-gradient(135deg, var(--accent-purple), var(--accent-blue), var(--accent-pink)) border-box;
+                        linear-gradient(135deg, var(--accent-blue), var(--accent-blue-light), var(--accent-blue-bright)) border-box;
             animation: pulse 2s ease-in-out infinite;
         }
 
@@ -358,7 +357,7 @@
         /* Form Styles */
         .form-input {
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.2);
             color: var(--text-primary);
             padding: 1rem;
             border-radius: 12px;
@@ -367,8 +366,8 @@
 
         .form-input:focus {
             outline: none;
-            border-color: var(--accent-purple);
-            box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.2);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.2);
         }
 
         /* Social Icons */
@@ -380,7 +379,7 @@
             justify-content: center;
             border-radius: 50%;
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.2);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -393,7 +392,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-blue-light));
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -404,7 +403,7 @@
 
         .social-icon:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(167, 139, 250, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 102, 255, 0.4);
         }
 
         .social-icon i {
@@ -426,7 +425,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue), var(--accent-pink));
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-blue-light), var(--accent-blue-bright));
             border-radius: 2px;
         }
 
@@ -444,8 +443,8 @@
 
         /* AI Response Container */
         .ai-response {
-            background: linear-gradient(135deg, rgba(167, 139, 250, 0.1), rgba(96, 165, 250, 0.1));
-            border: 1px solid rgba(167, 139, 250, 0.3);
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(30, 144, 255, 0.1));
+            border: 1px solid rgba(0, 102, 255, 0.3);
             animation: fadeInScale 0.5s ease-out;
         }
 
@@ -463,7 +462,7 @@
         /* Loading Spinner */
         .spinner {
             border: 3px solid rgba(255, 255, 255, 0.3);
-            border-top-color: var(--accent-purple);
+            border-top-color: var(--accent-blue);
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -483,12 +482,33 @@
         .badge {
             display: inline-block;
             padding: 0.5rem 1rem;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-blue-dark));
             border-radius: 20px;
             font-size: 0.875rem;
             font-weight: 600;
             margin: 0.25rem;
             animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        /* Info tags with different blue shades */
+        .info-tag-1 {
+            background: rgba(0, 102, 255, 0.2);
+            color: var(--accent-blue-light);
+        }
+
+        .info-tag-2 {
+            background: rgba(30, 144, 255, 0.2);
+            color: var(--accent-blue-bright);
+        }
+
+        .info-tag-3 {
+            background: rgba(0, 71, 179, 0.2);
+            color: var(--accent-blue);
+        }
+
+        .info-tag-4 {
+            background: rgba(51, 133, 255, 0.2);
+            color: var(--accent-blue-light);
         }
 
         /* Custom Scrollbar */
@@ -501,12 +521,12 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, var(--accent-purple), var(--accent-blue));
+            background: linear-gradient(180deg, var(--accent-blue), var(--accent-blue-dark));
             border-radius: 5px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, var(--accent-blue), var(--accent-pink));
+            background: linear-gradient(180deg, var(--accent-blue-light), var(--accent-blue));
         }
 
         /* Responsive adjustments */
@@ -605,19 +625,19 @@
                             </p>
                             <div class="flex flex-wrap gap-3 mt-6">
                                 <div class="px-4 py-2 rounded-full glass">
-                                    <i class="fas fa-graduation-cap mr-2" style="color: var(--accent-purple);"></i>
+                                    <i class="fas fa-graduation-cap mr-2" style="color: var(--accent-blue);"></i>
                                     Arts Stream
                                 </div>
                                 <div class="px-4 py-2 rounded-full glass">
-                                    <i class="fas fa-gavel mr-2" style="color: var(--accent-blue);"></i>
+                                    <i class="fas fa-gavel mr-2" style="color: var(--accent-blue-light);"></i>
                                     Future Attorney
                                 </div>
                                 <div class="px-4 py-2 rounded-full glass">
-                                    <i class="fas fa-robot mr-2" style="color: var(--accent-pink);"></i>
+                                    <i class="fas fa-robot mr-2" style="color: var(--accent-blue-bright);"></i>
                                     AI Explorer
                                 </div>
                                 <div class="px-4 py-2 rounded-full glass">
-                                    <i class="fas fa-futbol mr-2" style="color: var(--accent-green);"></i>
+                                    <i class="fas fa-futbol mr-2" style="color: var(--accent-blue-dark);"></i>
                                     Football Lover
                                 </div>
                             </div>
@@ -651,7 +671,7 @@
                             <h3 class="text-xl font-bold mb-2">AI FOR ALL</h3>
                             <p class="text-sm mb-3" style="color: var(--text-secondary);">By Ministry of Education and Intel</p>
                             <div class="flex items-center gap-2">
-                                <span class="px-3 py-1 text-xs rounded-full" style="background: rgba(167, 139, 250, 0.2); color: var(--accent-purple);">
+                                <span class="px-3 py-1 text-xs rounded-full info-tag-1">
                                     <i class="fas fa-certificate mr-1"></i> Certified
                                 </span>
                             </div>
@@ -677,7 +697,7 @@
                             <h3 class="text-xl font-bold mb-2">Generative AI</h3>
                             <p class="text-sm mb-3" style="color: var(--text-secondary);">By Google</p>
                             <div class="flex items-center gap-2">
-                                <span class="px-3 py-1 text-xs rounded-full" style="background: rgba(96, 165, 250, 0.2); color: var(--accent-blue);">
+                                <span class="px-3 py-1 text-xs rounded-full info-tag-2">
                                     <i class="fas fa-certificate mr-1"></i> Certified
                                 </span>
                             </div>
@@ -703,7 +723,7 @@
                             <h3 class="text-xl font-bold mb-2">Large Language Model</h3>
                             <p class="text-sm mb-3" style="color: var(--text-secondary);">By Google</p>
                             <div class="flex items-center gap-2">
-                                <span class="px-3 py-1 text-xs rounded-full" style="background: rgba(244, 114, 182, 0.2); color: var(--accent-pink);">
+                                <span class="px-3 py-1 text-xs rounded-full info-tag-3">
                                     <i class="fas fa-certificate mr-1"></i> Certified
                                 </span>
                             </div>
@@ -719,7 +739,7 @@
                 <div class="glass rounded-3xl p-8 md:p-12">
                     <div class="text-center mb-10">
                         <div class="inline-block mb-4">
-                            <div class="w-20 h-20 mx-auto rounded-full flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));">
+                            <div class="w-20 h-20 mx-auto rounded-full flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-blue), var(--accent-blue-dark));">
                                 <i class="fas fa-robot text-4xl text-white"></i>
                             </div>
                         </div>
@@ -731,7 +751,7 @@
                     
                     <div class="space-y-6">
                         <div>
-                            <label for="ai-question" class="block mb-3 text-sm font-semibold uppercase tracking-wide" style="color: var(--accent-purple);">
+                            <label for="ai-question" class="block mb-3 text-sm font-semibold uppercase tracking-wide" style="color: var(--accent-blue);">
                                 <i class="fas fa-lightbulb mr-2"></i>Your Question:
                             </label>
                             <input type="text" 
@@ -748,7 +768,7 @@
 
                     <div id="ai-response-container" class="mt-8 p-6 rounded-2xl hidden ai-response">
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));">
+                            <div class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-blue-light), var(--accent-blue-bright));">
                                 <i class="fas fa-brain text-white"></i>
                             </div>
                             <div class="flex-1">
@@ -787,7 +807,7 @@
                     <form id="contactForm" action="https://formspree.io/f/xdkwzggb" method="POST" class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label for="name" class="block mb-2 text-sm font-semibold uppercase tracking-wide" style="color: var(--accent-purple);">
+                                <label for="name" class="block mb-2 text-sm font-semibold uppercase tracking-wide" style="color: var(--accent-blue);">
                                     <i class="fas fa-user mr-2"></i>Name
                                 </label>
                                 <input type="text" 
@@ -797,7 +817,7 @@
                                        required>
                             </div>
                             <div>
-                                <label for="email" class="block mb-2 text-sm font-semibold uppercase tracking-wide" style="color: var(--accent-blue);">
+                                <label for="email" class="block mb-2 text-sm font-semibold uppercase tracking-wide" style="color: var(--accent-blue-light);">
                                     <i class="fas fa-envelope mr-2"></i>Email
                                 </label>
                                 <input type="email" 
@@ -808,7 +828,7 @@
                             </div>
                         </div>
                         <div>
-                            <label for="message" class="block mb-2 text-sm font-semibold uppercase tracking-wide" style="color: var(--accent-pink);">
+                            <label for="message" class="block mb-2 text-sm font-semibold uppercase tracking-wide" style="color: var(--accent-blue-bright);">
                                 <i class="fas fa-comment-dots mr-2"></i>Message
                             </label>
                             <textarea id="message" 
@@ -822,7 +842,7 @@
                             Send Message
                         </button>
                     </form>
-                    <div id="formSuccessMessage" class="hidden mt-6 p-4 rounded-lg text-center" style="background: rgba(52, 211, 153, 0.2); color: var(--accent-green);">
+                    <div id="formSuccessMessage" class="hidden mt-6 p-4 rounded-lg text-center" style="background: rgba(0, 102, 255, 0.2); color: var(--accent-blue-light);">
                         <i class="fas fa-check-circle mr-2"></i>
                         Thank you for your message! I'll get back to you soon.
                     </div>
@@ -832,13 +852,12 @@
     </main>
 
     <!-- Footer -->
-    <footer class="py-12 px-4 sm:px-8 lg:px-12 border-t" style="border-color: rgba(255, 255, 255, 0.1);">
+    <footer class="py-12 px-4 sm:px-8 lg:px-12 border-t" style="border-color: rgba(0, 102, 255, 0.2);">
         <div class="container mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                 <div class="text-center md:text-left">
                     <p class="text-sm mb-2" style="color: var(--text-secondary);">
                         © <span id="currentYear">2025</span> Ankush Chowrasia. All rights reserved.
-                    </p>
                     </p>
                 </div>
                 <div class="flex gap-4">
@@ -863,7 +882,7 @@
                 <div class="flex justify-between items-start mb-6">
                     <div class="flex-1">
                         <h3 id="modalTitle" class="text-3xl font-bold gradient-text mb-2">Project Title</h3>
-                        <div class="h-1 w-20 rounded-full" style="background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));"></div>
+                        <div class="h-1 w-20 rounded-full" style="background: linear-gradient(90deg, var(--accent-blue), var(--accent-blue-light));"></div>
                     </div>
                     <button id="closeModal" class="p-2 rounded-full hover:bg-white/10 transition-colors">
                         <i class="fas fa-times text-2xl"></i>
@@ -1102,7 +1121,7 @@
             const particle = document.createElement('div');
             particle.className = 'particle';
             
-            const colors = ['var(--accent-purple)', 'var(--accent-blue)', 'var(--accent-pink)', 'var(--accent-cyan)'];
+            const colors = ['var(--accent-blue)', 'var(--accent-blue-light)', 'var(--accent-blue-bright)', 'var(--accent-blue-dark)'];
             const color = colors[Math.floor(Math.random() * colors.length)];
             
             const size = Math.random() * 5 + 2;
@@ -1117,7 +1136,7 @@
             
             setTimeout(() => {
                 particle.style.transition = 'all 1s ease-out';
-                particle.style.transform = `translate($${Math.random() * 100 - 50}px,$$ {Math.random() * 100 - 50}px)`;
+                particle.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`;
                 particle.style.opacity = '0';
             }, 10);
             
@@ -1146,6 +1165,3 @@
     </script>
 </body>
 </html>
-
-
-
