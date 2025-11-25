@@ -331,6 +331,58 @@
             transform: scale(1.1) rotate(2deg);
         }
 
+        /* Glowing Card Animation */
+        @keyframes cardGlowAnimation {
+            0%, 100% {
+                box-shadow: 0 0 20px var(--card-shadow), 0 0 40px var(--card-shadow);
+                border-color: var(--card-border);
+            }
+            50% {
+                box-shadow: 0 0 30px var(--accent-main), 0 0 60px var(--accent-light);
+                border-color: var(--accent-main);
+            }
+        }
+
+        .glowing-card {
+            animation: cardGlowAnimation 3s infinite ease-in-out;
+        }
+
+        /* Enhance glow on hover for the glowing card */
+        .glowing-card:hover {
+            box-shadow: 0 0 40px var(--accent-main), 0 0 80px var(--accent-light), 0 0 120px var(--accent-bright) !important;
+        }
+
+        /* NEW: Badge Float & Glow Animation */
+        @keyframes floatAndGlow {
+            0%, 100% { 
+                transform: translateY(0px); 
+                box-shadow: 0 0 5px rgba(0, 191, 99, 0.1);
+                border: 1px solid rgba(0, 191, 99, 0.1);
+            }
+            50% { 
+                transform: translateY(-15px); 
+                box-shadow: 0 0 15px var(--accent-main), 0 0 30px var(--accent-light);
+                border: 1px solid var(--accent-main);
+            }
+        }
+
+        /* NEW: Button Pulse Glow Animation */
+        @keyframes btnPulseGlow {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(0, 191, 99, 0.5);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 40px var(--accent-main), 0 0 60px var(--accent-bright);
+                transform: scale(1.05);
+            }
+        }
+
+        .glowing-btn {
+            animation: btnPulseGlow 2s infinite ease-in-out;
+        }
+
+
         /* Profile Image */
         .profile-img {
             border: 5px solid transparent;
@@ -470,8 +522,14 @@
             font-size: 0.875rem;
             font-weight: 600;
             margin: 0.25rem;
-            animation: fadeInUp 1s ease-out 0.6s backwards;
+            /* Replaced initial animation with the persistent float+glow */
             color: white;
+            border: 1px solid transparent;
+        }
+        
+        /* Apply specific animation to floating badges with higher specificity */
+        .badge.floating {
+            animation: floatAndGlow 3s ease-in-out infinite;
         }
 
         /* Info tags with green shades (based on #00bf63) */
@@ -583,7 +641,8 @@
                     <span class="badge floating" style="animation-delay: 0.4s;">🤖 AI Explorer</span>
                     <span class="badge floating" style="animation-delay: 0.6s;">⚽ Football Enthusiast</span>
                 </div>
-                <a href="#achievement" class="btn-gradient inline-block mt-10 text-white no-underline">
+                <!-- Added glowing-btn class here -->
+                <a href="#achievement" class="btn-gradient glowing-btn inline-block mt-10 text-white no-underline">
                     View Achievements <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
@@ -638,7 +697,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
             <!-- AI FOR ALL -->
-            <div class="portfolio-card group cursor-pointer">
+            <div class="portfolio-card group cursor-pointer glowing-card" style="animation-delay: 0s;">
                 <div class="relative overflow-hidden">
                     <img src="https://lh3.googleusercontent.com/d/1gGz8Vz-vASEbI3r2ZZcM8gZAaYAZiCud"
                          alt="AI FOR ALL"
@@ -664,7 +723,7 @@
             </div>
 
             <!-- Generative AI -->
-            <div class="portfolio-card group cursor-pointer">
+            <div class="portfolio-card group cursor-pointer glowing-card" style="animation-delay: 0.5s;">
                 <div class="relative overflow-hidden">
                     <img src="https://lh3.googleusercontent.com/d/1Y6E1ieyCjxsr3adkOQwMw2D9nJso48NS"
                          alt="Generative AI"
@@ -690,7 +749,7 @@
             </div>
 
             <!-- Large Language Model -->
-            <div class="portfolio-card group cursor-pointer">
+            <div class="portfolio-card group cursor-pointer glowing-card" style="animation-delay: 1s;">
                 <div class="relative overflow-hidden">
                     <img src="https://lh3.googleusercontent.com/d/1RBiWf8o6lVpI5irtComSPxYhqwNC_Ugm"
                          alt="Large Language Model"
@@ -716,7 +775,7 @@
             </div>
 
             <!-- NEW: NexTGen AI Chatbot -->
-            <div class="portfolio-card group cursor-pointer">
+            <div class="portfolio-card group cursor-pointer glowing-card" style="animation-delay: 1.5s;">
                 <div class="relative overflow-hidden">
                     <img src="https://raw.githubusercontent.com/ankushchowrasia/images/4c194ded86ea8e51cc47661648241ed33137879a/NexTGen%20AI%20(1).png"
                          alt="NexTGen AI Chatbot"
