@@ -1,1103 +1,737 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ankush Chowrasia | Portfolio</title>
-<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/ankushchowrasia/farewellivitation/7b5afb6bc4c7d2f5bec82d6ed24f242f17f4c460/A.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            /* Updated Background: #111827 */
-            --bg-primary: #111827;
-            /* Slightly darker/lighter for contrast, using Tailwind Gray-800 tone */
-            --bg-secondary: #1f2937; 
-            --text-primary: #ffffff;
-            --text-secondary: #d1d5db; /* Light gray for better readability on slate */
-            
-            /* Updated Accent: #00bf63 (Green) */
-            --accent-main: #00bf63;
-            --accent-light: #33cc7a;
-            --accent-dark: #008f4a;
-            --accent-bright: #2ecc71;
-            --accent-white: #ffffff;
-            
-            /* Cards adapted to new bg */
-            --card-bg: rgba(31, 41, 55, 0.7); /* Based on #1f2937 */
-            --card-border: rgba(0, 191, 99, 0.2);
-            --card-shadow: rgba(0, 191, 99, 0.15);
-        }
-
-        .light {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f3f4f6;
-            --text-primary: #111827;
-            --text-secondary: #4b5563;
-            
-            --accent-main: #00bf63;
-            --accent-light: #33cc7a;
-            --accent-dark: #008f4a;
-            --accent-bright: #2ecc71;
-            --accent-white: #000000;
-            
-            --card-bg: rgba(255, 255, 255, 0.9);
-            --card-border: rgba(0, 191, 99, 0.2);
-            --card-shadow: rgba(0, 191, 99, 0.2);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.5s ease;
-            overflow-x: hidden;
-        }
-
-        /* Animated Background */
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .gradient-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.3; /* Slightly lowered opacity for the green to not overwhelm */
-            animation: float 20s infinite ease-in-out;
-        }
-
-        .orb-1 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, var(--accent-main), var(--accent-dark));
-            top: -250px;
-            left: -250px;
-            animation-delay: 0s;
-        }
-
-        .orb-2 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, var(--accent-light), var(--accent-main));
-            bottom: -200px;
-            right: -200px;
-            animation-delay: 5s;
-        }
-
-        .orb-3 {
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, var(--accent-bright), var(--accent-light));
-            top: 50%;
-            left: 50%;
-            animation-delay: 10s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(100px, 100px) rotate(90deg); }
-            50% { transform: translate(200px, 50px) rotate(180deg); }
-            75% { transform: translate(50px, 150px) rotate(270deg); }
-        }
-
-        /* Glass morphism effect */
-        .glass {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--card-border);
-            box-shadow: 0 8px 32px var(--card-shadow);
-        }
-
-        /* Header Styles */
-        header {
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            background: rgba(17, 24, 39, 0.85); /* Dark slate opacity */
-            border-bottom: 1px solid var(--card-border);
-            animation: slideDown 0.8s ease-out;
-        }
-
-        .light header {
-            background: rgba(255, 255, 255, 0.8);
-            border-bottom: 1px solid var(--card-border);
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Gradient Text */
-        .gradient-text {
-            background: linear-gradient(135deg, var(--accent-light), var(--accent-bright), var(--accent-main));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 3s ease infinite;
-            background-size: 200% 200%;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        /* Navigation Links */
-        .nav-link {
-            position: relative;
-            padding: 0.5rem 0;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent-main), var(--accent-light));
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::before {
-            width: 100%;
-        }
-
-        /* Mode Toggle */
-        .mode-toggle {
-            position: relative;
-            width: 60px;
-            height: 30px;
-            background: linear-gradient(135deg, var(--accent-main), var(--accent-dark));
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .mode-toggle-circle {
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 24px;
-            height: 24px;
-            background: white;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #111827; /* Dark icon inside toggle */
-        }
-
-        .light .mode-toggle-circle {
-            transform: translateX(30px);
-        }
-
-        /* Hero Section */
-        .hero-title {
-            font-size: clamp(2.5rem, 8vw, 6rem);
-            font-weight: 800;
-            font-family: 'Montserrat', sans-serif;
-            animation: fadeInUp 1s ease-out;
-            line-height: 1.1;
-        }
-
-        .hero-subtitle {
-            animation: fadeInUp 1s ease-out 0.2s backwards;
-        }
-
-        .hero-cta {
-            animation: fadeInUp 1s ease-out 0.4s backwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Floating Animation */
-        @keyframes floatingSlow {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .floating {
-            animation: floatingSlow 3s ease-in-out infinite;
-        }
-
-        /* Button Styles */
-        .btn-gradient {
-            position: relative;
-            background: linear-gradient(135deg, var(--accent-main), var(--accent-dark));
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .btn-gradient::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--accent-light), var(--accent-bright));
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .btn-gradient:hover::before {
-            opacity: 1;
-        }
-
-        .btn-gradient:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 191, 99, 0.5);
-        }
-
-        /* Card Styles */
-        .portfolio-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-        }
-
-        .portfolio-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--accent-main), var(--accent-light));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 0;
-        }
-
-        .portfolio-card:hover::before {
-            opacity: 0.1;
-        }
-
-        .portfolio-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 20px 60px var(--card-shadow);
-            border-color: var(--accent-main);
-        }
-
-        .portfolio-card img {
-            transition: all 0.5s ease;
-        }
-
-        .portfolio-card:hover img {
-            transform: scale(1.1) rotate(2deg);
-        }
-
-        /* Glowing Card Animation */
-        @keyframes cardGlowAnimation {
-            0%, 100% {
-                box-shadow: 0 0 20px var(--card-shadow), 0 0 40px var(--card-shadow);
-                border-color: var(--card-border);
-            }
-            50% {
-                box-shadow: 0 0 30px var(--accent-main), 0 0 60px var(--accent-light);
-                border-color: var(--accent-main);
-            }
-        }
-
-        .glowing-card {
-            animation: cardGlowAnimation 3s infinite ease-in-out;
-        }
-
-        /* Enhance glow on hover for the glowing card */
-        .glowing-card:hover {
-            box-shadow: 0 0 40px var(--accent-main), 0 0 80px var(--accent-light), 0 0 120px var(--accent-bright) !important;
-        }
-
-        /* NEW: Badge Float & Glow Animation */
-        @keyframes floatAndGlow {
-            0%, 100% { 
-                transform: translateY(0px); 
-                box-shadow: 0 0 5px rgba(0, 191, 99, 0.1);
-                border: 1px solid rgba(0, 191, 99, 0.1);
-            }
-            50% { 
-                transform: translateY(-15px); 
-                box-shadow: 0 0 15px var(--accent-main), 0 0 30px var(--accent-light);
-                border: 1px solid var(--accent-main);
-            }
-        }
-
-        /* NEW: Button Pulse Glow Animation */
-        @keyframes btnPulseGlow {
-            0%, 100% {
-                box-shadow: 0 10px 30px rgba(0, 191, 99, 0.5);
-                transform: scale(1);
-            }
-            50% {
-                box-shadow: 0 0 40px var(--accent-main), 0 0 60px var(--accent-bright);
-                transform: scale(1.05);
-            }
-        }
-
-        .glowing-btn {
-            animation: btnPulseGlow 2s infinite ease-in-out;
-        }
-
-
-        /* Profile Image */
-        .profile-img {
-            border: 5px solid transparent;
-            background: linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box,
-                        linear-gradient(135deg, var(--accent-main), var(--accent-light), var(--accent-bright)) border-box;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        /* Modal Styles */
-        .modal-backdrop {
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .modal-content {
-            animation: modalSlideIn 0.4s ease-out;
-        }
-
-        @keyframes modalSlideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Form Styles */
-        .form-input {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            color: var(--text-primary);
-            padding: 1rem;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--accent-main);
-            box-shadow: 0 0 0 3px rgba(0, 191, 99, 0.2);
-        }
-
-        /* Social Icons */
-        .social-icon {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            color: var(--text-primary);
-        }
-
-        .social-icon::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--accent-main), var(--accent-light));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .social-icon:hover::before {
-            opacity: 1;
-        }
-
-        .social-icon:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 191, 99, 0.4);
-            color: white;
-        }
-
-        .social-icon i {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Section Headers */
-        .section-header {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 3rem;
-        }
-
-        .section-header::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-main), var(--accent-light), var(--accent-bright));
-            border-radius: 2px;
-        }
-
-        /* Scroll Animations */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
-
-        .scroll-reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Particle effect */
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        /* Badge styles */
-        .badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: linear-gradient(135deg, var(--accent-main), var(--accent-dark));
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin: 0.25rem;
-            /* Replaced initial animation with the persistent float+glow */
-            color: white;
-            border: 1px solid transparent;
-        }
-        
-        /* Apply specific animation to floating badges with higher specificity */
-        .badge.floating {
-            animation: floatAndGlow 3s ease-in-out infinite;
-        }
-
-        /* Info tags with green shades (based on #00bf63) */
-        .info-tag-1 {
-            background: rgba(0, 191, 99, 0.2);
-            color: var(--accent-light);
-        }
-
-        .info-tag-2 {
-            background: rgba(46, 204, 113, 0.2);
-            color: var(--accent-bright);
-        }
-
-        .info-tag-3 {
-            background: rgba(0, 143, 74, 0.2);
-            color: var(--accent-main);
-        }
-
-        .info-tag-4 {
-            background: rgba(51, 204, 122, 0.2);
-            color: var(--accent-light);
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-primary);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, var(--accent-main), var(--accent-dark));
-            border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, var(--accent-light), var(--accent-main));
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .gradient-orb {
-                filter: blur(60px);
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ankush Chowrasia - Portfolio</title>
+  <meta name="description" content="Aspiring Attorney, AI Enthusiast, and Researcher.">
+  
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/ankushchowrasia/farewellivitation/7b5afb6bc4c7d2f5bec82d6ed24f242f17f4c460/A.png">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Icons & Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- GSAP & Lenis -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { green: '#00BF63', black: '#000000', gray: '#1f2937' }
+          },
+          fontFamily: { sans: ['Inter','sans-serif'], heading: ['Poppins','sans-serif'] },
+          boxShadow: { glow: '0 10px 30px -10px rgba(0,191,99,0.5)', card: '0 4px 20px rgba(0,0,0,0.5)' }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root{--brand-green:#00BF63}
+    /* Body bg handled by canvas/css */
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; cursor: default; background-color: #000; overflow-x: hidden;} 
+    h1,h2,h3,.font-heading{font-family:Poppins, sans-serif;}
+    .text-gradient{background:linear-gradient(135deg,var(--brand-green),#00FF7F);-webkit-background-clip:text;color:transparent}
+    
+    /* Card Hover Effects */
+    .hover-card{transition:all .3s cubic-bezier(.4,0,.2,1); border: 1px solid #333;}
+    .hover-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px -5px rgba(0,191,99,.12);border-bottom:3px solid var(--brand-green); border-color: var(--brand-green);}
+    
+    /* Lenis Recommended CSS */
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    .lenis.lenis-stopped { overflow: hidden; }
+    .lenis.lenis-scrolling iframe { pointer-events: none; }
+
+    /* Custom Cursor Styles (Glowing Dot) */
+    #cursor-dot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 16px; 
+      height: 16px;
+      background-color: #00BF63;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      box-shadow: 0 0 10px rgba(0, 191, 99, 0.8), 0 0 20px rgba(0, 191, 99, 0.5);
+      display: none; 
+      mix-blend-mode: screen;
+    }
+    
+    /* Background Canvas */
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Behind content */
+      pointer-events: none;
+    }
+
+    /* Navbar Link Visibility Fix */
+    #navbar a { color: white !important; opacity: 1 !important; }
+    #navbar a:hover { color: #00BF63 !important; }
+
+    @media (pointer: fine) {
+      #cursor-dot { display: block; }
+    }
+
+    @media (max-width:768px){
+      h1.text-7xl{font-size:2.6rem!important}
+      h1.text-6xl{font-size:1.9rem!important}
+    }
+    
+    /* Animation Utility Classes */
+    .fade-up-text { opacity: 0; transform: translateY(30px); }
+    .mobile-menu{transform:translateX(100%);transition:transform .28s ease-in-out}
+    .mobile-menu.open{transform:translateX(0)}
+    
+    /* Button Border Drawing Animation */
+    .btn-draw { position: relative; }
+    .btn-draw::before, .btn-draw::after {
+      content: ''; position: absolute; width: 0; height: 0;
+      box-sizing: border-box; border: 2px solid transparent; border-radius: inherit; z-index: -1;
+    }
+    /* Top Left Origin */
+    .btn-draw::before { top: 0; left: 0; }
+    /* Bottom Right Origin */
+    .btn-draw::after { bottom: 0; right: 0; }
+    
+    /* Hover Effects */
+    .btn-draw:hover::before {
+      width: 100%; height: 100%;
+      border-top-color: #00BF63; border-right-color: #00BF63;
+      transition: width 0.2s linear, height 0.2s linear 0.2s;
+    }
+    
+    .btn-draw:hover::after {
+      width: 100%; height: 100%;
+      border-bottom-color: #00BF63; border-left-color: #00BF63;
+      transition: border-color 0s linear 0.4s, width 0.2s linear 0.4s, height 0.2s linear 0.6s;
+    }
+
+    /* Modal Styles */
+    .modal-backdrop { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); background: rgba(0,0,0,0.8); }
+    .modal-content { border: 1px solid var(--brand-green); box-shadow: 0 0 30px rgba(0,191,99,0.2); }
+  </style>
 </head>
-<body>
-    <!-- Animated Background -->
-    <div class="animated-bg">
-        <div class="gradient-orb orb-1"></div>
-        <div class="gradient-orb orb-2"></div>
-        <div class="gradient-orb orb-3"></div>
+
+<body class="text-white antialiased">
+
+  <!-- Background Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Custom Cursor Element -->
+  <div id="cursor-dot"></div>
+
+  <!-- NAVIGATION -->
+  <nav id="navbar" class="fixed w-full z-50 bg-transparent py-4 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <!-- Brand -->
+      <div class="nav-el flex items-center gap-3 cursor-pointer" onclick="lenis.scrollTo('#home')" role="button">
+        <div class="w-8 h-8 bg-brand-green rounded-lg flex items-center justify-center text-black font-bold">A</div>
+        <span class="text-xl font-heading font-bold">Ankush <span class="text-brand-green">Chowrasia</span></span>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-2">
+        <a href="#home" class="nav-link btn-draw px-4 py-2 rounded-lg text-sm font-medium transition" onclick="lenis.scrollTo('#home')">Home</a>
+        <a href="#about" class="nav-link btn-draw px-4 py-2 rounded-lg text-sm font-medium transition" onclick="lenis.scrollTo('#about')">About</a>
+        <a href="#achievements" class="nav-link btn-draw px-4 py-2 rounded-lg text-sm font-medium transition" onclick="lenis.scrollTo('#achievements')">Work & Certifications</a>
+        <a href="#contact" class="nav-link btn-draw px-4 py-2 rounded-lg text-sm font-medium transition" onclick="lenis.scrollTo('#contact')">Contact</a>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <div class="nav-el md:hidden flex items-center">
+        <button id="mobile-btn" class="text-2xl p-2 focus:outline-none">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div id="mobile-menu" class="mobile-menu fixed inset-0 z-[60] bg-black p-6 border-l border-gray-800">
+    <div class="flex justify-between items-center mb-8">
+      <div class="text-2xl font-heading font-bold text-brand-green">Menu</div>
+      <button id="close-menu" class="text-2xl p-1 focus:outline-none"><i class="fas fa-times"></i></button>
     </div>
 
-    <!-- Header -->
-    <header class="py-4 px-4 sm:px-8 lg:px-12 sticky top-0 z-50">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold tracking-tight gradient-text font-montserrat">Ankush Chowrasia</a>
-            
-            <div class="flex items-center gap-6">
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#" class="nav-link font-medium">Home</a>
-                    <a href="#about" class="nav-link font-medium">About</a>
-                    <a href="#achievement" class="nav-link font-medium">Achievement</a>
-                    <a href="#contact" class="nav-link font-medium">Contact</a>
-                </nav>
-                
-                <div class="flex items-center gap-4">
-                    <div id="modeToggle" class="mode-toggle">
-                        <div class="mode-toggle-circle">
-                            <i class="fas fa-moon text-xs"></i>
-                        </div>
-                    </div>
-                    <!-- Mobile Menu Button -->
-                    <button id="mobileMenuButton" class="md:hidden p-2 text-[var(--text-primary)]">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile Navigation -->
-        <nav id="mobileMenu" class="md:hidden hidden mt-4 space-y-2">
-            <a href="#" class="block py-2 px-4 nav-link font-medium rounded-lg hover:bg-white/5">Home</a>
-            <a href="#about" class="block py-2 px-4 nav-link font-medium rounded-lg hover:bg-white/5">About</a>
-            <a href="#achievement" class="block py-2 px-4 nav-link font-medium rounded-lg hover:bg-white/5">Achievement</a>
-            <a href="#contact" class="block py-2 px-4 nav-link font-medium rounded-lg hover:bg-white/5">Contact</a>
-        </nav>
-    </header>
-
-    <main>
-        <!-- Hero Section -->
-        <section class="py-20 px-4 sm:px-8 lg:px-12 min-h-[80vh] flex items-center justify-center">
-            <div class="container mx-auto text-center">
-                <h1 class="hero-title gradient-text font-montserrat mb-6">Ankush Chowrasia</h1>
-                <p class="hero-subtitle text-xl md:text-2xl max-w-3xl mx-auto mb-4" style="color: var(--text-secondary);">
-                    Aspiring Attorney | AI Enthusiastic | Aspiring Researcher | Youtuber.
-                </p>
-                <div class="hero-cta flex flex-wrap justify-center gap-4 mt-10">
-                    <span class="badge floating">🎓 Class 11 Student</span>
-                    <span class="badge floating" style="animation-delay: 0.2s;">⚖️ Future Lawyer</span>
-                    <span class="badge floating" style="animation-delay: 0.4s;">🤖 AI Explorer</span>
-                    <span class="badge floating" style="animation-delay: 0.6s;">⚽ Football Enthusiast</span>
-                </div>
-                <!-- Added glowing-btn class here -->
-                <a href="#achievement" class="btn-gradient glowing-btn inline-block mt-10 text-white no-underline">
-                    View Achievements <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-20 px-4 sm:px-8 lg:px-12 scroll-reveal">
-            <div class="container mx-auto max-w-6xl">
-                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 section-header gradient-text font-montserrat">About Me</h2>
-                <div class="glass rounded-3xl p-8 md:p-12">
-                    <div class="flex flex-col md:flex-row items-center gap-12">
-                        <div class="md:w-1/3 flex justify-center">
-                            <img src="https://lh3.googleusercontent.com/d/1wp2Xy-O1LLW322HP_xeePB00hbYDRm4m" 
-                                 alt="Ankush Chowrasia Profile Picture" 
-                                 class="w-64 h-64 rounded-full object-cover profile-img">
-                        </div>
-                        <div class="md:w-2/3 space-y-6">
-                            <p class="text-lg leading-relaxed" style="color: var(--text-secondary);">
-                                My name is Ankush Chowrasia, and I am a Class 11 student with a deep interest in exploring the world of ideas, technology, and society. Alongside my academic journey in the Arts stream, I am passionate about understanding how Artificial Intelligence can be used meaningfully for career development and personal growth. This project reflects my attempt to combine my curiosity about social issues with the skills I have gained in generative AI.
-                            </p>
-                            <p class="text-lg leading-relaxed" style="color: var(--text-secondary);">
-                                Beyond academics, I aspire to pursue a career in law, where I can use my knowledge, analytical thinking, and sense of justice to make a difference. Football has always been a source of inspiration and discipline for me, teaching me the value of teamwork and resilience. This work is the result of both my personal efforts and my continuous learning in applying AI tools productively.
-                            </p>
-                            <div class="flex flex-wrap gap-3 mt-6">
-                                <div class="px-4 py-2 rounded-full glass">
-                                    <i class="fas fa-graduation-cap mr-2" style="color: var(--accent-main);"></i>
-                                    Arts Stream
-                                </div>
-                                <div class="px-4 py-2 rounded-full glass">
-                                    <i class="fas fa-gavel mr-2" style="color: var(--accent-light);"></i>
-                                    Future Attorney
-                                </div>
-                                <div class="px-4 py-2 rounded-full glass">
-                                    <i class="fas fa-robot mr-2" style="color: var(--accent-bright);"></i>
-                                    AI Explorer
-                                </div>
-                                <div class="px-4 py-2 rounded-full glass">
-                                    <i class="fas fa-futbol mr-2" style="color: var(--accent-dark);"></i>
-                                    Football Lover
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-<!-- Achievement Section -->
-<section id="achievement" class="py-20 px-4 sm:px-8 lg:px-12 scroll-reveal">
-    <div class="container mx-auto">
-        <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 section-header gradient-text font-montserrat">Achievements</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-
-            <!-- AI FOR ALL -->
-            <div class="portfolio-card group cursor-pointer glowing-card" style="animation-delay: 0s;">
-                <div class="relative overflow-hidden">
-                    <img src="https://lh3.googleusercontent.com/d/1gGz8Vz-vASEbI3r2ZZcM8gZAaYAZiCud"
-                         alt="AI FOR ALL"
-                         class="w-full h-auto object-contain bg-black">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-                        <button class="view-project-btn btn-gradient text-white px-6 py-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
-                            data-title="AI FOR ALL"
-                            data-details="Certificate awarded by the Ministry of Education and Intel for completing the AI For All program."
-                            data-proof-link="https://ai-for-all.in/#/badge?id=U2FsdGVkX1p1L2u3SPexZOwo9ns1L2a3S4hTjBA6rNs1L2a3S4hwpLyZnMyGXcLBv1J2x1I95NhEWVQlnObML1">
-                            View Details <i class="fas fa-arrow-right ml-2"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="p-6 relative z-10">
-                    <h3 class="text-xl font-bold mb-2">AI FOR ALL</h3>
-                    <p class="text-sm mb-3" style="color: var(--text-secondary);">By Ministry of Education & Intel</p>
-                    <div class="flex items-center gap-2">
-                        <span class="px-3 py-1 text-xs rounded-full info-tag-1">
-                            <i class="fas fa-certificate mr-1"></i> Certified
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Generative AI -->
-            <div class="portfolio-card group cursor-pointer glowing-card" style="animation-delay: 0.5s;">
-                <div class="relative overflow-hidden">
-                    <img src="https://lh3.googleusercontent.com/d/1Y6E1ieyCjxsr3adkOQwMw2D9nJso48NS"
-                         alt="Generative AI"
-                         class="w-full h-auto object-contain bg-black">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-                        <button class="view-project-btn btn-gradient text-white px-6 py-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
-                            data-title="Generative AI"
-                            data-details="Completed Google's course on Generative AI, covering text models, image models, and real-world applications."
-                            data-proof-link="https://www.cloudskillsboost.google/public_profiles/27c75b1d-1c65-42f0-b354-bfd925ee078e/badges/17732468">
-                            View Details <i class="fas fa-arrow-right ml-2"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="p-6 relative z-10">
-                    <h3 class="text-xl font-bold mb-2">Generative AI</h3>
-                    <p class="text-sm mb-3" style="color: var(--text-secondary);">By Google</p>
-                    <div class="flex items-center gap-2">
-                        <span class="px-3 py-1 text-xs rounded-full info-tag-2">
-                            <i class="fas fa-certificate mr-1"></i> Certified
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Large Language Model -->
-            <div class="portfolio-card group cursor-pointer glowing-card" style="animation-delay: 1s;">
-                <div class="relative overflow-hidden">
-                    <img src="https://lh3.googleusercontent.com/d/1RBiWf8o6lVpI5irtComSPxYhqwNC_Ugm"
-                         alt="Large Language Model"
-                         class="w-full h-auto object-contain bg-black">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-                        <button class="view-project-btn btn-gradient text-white px-6 py-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
-                            data-title="Large Language Model"
-                            data-details="Completed Google's course on LLMs, learning how models like Gemini and GPT work internally."
-                            data-proof-link="https://www.cloudskillsboost.google/public_profiles/27c75b1d-1c65-42f0-b354-bfd925ee078e/badges/17984568">
-                            View Details <i class="fas fa-arrow-right ml-2"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="p-6 relative z-10">
-                    <h3 class="text-xl font-bold mb-2">Large Language Model</h3>
-                    <p class="text-sm mb-3" style="color: var(--text-secondary);">By Google</p>
-                    <div class="flex items-center gap-2">
-                        <span class="px-3 py-1 text-xs rounded-full info-tag-3">
-                            <i class="fas fa-certificate mr-1"></i> Certified
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- NEW: NexTGen AI Chatbot -->
-            <div class="portfolio-card group cursor-pointer glowing-card" style="animation-delay: 1.5s;">
-                <div class="relative overflow-hidden">
-                    <img src="https://raw.githubusercontent.com/ankushchowrasia/images/4c194ded86ea8e51cc47661648241ed33137879a/NexTGen%20AI%20(1).png"
-                         alt="NexTGen AI Chatbot"
-                         class="w-full h-auto object-contain bg-black">
-
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-                        <a href="https://nextgen-ai-enhanced.pages.dev/" target="_blank" class="btn-gradient text-white px-6 py-3 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                            Visit NexTGen AI <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="p-6 relative z-10">
-                    <h3 class="text-xl font-bold mb-2">NexTGen AI Chatbot</h3>
-                    <p class="text-sm mb-3" style="color: var(--text-secondary);">By Ankush Chowrasia</p>
-                    <div class="flex items-center gap-2">
-                        <span class="px-3 py-1 text-xs rounded-full info-tag-4">
-                            <i class="fas fa-robot mr-1"></i> Personal Project
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+    <div class="flex flex-col space-y-6 text-center">
+      <a href="#home" class="mobile-link text-xl hover:text-brand-green transition" onclick="toggleMenu(); lenis.scrollTo('#home')">Home</a>
+      <a href="#about" class="mobile-link text-xl hover:text-brand-green transition" onclick="toggleMenu(); lenis.scrollTo('#about')">About</a>
+      <a href="#achievements" class="mobile-link text-xl hover:text-brand-green transition" onclick="toggleMenu(); lenis.scrollTo('#achievements')">Work & Certifications</a>
+      <a href="#contact" class="mobile-link text-xl hover:text-brand-green transition" onclick="toggleMenu(); lenis.scrollTo('#contact')">Contact</a>
     </div>
-</section>
+  </div>
 
+  <!-- HERO SECTION -->
+  <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 min-h-screen flex items-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Text -->
+        <div class="hero-text-content">
+          <h1 class="hero-el text-6xl font-extrabold text-brand-green mb-4 font-heading">Ankush Chowrasia</h1>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-20 px-4 sm:px-8 lg:px-12 scroll-reveal">
-            <div class="container mx-auto max-w-4xl">
-                <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 section-header gradient-text font-montserrat">Get In Touch</h2>
-                <p class="text-center mb-12 text-lg" style="color: var(--text-secondary);">
-                    Feel free to reach out via the form below or connect with me on social media.
-                </p>
-                
-                <!-- Social Icons -->
-                <div class="flex justify-center gap-6 mb-12">
-                    <a href="https://www.linkedin.com/in/ankushchowrasia27/" target="_blank" rel="noopener noreferrer" class="social-icon">
-                        <i class="fab fa-linkedin-in text-xl"></i>
-                    </a>
-                    <a href="https://www.instagram.com/ankushchowrasia/" target="_blank" rel="noopener noreferrer" class="social-icon">
-                        <i class="fab fa-instagram text-xl"></i>
-                    </a>
-                    <a href="https://www.facebook.com/profile.php?id=100074737849819" target="_blank" rel="noopener noreferrer" class="social-icon">
-                        <i class="fab fa-facebook-f text-xl"></i>
-                    </a>
-                </div>
-                
-                <!-- Contact Form -->
-                <div class="glass rounded-3xl p-8 md:p-12">
-                    <form id="contactForm" action="https://formspree.io/f/xdkwzggb" method="POST" class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="name" class="block mb-2 text-sm font-semibold uppercase tracking-wide" style="color: var(--accent-main);">
-                                    <i class="fas fa-user mr-2"></i>Name
-                                </label>
-                                <input type="text" 
-                                       id="name" 
-                                       name="name" 
-                                       class="form-input w-full" 
-                                       required>
-                            </div>
-                            <div>
-                                <label for="email" class="block mb-2 text-sm font-semibold uppercase tracking-wide" style="color: var(--accent-light);">
-                                    <i class="fas fa-envelope mr-2"></i>Email
-                                </label>
-                                <input type="email" 
-                                       id="email" 
-                                       name="email" 
-                                       class="form-input w-full" 
-                                       required>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="message" class="block mb-2 text-sm font-semibold uppercase tracking-wide" style="color: var(--accent-bright);">
-                                <i class="fas fa-comment-dots mr-2"></i>Message
-                            </label>
-                            <textarea id="message" 
-                                      name="message" 
-                                      rows="6" 
-                                      class="form-input w-full resize-none" 
-                                      required></textarea>
-                        </div>
-                        <button type="submit" class="btn-gradient text-white w-full md:w-auto px-12">
-                            <i class="fas fa-paper-plane mr-2"></i>
-                            Send Message
-                        </button>
-                    </form>
-                    <div id="formSuccessMessage" class="hidden mt-6 p-4 rounded-lg text-center" style="background: rgba(0, 191, 99, 0.2); color: var(--accent-light);">
-                        <i class="fas fa-check-circle mr-2"></i>
-                        Thank you for your message! I'll get back to you soon.
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+          <div class="hero-el inline-flex flex-wrap gap-2 mb-6">
+             <span class="px-3 py-1 rounded-full bg-brand-green/10 text-brand-green text-xs font-bold uppercase border border-brand-green/20">Class 11 Student</span>
+             <span class="px-3 py-1 rounded-full bg-brand-green/10 text-brand-green text-xs font-bold uppercase border border-brand-green/20">Vibe Coder</span>
+            <span class="px-3 py-1 rounded-full bg-brand-green/10 text-brand-green text-xs font-bold uppercase border border-brand-green/20">Aspiring Attorney</span>
+             <span class="px-3 py-1 rounded-full bg-brand-green/10 text-brand-green text-xs font-bold uppercase border border-brand-green/20">AI Explorer</span>
+          </div>
 
-    <!-- Footer -->
-    <footer class="py-12 px-4 sm:px-8 lg:px-12 border-t" style="border-color: rgba(0, 191, 99, 0.2);">
-        <div class="container mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="text-center md:text-left">
-                    <p class="text-sm mb-2" style="color: var(--text-secondary);">
-                        © <span id="currentYear">2025</span> Ankush Chowrasia. All rights reserved.
-                    </p>
-                </div>
-                <div class="flex gap-4">
-                    <a href="https://www.instagram.com/ankushchowrasia/" target="_blank" rel="noopener noreferrer" class="social-icon w-10 h-10">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/ankushchowrasia27/" target="_blank" rel="noopener noreferrer" class="social-icon w-10 h-10">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://www.facebook.com/profile.php?id=100074737849819" target="_blank" rel="noopener noreferrer" class="social-icon w-10 h-10">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                </div>
-            </div>
+          <h2 class="hero-el text-4xl lg:text-5xl font-bold leading-tight mb-6 text-white">Frontend developer & <br><span class="text-gradient">Web Administrator.</span></h2>
+
+          <p class="hero-el text-lg text-gray-300 mb-8 max-w-lg">Deeply interested in exploring the world of ideas, technology, and society. Combining curiosity about social issues with the power of generative AI.</p>
+
+          <div class="hero-el flex flex-col sm:flex-row gap-4">
+            <a href="#achievements" class="btn-draw group bg-brand-green text-black px-8 py-4 rounded-lg font-semibold text-lg flex items-center justify-center gap-2" onclick="lenis.scrollTo('#achievements')">
+              Work & Certifications <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            <a href="#contact" class="btn-draw px-8 py-4 rounded-lg font-semibold text-lg border border-gray-600 hover:border-transparent text-white hover:text-brand-green flex items-center justify-center gap-2 transition-colors" onclick="lenis.scrollTo('#contact')">
+              <i class="fas fa-paper-plane"></i> Contact Me
+            </a>
+          </div>
         </div>
-    </footer>
-    
-    <!-- Project Details Modal -->
-    <div id="projectModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden modal-backdrop" style="background: rgba(0, 0, 0, 0.8);">
-        <div class="glass rounded-3xl w-full max-w-2xl mx-auto modal-content overflow-hidden">
-            <div class="p-8">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="flex-1">
-                        <h3 id="modalTitle" class="text-3xl font-bold gradient-text mb-2">Project Title</h3>
-                        <div class="h-1 w-20 rounded-full" style="background: linear-gradient(90deg, var(--accent-main), var(--accent-light));"></div>
-                    </div>
-                    <button id="closeModal" class="p-2 rounded-full hover:bg-white/10 transition-colors text-[var(--text-primary)]">
-                        <i class="fas fa-times text-2xl"></i>
-                    </button>
+
+        <!-- Image -->
+        <div class="relative flex items-center justify-center hero-image-container">
+          <div class="relative w-full max-w-md">
+            <div class="absolute top-0 -right-4 w-full h-full bg-gray-900 rounded-3xl transform rotate-3 opacity-30"></div>
+            <div class="absolute top-0 -right-8 w-full h-full bg-brand-green rounded-3xl transform rotate-6 opacity-10"></div>
+
+            <div class="relative bg-black rounded-3xl shadow-2xl overflow-hidden border border-gray-800 aspect-square">
+              <img src="https://lh3.googleusercontent.com/d/1wp2Xy-O1LLW322HP_xeePB00hbYDRm4m" alt="Ankush Chowrasia" class="w-full h-full object-cover">
+              
+              <div class="absolute bottom-6 left-6 bg-black/90 backdrop-blur-sm p-4 rounded-xl shadow-lg flex items-center gap-3 border border-gray-800">
+                <div class="bg-brand-green p-2 rounded-full text-black"><i class="fas fa-code"></i></div>
+                <div>
+                  <p class="text-xs text-gray-400">Current Focus</p>
+                  <p class="font-bold text-white text-sm">Frontend Development and Management</p>
                 </div>
-                <p id="modalDetails" class="text-lg leading-relaxed mb-8" style="color: var(--text-secondary);"></p>
-                <a id="modalProofLink" 
-                   href="#" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   class="btn-gradient inline-block text-white hidden">
-                    <i class="fas fa-external-link-alt mr-2"></i>
-                    View Certificate
-                </a>
+              </div>
             </div>
+
+          </div>
         </div>
+
+      </div>
     </div>
+  </section>
 
-    <script>
-    
+    <!-- ABOUT / INTERESTS SECTION (Feature Cards Style) -->
+  <section id="about" class="py-24 bg-black/50">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="section-title fade-up-text text-4xl font-bold text-brand-green mb-4 text-center font-heading">My Journey & Interests</h2>
+      <p class="section-subtitle fade-up-text text-gray-400 mb-16 text-center max-w-2xl mx-auto">
+        Merging creativity with logic—building engaging web experiences as a Vibe Coder, while exploring the intersection of Law and Artificial Intelligence.
+      </p>
 
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Card 1 -->
+        <div class="feature-card hover-card bg-black p-8 rounded-3xl opacity-0 translate-y-12">
+          <div class="w-14 h-14 bg-brand-green/10 rounded-2xl flex items-center justify-center text-brand-green text-2xl mb-6 border border-brand-green/20">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h3 class="text-white text-xl font-bold mb-3 font-heading"> Academics</h3>
+          <p class="text-gray-400 text-sm">Building a strong foundation in Humanities to understand societal structures better to integrate them into legal experience.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="feature-card hover-card bg-black p-8 rounded-3xl opacity-0 translate-y-12">
+          <div class="w-14 h-14 bg-brand-green/10 rounded-2xl flex items-center justify-center text-brand-green text-2xl mb-6 border border-brand-green/20">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <h3 class="text-white text-xl font-bold mb-3 font-heading">Vibe Coder</h3>
+          <p class="text-gray-400 text-sm">Frontend Developer & Web Administrator crafting responsive websites and managing digital systems.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="feature-card hover-card bg-black p-8 rounded-3xl opacity-0 translate-y-12">
+          <div class="w-14 h-14 bg-brand-green/10 rounded-2xl flex items-center justify-center text-brand-green text-2xl mb-6 border border-brand-green/20">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3 class="text-white text-xl font-bold mb-3 font-heading">AI Explorer</h3>
+          <p class="text-gray-400 text-sm">Completed Google's courses on GenAI and LLMs.Created my own Chatbot using Open AI API Integrating AI into daily workflow.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="feature-card hover-card bg-black p-8 rounded-3xl opacity-0 translate-y-12">
+          <div class="w-14 h-14 bg-brand-green/10 rounded-2xl flex items-center justify-center text-brand-green text-2xl mb-6 border border-brand-green/20">
+            <i class="fas fa-gavel"></i>
+          </div>
+          <h3 class="text-white text-xl font-bold mb-3 font-heading">Future Attorney</h3>
+          <p class="text-gray-400 text-sm">Passionate about law, justice, and integrating AI in the field
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS (Courses Style) -->
+  <section id="achievements" class="py-24">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="mb-12">
+        <h2 class="fade-up-text text-4xl text-brand-green font-bold mb-2 font-heading">Certifications & Projects</h2>
+        <p class="fade-up-text text-white">Recognized by Google, Intel, and the Ministry of Education.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Item 1: AI FOR ALL -->
+        <div class="course-card bg-black rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
+          <div class="relative h-48 bg-gray-900 p-4">
+             <img src="https://lh3.googleusercontent.com/d/1gGz8Vz-vASEbI3r2ZZcM8gZAaYAZiCud" class="w-full h-full object-contain" alt="AI For All">
+             <div class="absolute top-4 left-4 bg-black/90 px-3 py-1 rounded-full text-xs font-bold text-brand-green border border-brand-green/30">Certificate</div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-white text-lg font-bold mb-2 font-heading">AI FOR ALL</h3>
+            <p class="text-sm text-gray-400 mb-4">Awarded by Ministry of Education & Intel for completing the AI For All program.</p>
+            <div class="flex justify-between items-center border-t border-gray-800 pt-4">
+              <span class="text-sm font-bold text-brand-green">Ministry of Education</span>
+              <button class="text-sm font-semibold hover:text-brand-green view-btn" 
+                data-title="AI FOR ALL"
+                data-details="Certificate awarded by the Ministry of Education and Intel for completing the AI For All program."
+                data-link="https://ai-for-all.in/#/badge?id=U2FsdGVkX1p1L2u3SPexZOwo9ns1L2a3S4hTjBA6rNs1L2a3S4hwpLyZnMyGXcLBv1J2x1I95NhEWVQlnObML1">
+                View Proof
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2: Generative AI -->
+        <div class="course-card bg-black rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
+          <div class="relative h-48 bg-gray-900 p-4">
+             <img src="https://lh3.googleusercontent.com/d/1Y6E1ieyCjxsr3adkOQwMw2D9nJso48NS" class="w-full h-full object-contain" alt="Generative AI">
+             <div class="absolute top-4 left-4 bg-black/90 px-3 py-1 rounded-full text-xs font-bold text-brand-green border border-brand-green/30">Certificate</div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-white text-lg font-bold mb-2 font-heading">Generative AI Fundamentals</h3>
+            <p class="text-sm text-gray-400 mb-4">Completed Google's course covering text models, image models, and real-world applications.</p>
+            <div class="flex justify-between items-center border-t border-gray-800 pt-4">
+              <span class="text-sm font-bold text-brand-green">Google Cloud</span>
+              <button class="text-sm font-semibold hover:text-brand-green view-btn"
+                 data-title="Generative AI Fundamentals"
+                 data-details="Completed Google's course on Generative AI, covering text models, image models, and real-world applications."
+                 data-link="https://www.cloudskillsboost.google/public_profiles/27c75b1d-1c65-42f0-b354-bfd925ee078e/badges/17732468">
+                View Proof
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3: LLM -->
+        <div class="course-card bg-black rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
+          <div class="relative h-48 bg-gray-900 p-4">
+             <img src="https://lh3.googleusercontent.com/d/1RBiWf8o6lVpI5irtComSPxYhqwNC_Ugm" class="w-full h-full object-contain" alt="LLM">
+             <div class="absolute top-4 left-4 bg-black/90 px-3 py-1 rounded-full text-xs font-bold text-brand-green border border-brand-green/30">Certificate</div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-white text-lg font-bold mb-2 font-heading">Large Language Models</h3>
+            <p class="text-sm text-gray-400 mb-4">Deep dive into how models like Gemini and GPT work internally, certified by Google.</p>
+            <div class="flex justify-between items-center border-t border-gray-800 pt-4">
+              <span class="text-sm font-bold text-brand-green">Google Cloud</span>
+              <button class="text-sm font-semibold hover:text-brand-green view-btn"
+                data-title="Large Language Models"
+                data-details="Completed Google's course on LLMs, learning how models like Gemini and GPT work internally."
+                data-link="https://www.cloudskillsboost.google/public_profiles/27c75b1d-1c65-42f0-b354-bfd925ee078e/badges/17984568">
+                View Proof
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Item 4: Project -->
+        <div class="course-card bg-black rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
+          <div class="relative h-48 bg-gray-900 p-4">
+             <img src="https://raw.githubusercontent.com/ankushchowrasia/images/4c194ded86ea8e51cc47661648241ed33137879a/NexTGen%20AI%20(1).png" class="w-full h-full object-contain" alt="NexTGen AI">
+             <div class="absolute top-4 left-4 bg-black/90 px-3 py-1 rounded-full text-xs font-bold text-white border border-white/30">Project</div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-white text-lg font-bold mb-2 font-heading">NexTGen AI Chatbot</h3>
+            <p class="text-sm text-gray-400 mb-4">A personal AI project exploring conversational interfaces and custom knowledge bases.</p>
+            <div class="flex justify-between items-center border-t border-gray-800 pt-4">
+              <span class="text-sm font-bold text-brand-green">Personal Project</span>
+              <a href="https://nextgen-ai-enhanced.pages.dev/" target="_blank" class="text-sm font-semibold hover:text-brand-green">
+                Visit Site
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5: NexTGen Classes -->
+        <div class="course-card bg-black rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
+          <div class="relative h-48 bg-gray-900 p-4">
+             <img src="https://raw.githubusercontent.com/ankushchowrasia/NexTGen-Classes/dc7a913fc8fe117129395286ebfe739d5ea3bb67/NexTGen%20Classes%20new%201.png" class="w-full h-full object-contain" alt="NexTGen Classes">
+             <div class="absolute top-4 left-4 bg-black/90 px-3 py-1 rounded-full text-xs font-bold text-white border border-white/30">Project</div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-white text-lg font-bold mb-2 font-heading">NexTGen Classes Website</h3>
+            <p class="text-sm text-gray-400 mb-4">An educational platform designed and developed for NexTGen Classes.</p>
+            <div class="flex justify-between items-center border-t border-gray-800 pt-4">
+              <span class="text-sm font-bold text-brand-green">Web Development</span>
+              <a href="https://nextgenclasses.vercel.app" target="_blank" class="text-sm font-semibold hover:text-brand-green">
+                Visit Site
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="py-24">
+    <div class="max-w-4xl mx-auto px-4 contact-container opacity-0 translate-y-16">
+
+      <h2 class="text-4xl md:text-5xl text-brand-green font-bold text-center mb-2 fade-up-text font-heading">
+        Get In Touch
+      </h2>
+      <p class="text-center text-gray-300 mb-12 fade-up-text">
+        Feel free to reach out for collaborations or just to say hi.
+      </p>
+
+      <form action="https://formspree.io/f/xdkwzggb" method="POST"
+        class="bg-[#0a0f1a] border border-[#00BF63]/30 p-10 rounded-3xl shadow-lg relative overflow-hidden">
+        
+        <!-- Glow effect behind form -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-green/5 rounded-full blur-3xl -z-10"></div>
+
+        <!-- GRID NAME + EMAIL -->
+        <div class="grid md:grid-cols-2 gap-6">
+
+          <!-- NAME -->
+          <div>
+            <label class="text-brand-green text-sm font-semibold flex items-center gap-2 mb-2">
+              <i class="fa-solid fa-user"></i> Name
+            </label>
+            <input type="text" name="name" required
+              class="w-full px-4 py-3 bg-[#0d1320] border border-[#00BF63]/20 text-white rounded-xl focus:border-[#00BF63] outline-none transition-colors">
+          </div>
+
+          <!-- EMAIL -->
+          <div>
+            <label class="text-brand-green text-sm font-semibold flex items-center gap-2 mb-2">
+              <i class="fa-solid fa-envelope"></i> Email
+            </label>
+            <input type="email" name="email" required
+              class="w-full px-4 py-3 bg-[#0d1320] border border-[#00BF63]/20 text-white rounded-xl focus:border-[#00BF63] outline-none transition-colors">
+          </div>
+
+        </div>
+
+        <!-- MESSAGE BOX -->
+        <div class="mt-6">
+          <label class="text-brand-green text-sm font-semibold flex items-center gap-2 mb-2">
+            <i class="fa-solid fa-comment"></i> Message
+          </label>
+          <textarea name="message" rows="6" required
+            class="w-full px-4 py-3 bg-[#0d1320] border border-[#00BF63]/20 text-white rounded-xl focus:border-[#00BF63] outline-none transition-colors"></textarea>
+        </div>
+
+        <!-- SUBMIT BUTTON -->
+        <div class="mt-8">
+          <button type="submit"
+            class="btn-draw bg-brand-green text-black font-bold text-lg px-10 py-4 rounded-lg flex items-center gap-3 hover:shadow-lg hover:shadow-brand-green/30 transition w-full md:w-auto justify-center">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-black pt-20 pb-10 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4">
+
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+        <!-- BRAND -->
+        <div class="text-center md:text-left">
+          <div class="flex items-center justify-center md:justify-start gap-2 mb-4">
+            <div class="w-7 h-7 bg-brand-green rounded-lg text-black flex items-center justify-center font-bold text-sm">A</div>
+            <span class="text-xl font-bold font-heading">Ankush <span class="text-brand-green">Chowrasia</span></span>
+          </div>
+          <p class="text-sm text-gray-400 max-w-xs">
+            Exploring the intersection of Law, AI, and Humanities.
+          </p>
+        </div>
+
+        <!-- SOCIAL LINKS -->
+        <div class="flex gap-4">
+          <a href="https://www.facebook.com/profile.php?id=100074737849819" target="_blank"
+             class="w-10 h-10 border-2 border-brand-green text-brand-green flex items-center justify-center rounded-full hover:bg-brand-green hover:text-black transition">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/ankushchowrasia27/" target="_blank"
+             class="w-10 h-10 border-2 border-brand-green text-brand-green flex items-center justify-center rounded-full hover:bg-brand-green hover:text-black transition">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://www.instagram.com/ankushchowrasia/" target="_blank"
+             class="w-10 h-10 border-2 border-brand-green text-brand-green flex items-center justify-center rounded-full hover:bg-brand-green hover:text-black transition">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- BOTTOM -->
+      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 relative">
+        <p class="text-xs text-gray-500">© <span id="year"></span> Ankush Chowrasia. All rights reserved.</p>
+        <div class="flex items-center gap-2 text-xs text-gray-500 md:absolute md:left-1/2 md:-translate-x-1/2">
+           <span>Designed with <i class="fas fa-heart text-brand-green"></i> creativity of</span>
+           <a href="https://www.linkedin.com/in/ankushchowrasia27/" target="_blank" class="px-3 py-1 rounded-full border border-brand-green text-brand-green font-bold hover:bg-brand-green hover:text-black transition-all shadow-[0_0_10px_rgba(0,191,99,0.3)] hover:shadow-[0_0_20px_rgba(0,191,99,0.6)]">
+             Ankush Chowrasia
+           </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL FOR DETAILS -->
+  <div id="projectModal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 hidden modal-backdrop">
+    <div class="bg-black/90 modal-content rounded-3xl w-full max-w-lg mx-auto p-8 relative">
+        <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+        
+        <h3 id="modalTitle" class="text-2xl font-bold text-brand-green mb-4 font-heading">Project Title</h3>
+        <p id="modalDetails" class="text-gray-300 mb-8 leading-relaxed">Description goes here.</p>
+        
+        <a id="modalLink" href="#" target="_blank" class="btn-draw inline-flex items-center gap-2 bg-brand-green text-black px-6 py-3 rounded-lg font-bold hover:bg-white transition">
+           View Proof <i class="fas fa-external-link-alt"></i>
+        </a>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // --- Dark Mode Toggle ---
-        const modeToggle = document.getElementById('modeToggle');
-        const modeToggleCircle = modeToggle.querySelector('.mode-toggle-circle');
-        const icon = modeToggleCircle.querySelector('i');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
-        function setMode(isDark) {
-            document.body.classList.toggle('light', !isDark);
-            icon.classList.toggle('fa-sun', !isDark);
-            icon.classList.toggle('fa-moon', isDark);
-            localStorage.setItem('darkMode', isDark);
+    // -----------------------------
+    // CUSTOM CURSOR
+    // -----------------------------
+    const cursor = document.getElementById('cursor-dot');
+    if (cursor) {
+        gsap.set(cursor, {xPercent: -50, yPercent: -50});
+
+        const moveCursorX = gsap.quickTo(cursor, "x", { duration: 0.15, ease: "power3.out" });
+        const moveCursorY = gsap.quickTo(cursor, "y", { duration: 0.15, ease: "power3.out" });
+
+        window.addEventListener("mousemove", (e) => {
+          if (cursor.style.opacity === "") gsap.to(cursor, { opacity: 1, duration: 0.5 });
+          if (moveCursorX && moveCursorY) {
+             moveCursorX(e.clientX);
+             moveCursorY(e.clientY);
+          }
+        });
+    }
+
+    // -----------------------------
+    // BACKGROUND ANIMATION (CANVAS)
+    // -----------------------------
+    const canvas = document.getElementById('bg-canvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let width, height, particles = [];
+        const colors = ['#00BF63', '#00FFAA', '#FFFFFF']; // Brand Colors
+
+        function initBg() {
+          resize();
+          createParticles();
+          animateBg();
         }
-
-        const savedMode = localStorage.getItem('darkMode');
-        setMode(savedMode === 'false' ? false : (savedMode === 'true' || (savedMode === null && prefersDark.matches)));
-
-        modeToggle.addEventListener('click', () => {
-            setMode(document.body.classList.contains('light'));
-        });
-
-        // --- Mobile Menu ---
-        const mobileMenuButton = document.getElementById('mobileMenuButton');
-        const mobileMenu = document.getElementById('mobileMenu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // --- Smooth Scrolling ---
-        document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                mobileMenu.classList.add('hidden');
-                const targetElement = document.querySelector(this.getAttribute('href'));
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // --- Scroll Reveal Animation ---
-        const revealElements = document.querySelectorAll('.scroll-reveal');
         
-        const revealOnScroll = () => {
-            revealElements.forEach(el => {
-                const elementTop = el.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementTop < windowHeight - 100) {
-                    el.classList.add('active');
-                }
-            });
-        };
-
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll(); // Initial check
-
-        // --- Dynamic Copyright Year ---
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // --- Project Modal Logic ---
-        const projectModal = document.getElementById('projectModal');
-        const modalContent = projectModal.querySelector('.modal-content');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalDetails = document.getElementById('modalDetails');
-        const closeModal = document.getElementById('closeModal');
-        const viewProjectButtons = document.querySelectorAll('.view-project-btn');
-        const modalProofLink = document.getElementById('modalProofLink');
-
-        function openModal(title, details, proofLink) {
-            modalTitle.textContent = title;
-            modalDetails.textContent = details;
-            
-            if (proofLink && proofLink !== "#") {
-                modalProofLink.href = proofLink;
-                modalProofLink.classList.remove('hidden');
-            } else {
-                modalProofLink.classList.add('hidden');
-            }
-
-            projectModal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
+        function resize() {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
         }
-
-        function closeModalHandler() {
-            projectModal.classList.add('hidden');
-            document.body.style.overflow = '';
-        }
-
-        viewProjectButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const title = button.dataset.title;
-                const details = button.dataset.details;
-                const proofLink = button.dataset.proofLink;
-                openModal(title, details, proofLink);
-            });
-        });
-
-        closeModal.addEventListener('click', closeModalHandler);
-        projectModal.addEventListener('click', (e) => {
-            if (e.target === projectModal) {
-                closeModalHandler();
-            }
-        });
-
-        // ESC key to close modal
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !projectModal.classList.contains('hidden')) {
-                closeModalHandler();
-            }
-        });
-
         
-        // --- Particle Effect on Mouse Move ---
-        let particleTimeout;
-        document.addEventListener('mousemove', (e) => {
-            clearTimeout(particleTimeout);
-            particleTimeout = setTimeout(() => {
-                createParticle(e.clientX, e.clientY);
-            }, 100);
-        });
-
-        function createParticle(x, y) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            
-            const colors = ['var(--accent-main)', 'var(--accent-light)', 'var(--accent-bright)', 'var(--accent-dark)'];
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            
-            const size = Math.random() * 5 + 2;
-            particle.style.width = size + 'px';
-            particle.style.height = size + 'px';
-            particle.style.left = x + 'px';
-            particle.style.top = y + 'px';
-            particle.style.background = color;
-            particle.style.opacity = '0.6';
-            
-            document.body.appendChild(particle);
-            
-            setTimeout(() => {
-                particle.style.transition = 'all 1s ease-out';
-                particle.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`;
-                particle.style.opacity = '0';
-            }, 10);
-            
-            setTimeout(() => {
-                particle.remove();
-            }, 1000);
-        }
-
-        // --- Form Success Message (if Formspree redirects back) ---
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('success') === 'true') {
-            document.getElementById('formSuccessMessage').classList.remove('hidden');
-            document.getElementById('contactForm').reset();
-        }
-
-        // --- Animate elements on load ---
-        setTimeout(() => {
-            revealElements.forEach((el, index) => {
-                setTimeout(() => {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }, index * 100);
+        function createParticles() {
+          particles = [];
+          const count = Math.floor(width * height / 15000);
+          for (let i = 0; i < count; i++) {
+            particles.push({
+              x: Math.random() * width,
+              y: Math.random() * height,
+              vx: (Math.random() - 0.5) * 0.5,
+              vy: (Math.random() - 0.5) * 0.5,
+              size: Math.random() * 2,
+              color: colors[Math.floor(Math.random() * colors.length)],
+              alpha: Math.random() * 0.5 + 0.1
             });
-        }, 300);
+          }
+        }
+        
+        function animateBg() {
+          ctx.clearRect(0, 0, width, height);
+          particles.forEach((p, i) => {
+            p.x += p.vx; p.y += p.vy;
+            if (p.x < 0) p.x = width; if (p.x > width) p.x = 0;
+            if (p.y < 0) p.y = height; if (p.y > height) p.y = 0;
+            
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = p.alpha;
+            ctx.fill();
+            
+            for (let j = i + 1; j < particles.length; j++) {
+              const p2 = particles[j];
+              const dx = p.x - p2.x;
+              const dy = p.y - p2.y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              
+              if (dist < 100) {
+                ctx.beginPath();
+                ctx.strokeStyle = '#00BF63';
+                ctx.globalAlpha = 0.1 * (1 - dist / 100);
+                ctx.lineWidth = 0.5;
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.stroke();
+              }
+            }
+          });
+          requestAnimationFrame(animateBg);
+        }
+        
+        window.addEventListener('resize', () => { resize(); createParticles(); });
+        initBg();
+    }
+
+    // -----------------------------
+    // LENIS SMOOTH SCROLL INIT
+    // -----------------------------
+    const lenis = new Lenis({
+      duration: 1.2,
+      smoothWheel: true,
     });
-    </script>
+
+    lenis.on('scroll', (e) => {
+        ScrollTrigger.update();
+    });
+    
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    
+    gsap.ticker.lagSmoothing(0);
+
+    // -----------------------------
+    // GSAP ANIMATIONS
+    // -----------------------------
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Navbar
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 20) {
+            navbar.classList.add('bg-black/90', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-gray-800', 'py-2');
+            navbar.classList.remove('bg-transparent', 'py-4');
+          } else {
+            navbar.classList.remove('bg-black/90', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-gray-800', 'py-2');
+            navbar.classList.add('bg-transparent', 'py-4');
+          }
+        });
+    }
+
+    // Hero Stagger
+    const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    heroTl.from(".nav-el", { y: -20, opacity: 0, duration: 0.8, stagger: 0.05, delay: 0.1 });
+    heroTl.from(".hero-el", { y: 30, opacity: 0, duration: 1, stagger: 0.1 }, "-=0.4");
+    heroTl.from(".hero-image-container", { x: 50, opacity: 0, duration: 1.2, ease: "power2.out" }, "-=0.8");
+
+    // Fade Up Batch
+    ScrollTrigger.batch(".fade-up-text", {
+      onEnter: batch => gsap.to(batch, { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, overwrite: true }),
+      start: "top 85%",
+    });
+
+    // Feature Cards
+    gsap.to(".feature-card", {
+      scrollTrigger: { trigger: "#about", start: "top 75%" },
+      y: 0, opacity: 1, duration: 0.8, stagger: 0.1
+    });
+
+    // Course Cards
+    gsap.to(".course-card", {
+      scrollTrigger: { trigger: "#achievements", start: "top 75%" },
+      scale: 1, opacity: 1, duration: 0.6, stagger: 0.15, ease: "back.out(1.7)"
+    });
+
+    // Contact
+    gsap.to(".contact-container", {
+      scrollTrigger: { trigger: "#contact", start: "top 80%" },
+      y: 0, opacity: 1, duration: 1, ease: "power3.out"
+    });
+
+    // -----------------------------
+    // MOBILE MENU
+    // -----------------------------
+    const mobileBtn = document.getElementById('mobile-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeMenuBtn = document.getElementById('close-menu');
+
+    function toggleMenu() {
+        if (!mobileMenu) return;
+        const isOpen = mobileMenu.classList.toggle('open');
+        isOpen ? lenis.stop() : lenis.start();
+    }
+    
+    if (mobileBtn) mobileBtn.addEventListener('click', toggleMenu);
+    if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
+
+    // -----------------------------
+    // MODAL LOGIC
+    // -----------------------------
+    const modal = document.getElementById('projectModal');
+    const closeModal = document.getElementById('closeModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDetails = document.getElementById('modalDetails');
+    const modalLink = document.getElementById('modalLink');
+    const viewBtns = document.querySelectorAll('.view-btn');
+
+    viewBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (modalTitle) modalTitle.innerText = btn.dataset.title;
+            if (modalDetails) modalDetails.innerText = btn.dataset.details;
+            if (modalLink) modalLink.href = btn.dataset.link;
+            if (modal) {
+                modal.classList.remove('hidden');
+                lenis.stop();
+            }
+        });
+    });
+
+    function hideModal() {
+        if (modal) {
+            modal.classList.add('hidden');
+            lenis.start();
+        }
+    }
+
+    if (closeModal) closeModal.addEventListener('click', hideModal);
+    if (modal) modal.addEventListener('click', (e) => { if(e.target === modal) hideModal(); });
+
+    // Year
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.innerText = new Date().getFullYear();
+
+    });
+  </script>
 </body>
 </html>
