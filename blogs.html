@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Blogs - Ankush Chowrasia | Law Portfolio</title>
+    <meta name="description" content="Legal insights and thoughts on law, technology, and society by Ankush Chowrasia">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { gold: '#C9A227', black: '#000000', gray: '#1f2937' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #111827 50%, #0a0a0a 100%);
+            min-height: 100vh;
+        }
+
+        .hover-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(201, 162, 39, 0.1);
+        }
+
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+
+<body class="text-white font-sans antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-brand-gold flex items-center justify-center text-black text-lg">
+                    ⚖️
+                </div>
+                <span class="text-xl font-heading font-bold">Ankush <span
+                        class="text-brand-gold">Chowrasia</span></span>
+            </a>
+            <a href="index.html" class="text-brand-gold hover:text-white transition flex items-center gap-2">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-16 px-4">
+        <div class="max-w-6xl mx-auto">
+
+            <!-- Page Header -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold text-brand-gold mb-4 font-heading">All Blogs</h1>
+                <p class="text-gray-400 max-w-2xl mx-auto">Legal insights, thoughts on law & technology, and
+                    observations on society. Filter by date to find specific posts.</p>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="bg-gray-900/50 rounded-2xl border border-gray-800 p-6 mb-10">
+                <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+                    <div class="flex items-center gap-2 text-gray-400">
+                        <i class="fas fa-filter text-brand-gold"></i>
+                        <span class="font-medium">Filter by Date:</span>
+                    </div>
+                    <div class="flex flex-wrap gap-4 items-center">
+                        <input type="date" id="filterDate"
+                            class="bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-brand-gold focus:outline-none">
+                        <button onclick="filterBlogs()"
+                            class="px-4 py-2 bg-brand-gold text-black rounded-lg font-medium hover:bg-brand-gold/90 transition">
+                            Apply Filter
+                        </button>
+                        <button onclick="clearFilter()"
+                            class="px-4 py-2 border border-gray-600 text-gray-300 rounded-lg font-medium hover:border-brand-gold hover:text-brand-gold transition">
+                            Clear
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blogs Grid -->
+            <div id="blogsContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Loading skeleton -->
+                <div class="blog-skeleton bg-gray-900/50 rounded-2xl h-96 animate-pulse border border-gray-800"></div>
+                <div class="blog-skeleton bg-gray-900/50 rounded-2xl h-96 animate-pulse border border-gray-800"></div>
+                <div class="blog-skeleton bg-gray-900/50 rounded-2xl h-96 animate-pulse border border-gray-800"></div>
+            </div>
+
+            <!-- No Results Message -->
+            <div id="noResults" class="hidden text-center py-16">
+                <i class="fas fa-search text-4xl text-gray-600 mb-4"></i>
+                <p class="text-gray-400 text-lg">No blogs found for the selected date.</p>
+                <button onclick="clearFilter()" class="mt-4 text-brand-gold hover:underline">Show all blogs</button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-gray-500 text-sm">© <span id="year"></span> Ankush Chowrasia. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Seed data for local development
+        const seedBlogs = [
+            {
+                id: 'seed-1',
+                title: 'Lesser-Known Facts About Indian Laws',
+                content: `1) You can be arrested without committing a crime. Indian law allows preventive detention, where a person can be detained to prevent a possible future offence, even without committing a crime yet.
+
+2) A witness can be punished for lying, even if the accused is guilty. Giving false testimony is a crime. Perjury can lead to punishment, regardless of whether the final judgment is correct.
+
+3) Courts can order DNA tests—even without consent. In certain cases, courts can direct DNA testing if it is necessary to determine truth and serve justice.
+
+4) Silence in some cases can be treated as evidence. While you have the right to silence, courts may draw limited adverse inferences if silence contradicts proven facts.
+
+5) A wife can file cases at her parental home. In matrimonial offences, complaints can legally be filed where the wife resides, not only where the incident occurred.
+
+6) Judges can summon anyone—even without police request. Courts have the power to summon any person as an accused if evidence appears during trial, even if police did not charge them.
+
+7) Legal notices are not always mandatory. Many civil disputes do not legally require a legal notice; it is often a strategic, not compulsory, step.
+
+8) An accused can defend themselves. Indian law allows an accused person to argue their own case without a lawyer, though it is not advisable.
+
+9) Courts can punish for contempt without a full trial. Contempt of court can be punished swiftly to protect judicial authority, sometimes without lengthy trial procedures.
+
+10) Judges can rely on common sense, not just law books. Courts are allowed to apply judicial notice, accepting certain facts as universally known without formal proof.`,
+                thumbnail: 'https://raw.githubusercontent.com/ankushchowrasia/blogs-/e870d84bed6e7e16c9f7d933c186a68f6d2b30b1/Screenshot%202026-01-03%20124122.png',
+                publishedDate: 'January 3, 2026',
+                publishedDateISO: '2026-01-03'
+            },
+            {
+                id: 'seed-2',
+                title: 'Why Judicial Independence Is the Backbone of Democracy?',
+                content: `In my opinion judicial independence is a fundamental pillar of democracy. It ensures that courts function without external pressure from authorities, governments, or public opinion. An independent judiciary allows judges to decide cases based solely on law, evidence, and constitutional principles, which is essential for maintaining public trust in the legal system.
+
+In a democratic country like India, power is divided among the legislature, executive, and judiciary. Judicial independence maintains this balance by acting as a check on the other two branches. When courts are free from influence of the external factors, they can review laws, executive actions, and administrative decisions without fear or bias, protecting constitutional authority.
+
+Without judicial independence, the rights of people become weak. Courts play a crucial role in safeguarding fundamental rights, protections of minority, and civil liberties. If judges are influenced by political ideology or authority, justice may favor power over fairness, weakening the protection that democracy promises to every citizen.
+
+Thus, we can say that democracy cannot survive without an independent judiciary. While reforms and technology can improve efficiency, the core value of judicial independence must remain protected. Courts must be guided by law, reason, not political pressure, to ensure justice, equality, stability.`,
+                thumbnail: 'https://raw.githubusercontent.com/ankushchowrasia/blogs-/e870d84bed6e7e16c9f7d933c186a68f6d2b30b1/Screenshot%202026-01-02%20133747.png',
+                publishedDate: 'January 2, 2026',
+                publishedDateISO: '2026-01-02'
+            },
+            {
+                id: 'seed-3',
+                title: 'Can Technology Replace Human Judges?',
+                content: `In my opinion, technology cannot replace human judges in courts; it can only assist judges in providing judgments because law is not just a subject of rules and data but also of justice, equality, and fairness. Decisions require human morality, honesty, and qualities beyond what AI can provide. Judgments cannot be decided solely on past data, as law deals with human lives and values.
+
+In the contemporary world, AI has already begun speeding up tasks such as legal research, managing case files, scheduling hearings and meetings, analyzing large documents, also works as a data analyst. Keeping in note that all of these are the supporting role which an AI provides to the judge, to make their work easier and improve consistency.
+
+The major problem with giving complete authority to an AI judge is that artificial intelligence is trained on past data, including previous judgments. If those judgments contain biases—such as social, class, or gender bias—it is quite possible that the AI will reproduce the same biased judgments, affecting a person's life.
+
+Let us take a hypothetical situation: if the AI judge gives a wrong judgement, then who will take the accountability for that? The programmer? The past decisions? Or the government? I think justice requires accountability, which AI cannot provide for now.
+
+Thus, we can say that AI cannot completely replace human judges, but they can just speed up their work and reduce workload.`,
+                thumbnail: 'https://raw.githubusercontent.com/ankushchowrasia/blogs-/e870d84bed6e7e16c9f7d933c186a68f6d2b30b1/Screenshot%202026-01-01%20204357.png',
+                publishedDate: 'January 1, 2026',
+                publishedDateISO: '2026-01-01'
+            }
+        ];
+
+        let allBlogs = [];
+
+        // Create blog card HTML
+        function createBlogCard(blog) {
+            return `
+                <article class="blog-card bg-gray-900/50 rounded-2xl overflow-hidden border border-gray-800 hover-card group" data-date="${blog.publishedDateISO}">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="${blog.thumbnail}" alt="${blog.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-3 left-3 bg-black/80 px-3 py-1 rounded-full text-xs text-brand-gold font-medium">
+                            ${blog.publishedDate}
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-white text-lg font-bold mb-3 font-heading">${blog.title}</h3>
+                        <div class="text-gray-400 text-sm space-y-2 max-h-48 overflow-y-auto">
+                            ${blog.content.split('\n').filter(p => p.trim()).map(p => `<p>${p}</p>`).join('')}
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        // Render blogs
+        function renderBlogs(blogs) {
+            const container = document.getElementById('blogsContainer');
+            const noResults = document.getElementById('noResults');
+
+            if (blogs.length === 0) {
+                container.innerHTML = '';
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+                container.innerHTML = blogs.map(createBlogCard).join('');
+            }
+        }
+
+        // Filter blogs by date
+        function filterBlogs() {
+            const filterDate = document.getElementById('filterDate').value;
+            if (!filterDate) {
+                renderBlogs(allBlogs);
+                return;
+            }
+            const filtered = allBlogs.filter(blog => blog.publishedDateISO === filterDate);
+            renderBlogs(filtered);
+        }
+
+        // Clear filter
+        function clearFilter() {
+            document.getElementById('filterDate').value = '';
+            renderBlogs(allBlogs);
+        }
+
+        // Load blogs
+        async function loadBlogs() {
+            try {
+                // Try to fetch from API (works on Vercel)
+                const response = await fetch('/api/blogs');
+                if (response.ok) {
+                    const data = await response.json();
+                    allBlogs = data.blogs;
+                    renderBlogs(allBlogs);
+                    return;
+                }
+            } catch (error) {
+                console.log('API not available, using seed data');
+            }
+
+            // Fallback to seed data for local development
+            allBlogs = seedBlogs;
+            renderBlogs(allBlogs);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadBlogs();
+            document.getElementById('year').innerText = new Date().getFullYear();
+        });
+    </script>
+
+</body>
+
+</html>
