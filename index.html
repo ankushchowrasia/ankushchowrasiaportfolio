@@ -1092,6 +1092,45 @@
         </div>
     </div>
 
+    <!-- Blog Modal Overlay -->
+    <div id="blogModal" class="fixed inset-0 z-[100] hidden">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeBlogModal()"></div>
+
+        <!-- Modal Content -->
+        <div class="relative h-full overflow-y-auto">
+            <div class="max-w-4xl mx-auto px-4 py-8 min-h-full">
+                <!-- Close Button -->
+                <button onclick="closeBlogModal()"
+                    class="fixed top-4 right-4 z-[110] w-12 h-12 bg-gray-900 border border-gray-700 rounded-full flex items-center justify-center text-white hover:bg-brand-gold hover:text-black transition group">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+
+                <!-- Blog Header -->
+                <div id="modalBlogHeader" class="mb-8 mt-12">
+                    <!-- Thumbnail -->
+                    <div class="relative h-64 md:h-80 rounded-2xl overflow-hidden mb-6">
+                        <img id="modalBlogImage" src="" alt="" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span id="modalBlogDate"
+                                class="bg-brand-gold text-black px-4 py-1 rounded-full text-sm font-medium"></span>
+                        </div>
+                    </div>
+
+                    <!-- Title -->
+                    <h1 id="modalBlogTitle" class="text-3xl md:text-4xl font-bold text-white font-heading mb-4"></h1>
+                </div>
+
+                <!-- Blog Content -->
+                <div id="modalBlogContent"
+                    class="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-4">
+                    <!-- Content will be injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- SCRIPTS -->
     <script>
         // Make toggleMenu and lenis globally accessible
@@ -1348,6 +1387,13 @@
                 }
             ];
 
+            let currentBlogs = [];
+
+            // Helper to strip images from HTML content
+            function stripImages(html) {
+                return html.replace(/<img[^>]*>/gi, '');
+            }
+
             // Helper to strip HTML tags from content
             function stripHtml(html) {
                 const tmp = document.createElement('div');
@@ -1358,7 +1404,7 @@
             function createBlogCard(blog) {
                 const cleanContent = stripHtml(blog.content).substring(0, 150);
                 return `
-                    <div class="fade-up-text bg-gray-900/50 rounded-2xl overflow-hidden border border-gray-800 hover-card group">
+                    <div onclick="openBlogModal('${blog.id}')" class="cursor-pointer fade-up-text bg-gray-900/50 rounded-2xl overflow-hidden border border-gray-800 hover-card group">
                         <div class="relative h-40 overflow-hidden">
                             <img src="${blog.thumbnail}" alt="${blog.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             <div class="absolute top-3 left-3 bg-black/80 px-3 py-1 rounded-full text-xs text-brand-gold font-medium">
@@ -1373,6 +1419,33 @@
                 `;
             }
 
+            // Modal Functions
+            window.openBlogModal = function (blogId) {
+                const blog = currentBlogs.find(b => b.id === blogId);
+                if (!blog) return;
+
+                // Populate Modal
+                document.getElementById('modalBlogImage').src = blog.thumbnail;
+                document.getElementById('modalBlogDate').textContent = blog.publishedDate;
+                document.getElementById('modalBlogTitle').textContent = blog.title;
+
+                // Format content: Strip images for clean text
+                const cleanContent = stripImages(blog.content);
+                // Simple paragraph formatting if needed, or just set innerHTML
+                document.getElementById('modalBlogContent').innerHTML = cleanContent;
+
+                // Show Modal
+                const modal = document.getElementById('blogModal');
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+
+            window.closeBlogModal = function () {
+                const modal = document.getElementById('blogModal');
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+
             async function loadRecentBlogs() {
                 const container = document.getElementById('recent-blogs-container');
                 if (!container) return;
@@ -1385,6 +1458,7 @@
                     if (response.ok) {
                         const data = await response.json();
                         const blogs = data.blogs.slice(0, 3); // Only latest 3
+                        currentBlogs = blogs;
                         container.innerHTML = blogs.map(createBlogCard).join('');
                         blogsLoaded = true;
                     }
@@ -1394,7 +1468,9 @@
 
                 // Fallback to seed data for local development
                 if (!blogsLoaded) {
-                    container.innerHTML = seedBlogs.slice(0, 3).map(createBlogCard).join('');
+                    const blogs = seedBlogs.slice(0, 3);
+                    currentBlogs = blogs;
+                    container.innerHTML = blogs.map(createBlogCard).join('');
                 }
 
                 // Directly animate the newly loaded blog cards
