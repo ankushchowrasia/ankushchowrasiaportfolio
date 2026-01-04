@@ -1368,6 +1368,8 @@
                 const container = document.getElementById('recent-blogs-container');
                 if (!container) return;
 
+                let blogsLoaded = false;
+
                 try {
                     // Try to fetch from API (works on Vercel)
                     const response = await fetch('/api/blogs');
@@ -1375,14 +1377,20 @@
                         const data = await response.json();
                         const blogs = data.blogs.slice(0, 3); // Only latest 3
                         container.innerHTML = blogs.map(createBlogCard).join('');
-                        return;
+                        blogsLoaded = true;
                     }
                 } catch (error) {
                     console.log('API not available, using seed data');
                 }
 
                 // Fallback to seed data for local development
-                container.innerHTML = seedBlogs.slice(0, 3).map(createBlogCard).join('');
+                if (!blogsLoaded) {
+                    container.innerHTML = seedBlogs.slice(0, 3).map(createBlogCard).join('');
+                }
+
+                // Refresh ScrollTrigger to register newly added blog cards
+                // This ensures the fade-up-text animations work on dynamically loaded content
+                ScrollTrigger.refresh();
             }
 
             loadRecentBlogs();
