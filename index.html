@@ -1098,7 +1098,7 @@
         <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeBlogModal()"></div>
 
         <!-- Modal Content -->
-        <div class="relative h-full overflow-y-auto">
+        <div id="modalScrollContainer" class="relative h-full overflow-y-auto" data-lenis-prevent tabindex="-1">
             <div class="max-w-4xl mx-auto px-4 py-8 min-h-full">
                 <!-- Close Button -->
                 <button onclick="closeBlogModal()"
@@ -1441,6 +1441,10 @@
 
                 // Stop Lenis if it exists
                 if (typeof lenis !== 'undefined' && lenis) lenis.stop();
+
+                // Focus container for keyboard navigation
+                const scrollContainer = document.getElementById('modalScrollContainer');
+                if (scrollContainer) scrollContainer.focus();
             }
 
             window.closeBlogModal = function () {
