@@ -101,22 +101,6 @@
             pointer-events: none;
         }
 
-        /* Custom Cursor Styles (Glowing Dot) */
-        #cursor-dot {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 16px;
-            height: 16px;
-            background-color: #C9A227;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            box-shadow: 0 0 10px rgba(201, 162, 39, 0.8), 0 0 20px rgba(201, 162, 39, 0.5);
-            display: none;
-            mix-blend-mode: screen;
-        }
-
         /* Background Canvas */
         #bg-canvas {
             position: fixed;
@@ -136,12 +120,6 @@
 
         #navbar a:hover {
             color: #C9A227 !important;
-        }
-
-        @media (pointer: fine) {
-            #cursor-dot {
-                display: block;
-            }
         }
 
         @media (max-width:768px) {
@@ -247,9 +225,6 @@
     <!-- Background Canvas -->
     <canvas id="bg-canvas"></canvas>
 
-    <!-- Custom Cursor Element -->
-    <div id="cursor-dot"></div>
-
     <!-- NAVIGATION -->
     <nav id="navbar" class="fixed w-full z-50 bg-transparent py-4 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -319,22 +294,11 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <!-- Text -->
                 <div class="hero-text-content">
-                    <h1 class="hero-el text-6xl font-extrabold text-brand-gold mb-4 font-heading">Ankush Chowrasia</h1>
-
-                    <div class="hero-el inline-flex flex-wrap gap-2 mb-6">
-                        <span
-                            class="px-3 py-1 rounded-full bg-brand-gold/10 text-brand-gold text-xs font-bold uppercase border border-brand-gold/20">Aspiring
-                            Lawyer</span>
-                        <span
-                            class="px-3 py-1 rounded-full bg-brand-gold/10 text-brand-gold text-xs font-bold uppercase border border-brand-gold/20">Legal
-                            Researcher</span>
-                        <span
-                            class="px-3 py-1 rounded-full bg-brand-gold/10 text-brand-gold text-xs font-bold uppercase border border-brand-gold/20">Class
-                            XI Humanities</span>
-                        <span
-                            class="px-3 py-1 rounded-full bg-brand-gold/10 text-brand-gold text-xs font-bold uppercase border border-brand-gold/20">Jalpaiguri,
-                            West Bengal</span>
-                    </div>
+                    <h1 class="hero-el text-7xl lg:text-8xl font-extrabold mb-6 font-heading">
+                        <span class="text-gradient"
+                            style="background: linear-gradient(135deg, #C9A227 0%, #E8D48A 50%, #C9A227 100%); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 60px rgba(201,162,39,0.3);">Ankush
+                            Chowrasia</span>
+                    </h1>
 
                     <h2 class="hero-el text-4xl lg:text-5xl font-bold leading-tight mb-6 text-white font-heading">
                         <span class="block"></span>Aspiring Lawyer &</span>
