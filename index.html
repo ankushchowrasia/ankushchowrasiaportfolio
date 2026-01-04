@@ -1388,9 +1388,20 @@
                     container.innerHTML = seedBlogs.slice(0, 3).map(createBlogCard).join('');
                 }
 
-                // Refresh ScrollTrigger to register newly added blog cards
-                // This ensures the fade-up-text animations work on dynamically loaded content
-                ScrollTrigger.refresh();
+                // Directly animate the newly loaded blog cards
+                // ScrollTrigger.batch doesn't pick up dynamically added elements
+                const blogCards = container.querySelectorAll('.fade-up-text');
+                gsap.to(blogCards, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    stagger: 0.1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: container,
+                        start: "top 85%"
+                    }
+                });
             }
 
             loadRecentBlogs();
