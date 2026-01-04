@@ -1,755 +1,1241 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ankush Chowrasia - Portfolio</title>
-  <meta name="description" content="Aspiring Attorney, AI Enthusiast, and Researcher.">
-  
-  <!-- FAVICON -->
-  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/ankushchowrasia/farewellivitation/7b5afb6bc4c7d2f5bec82d6ed24f242f17f4c460/A.png">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Ankush Chowrasia - Aspiring Lawyer | Law Portfolio</title>
+    <meta name="description"
+        content="Aspiring Attorney passionate about Law, Justice, and Legal Technology. Exploring the intersection of Law and Artificial Intelligence.">
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png"
+        href="https://raw.githubusercontent.com/ankushchowrasia/farewellivitation/7b5afb6bc4c7d2f5bec82d6ed24f242f17f4c460/A.png">
 
-  <!-- Icons & Fonts -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- GSAP & Lenis -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <!-- Icons & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: { green: '#00BF63', black: '#000000', gray: '#1f2937' }
-          },
-          fontFamily: { sans: ['Inter','sans-serif'], heading: ['Poppins','sans-serif'] },
-          boxShadow: { glow: '0 10px 30px -10px rgba(0,191,99,0.5)', card: '0 4px 20px rgba(0,0,0,0.5)' }
+    <!-- GSAP & Lenis -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { gold: '#C9A227', black: '#0A0A0A', gray: '#1f2937', cream: '#F5F0E6' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Playfair Display', 'serif'] },
+                    boxShadow: { glow: '0 10px 30px -10px rgba(201,162,39,0.5)', card: '0 4px 20px rgba(0,0,0,0.5)' }
+                }
+            }
         }
-      }
-    }
-  </script>
+    </script>
 
-  <style>
-    :root{--brand-green:#00BF63}
-    /* Body bg handled by canvas/css */
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; cursor: default; background-color: #000; overflow-x: hidden;} 
-    h1,h2,h3,.font-heading{font-family:Poppins, sans-serif;}
-    .text-gradient{background:linear-gradient(135deg,var(--brand-green),#00FF7F);-webkit-background-clip:text;color:transparent}
-    
-    /* Card Hover Effects */
-    .hover-card{transition:all .3s cubic-bezier(.4,0,.2,1); border: 1px solid #333;}
-    .hover-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px -5px rgba(0,191,99,.12);border-bottom:3px solid var(--brand-green); border-color: var(--brand-green);}
-    
-    /* Lenis Recommended CSS */
-    html.lenis, html.lenis body { height: auto; }
-    .lenis.lenis-smooth { scroll-behavior: auto !important; }
-    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-    .lenis.lenis-stopped { overflow: hidden; }
-    .lenis.lenis-scrolling iframe { pointer-events: none; }
+    <style>
+        :root {
+            --brand-gold: #C9A227;
+            --brand-dark: #0A0A0A;
+        }
 
-    /* Custom Cursor Styles (Glowing Dot) */
-    #cursor-dot {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 16px; 
-      height: 16px;
-      background-color: #00BF63;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      box-shadow: 0 0 10px rgba(0, 191, 99, 0.8), 0 0 20px rgba(0, 191, 99, 0.5);
-      display: none; 
-      mix-blend-mode: screen;
-    }
-    
-    /* Background Canvas */
-    #bg-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1; /* Behind content */
-      pointer-events: none;
-    }
+        body {
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+            cursor: default;
+            background-color: #0A0A0A;
+            overflow-x: hidden;
+        }
 
-    /* Navbar Link Visibility Fix */
-    #navbar a { color: white !important; opacity: 1 !important; }
-    #navbar a:hover { color: #00BF63 !important; }
+        h1,
+        h2,
+        h3,
+        .font-heading {
+            font-family: 'Playfair Display', serif;
+        }
 
-    @media (pointer: fine) {
-      #cursor-dot { display: block; }
-    }
+        .text-gradient {
+            background: linear-gradient(135deg, var(--brand-gold), #E8D48A);
+            -webkit-background-clip: text;
+            color: transparent
+        }
 
-    @media (max-width:768px){
-      h1.text-7xl{font-size:2.6rem!important}
-      h1.text-6xl{font-size:1.9rem!important}
-    }
-    
-    /* Animation Utility Classes */
-    .fade-up-text { opacity: 0; transform: translateY(30px); }
-    .mobile-menu{transform:translateX(100%);transition:transform .28s ease-in-out}
-    .mobile-menu.open{transform:translateX(0)}
-    
-    /* Button Border Drawing Animation */
-    .btn-draw { position: relative; }
-    .btn-draw::before, .btn-draw::after {
-      content: ''; position: absolute; width: 0; height: 0;
-      box-sizing: border-box; border: 2px solid transparent; border-radius: inherit; z-index: -1;
-    }
-    /* Top Left Origin */
-    .btn-draw::before { top: 0; left: 0; }
-    /* Bottom Right Origin */
-    .btn-draw::after { bottom: 0; right: 0; }
-    
-    /* Hover Effects */
-    .btn-draw:hover::before {
-      width: 100%; height: 100%;
-      border-top-color: #00BF63; border-right-color: #00BF63;
-      transition: width 0.2s linear, height 0.2s linear 0.2s;
-    }
-    
-    .btn-draw:hover::after {
-      width: 100%; height: 100%;
-      border-bottom-color: #00BF63; border-left-color: #00BF63;
-      transition: border-color 0s linear 0.4s, width 0.2s linear 0.4s, height 0.2s linear 0.6s;
-    }
+        /* Card Hover Effects */
+        .hover-card {
+            transition: all .3s cubic-bezier(.4, 0, .2, 1);
+            border: 1px solid #333;
+        }
 
-    /* Modal Styles */
-    .modal-backdrop { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); background: rgba(0,0,0,0.8); }
-    .modal-content { border: 1px solid var(--brand-green); box-shadow: 0 0 30px rgba(0,191,99,0.2); }
-  </style>
+        .hover-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -5px rgba(201, 162, 39, .12);
+            border-bottom: 3px solid var(--brand-gold);
+            border-color: var(--brand-gold);
+        }
+
+        /* Lenis Recommended CSS */
+        html.lenis,
+        html.lenis body {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        .lenis.lenis-scrolling iframe {
+            pointer-events: none;
+        }
+
+        /* Custom Cursor Styles (Glowing Dot) */
+        #cursor-dot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 16px;
+            height: 16px;
+            background-color: #C9A227;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: 0 0 10px rgba(201, 162, 39, 0.8), 0 0 20px rgba(201, 162, 39, 0.5);
+            display: none;
+            mix-blend-mode: screen;
+        }
+
+        /* Background Canvas */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Navbar Link Visibility Fix */
+        #navbar a {
+            color: white !important;
+            opacity: 1 !important;
+        }
+
+        #navbar a:hover {
+            color: #C9A227 !important;
+        }
+
+        @media (pointer: fine) {
+            #cursor-dot {
+                display: block;
+            }
+        }
+
+        @media (max-width:768px) {
+            h1.text-7xl {
+                font-size: 2.6rem !important
+            }
+
+            h1.text-6xl {
+                font-size: 1.9rem !important
+            }
+        }
+
+        /* Animation Utility Classes */
+        .fade-up-text {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform .28s ease-in-out
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0)
+        }
+
+        /* Button Border Drawing Animation */
+        .btn-draw {
+            position: relative;
+        }
+
+        .btn-draw::before,
+        .btn-draw::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            box-sizing: border-box;
+            border: 2px solid transparent;
+            border-radius: inherit;
+            z-index: -1;
+        }
+
+        .btn-draw::before {
+            top: 0;
+            left: 0;
+        }
+
+        .btn-draw::after {
+            bottom: 0;
+            right: 0;
+        }
+
+        .btn-draw:hover::before {
+            width: 100%;
+            height: 100%;
+            border-top-color: #C9A227;
+            border-right-color: #C9A227;
+            transition: width 0.2s linear, height 0.2s linear 0.2s;
+        }
+
+        .btn-draw:hover::after {
+            width: 100%;
+            height: 100%;
+            border-bottom-color: #C9A227;
+            border-left-color: #C9A227;
+            transition: border-color 0s linear 0.4s, width 0.2s linear 0.4s, height 0.2s linear 0.6s;
+        }
+
+        /* Modal Styles */
+        .modal-backdrop {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            border: 1px solid var(--brand-gold);
+            box-shadow: 0 0 30px rgba(201, 162, 39, 0.2);
+        }
+
+        /* Law-themed decorative elements */
+        .scales-bg {
+            position: absolute;
+            opacity: 0.03;
+            font-size: 20rem;
+            color: #C9A227;
+            pointer-events: none;
+        }
+
+        /* Quote styling */
+        .law-quote {
+            font-style: italic;
+            border-left: 3px solid #C9A227;
+            padding-left: 1.5rem;
+        }
+    </style>
 </head>
 
 <body class="text-white antialiased">
 
-  <!-- Background Canvas -->
-  <canvas id="bg-canvas"></canvas>
+    <!-- Background Canvas -->
+    <canvas id="bg-canvas"></canvas>
 
-  <!-- Custom Cursor Element -->
-  <div id="cursor-dot"></div>
+    <!-- Custom Cursor Element -->
+    <div id="cursor-dot"></div>
 
-  <!-- NAVIGATION -->
-  <nav id="navbar" class="fixed w-full z-50 bg-transparent py-4 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-      <!-- Brand -->
-      <div class="nav-el flex items-center gap-3 cursor-pointer" onclick="lenis.scrollTo('#home')" role="button">
-        <div class="w-8 h-8 bg-brand-green rounded-lg flex items-center justify-center text-black font-bold">A</div>
-        <span class="text-xl font-heading font-bold">Ankush <span class="text-brand-green">Chowrasia</span></span>
-      </div>
-
-      <!-- Desktop Menu -->
-      <div class="hidden md:flex items-center space-x-2">
-        <a href="#home" class="nav-link btn-draw px-4 py-2 rounded-lg text-sm font-medium transition" onclick="lenis.scrollTo('#home')">Home</a>
-        <a href="#about" class="nav-link btn-draw px-4 py-2 rounded-lg text-sm font-medium transition" onclick="lenis.scrollTo('#about')">About</a>
-        <a href="#achievements" class="nav-link btn-draw px-4 py-2 rounded-lg text-sm font-medium transition" onclick="lenis.scrollTo('#achievements')">Work & Certifications</a>
-        <a href="#contact" class="nav-link btn-draw px-4 py-2 rounded-lg text-sm font-medium transition" onclick="lenis.scrollTo('#contact')">Contact</a>
-      </div>
-
-      <!-- Mobile Toggle -->
-      <div class="nav-el md:hidden flex items-center">
-        <button id="mobile-btn" class="text-2xl p-2 focus:outline-none">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- MOBILE DRAWER -->
-  <div id="mobile-menu" class="mobile-menu fixed inset-0 z-[60] bg-black p-6 border-l border-gray-800">
-    <div class="flex justify-between items-center mb-8">
-      <div class="text-2xl font-heading font-bold text-brand-green">Menu</div>
-      <button id="close-menu" class="text-2xl p-1 focus:outline-none"><i class="fas fa-times"></i></button>
-    </div>
-
-    <div class="flex flex-col space-y-6 text-center">
-      <a href="#home" class="mobile-link text-xl hover:text-brand-green transition" onclick="toggleMenu(); lenis.scrollTo('#home')">Home</a>
-      <a href="#about" class="mobile-link text-xl hover:text-brand-green transition" onclick="toggleMenu(); lenis.scrollTo('#about')">About</a>
-      <a href="#achievements" class="mobile-link text-xl hover:text-brand-green transition" onclick="toggleMenu(); lenis.scrollTo('#achievements')">Work & Certifications</a>
-      <a href="#contact" class="mobile-link text-xl hover:text-brand-green transition" onclick="toggleMenu(); lenis.scrollTo('#contact')">Contact</a>
-    </div>
-  </div>
-
-  <!-- HERO SECTION -->
-  <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 min-h-screen flex items-center">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <!-- Text -->
-        <div class="hero-text-content">
-          <h1 class="hero-el text-6xl font-extrabold text-brand-green mb-4 font-heading">Ankush Chowrasia</h1>
-
-          <div class="hero-el inline-flex flex-wrap gap-2 mb-6">
-             <span class="px-3 py-1 rounded-full bg-brand-green/10 text-brand-green text-xs font-bold uppercase border border-brand-green/20">Class 11 Student</span>
-             <span class="px-3 py-1 rounded-full bg-brand-green/10 text-brand-green text-xs font-bold uppercase border border-brand-green/20">Vibe Coder</span>
-            <span class="px-3 py-1 rounded-full bg-brand-green/10 text-brand-green text-xs font-bold uppercase border border-brand-green/20">Aspiring Attorney</span>
-             <span class="px-3 py-1 rounded-full bg-brand-green/10 text-brand-green text-xs font-bold uppercase border border-brand-green/20">AI Explorer</span>
-          </div>
-
-          <h2 class="hero-el text-4xl lg:text-5xl font-bold leading-tight mb-6 text-white">Frontend developer & <br><span class="text-gradient">Web Administrator.</span></h2>
-
-          <p class="hero-el text-lg text-gray-300 mb-8 max-w-lg">Deeply interested in exploring the world of ideas, technology, and society. Combining curiosity about social issues with the power of generative AI.</p>
-
-          <div class="hero-el flex flex-col sm:flex-row gap-4">
-            <a href="#achievements" class="btn-draw group bg-brand-green text-black px-8 py-4 rounded-lg font-semibold text-lg flex items-center justify-center gap-2" onclick="lenis.scrollTo('#achievements')">
-              Work & Certifications <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-            </a>
-            <a href="#contact" class="btn-draw px-8 py-4 rounded-lg font-semibold text-lg border border-gray-600 hover:border-transparent text-white hover:text-brand-green flex items-center justify-center gap-2 transition-colors" onclick="lenis.scrollTo('#contact')">
-              <i class="fas fa-paper-plane"></i> Contact Me
-            </a>
-          </div>
-        </div>
-
-        <!-- Image -->
-        <div class="relative flex items-center justify-center hero-image-container">
-          <div class="relative w-full max-w-md">
-            <div class="absolute top-0 -right-4 w-full h-full bg-gray-900 rounded-3xl transform rotate-3 opacity-30"></div>
-            <div class="absolute top-0 -right-8 w-full h-full bg-brand-green rounded-3xl transform rotate-6 opacity-10"></div>
-
-            <div class="relative bg-black rounded-3xl shadow-2xl overflow-hidden border border-gray-800 aspect-square">
-              <img src="https://lh3.googleusercontent.com/d/1wp2Xy-O1LLW322HP_xeePB00hbYDRm4m" alt="Ankush Chowrasia" class="w-full h-full object-cover">
-              
-              <div class="absolute bottom-6 left-6 bg-black/90 backdrop-blur-sm p-4 rounded-xl shadow-lg flex items-center gap-3 border border-gray-800">
-                <div class="bg-brand-green p-2 rounded-full text-black"><i class="fas fa-code"></i></div>
-                <div>
-                  <p class="text-xs text-gray-400">Current Focus</p>
-                  <p class="font-bold text-white text-sm">Frontend Development and Management</p>
+    <!-- NAVIGATION -->
+    <nav id="navbar" class="fixed w-full z-50 bg-transparent py-4 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            <!-- Brand -->
+            <div class="nav-el flex items-center gap-3 cursor-pointer" onclick="lenis.scrollTo('#home')" role="button">
+                <div class="w-10 h-10 bg-brand-gold rounded-lg flex items-center justify-center text-black font-bold">
+                    <i class="fas fa-balance-scale text-lg"></i>
                 </div>
-              </div>
+                <span class="text-xl font-heading font-bold">Ankush <span
+                        class="text-brand-gold">Chowrasia</span></span>
             </div>
 
-          </div>
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-2">
+                <a href="#home" class="nav-link btn-draw px-4 py-2 rounded-lg text-sm font-medium transition"
+                    onclick="lenis.scrollTo('#home')">Home</a>
+                <a href="#about" class="nav-link btn-draw px-4 py-2 rounded-lg text-sm font-medium transition"
+                    onclick="lenis.scrollTo('#about')">About</a>
+                <a href="#vision" class="nav-link btn-draw px-4 py-2 rounded-lg text-sm font-medium transition"
+                    onclick="lenis.scrollTo('#vision')">Vision</a>
+                <a href="#certifications" class="nav-link btn-draw px-4 py-2 rounded-lg text-sm font-medium transition"
+                    onclick="lenis.scrollTo('#certifications')">Certifications</a>
+                <a href="#publication" class="nav-link btn-draw px-4 py-2 rounded-lg text-sm font-medium transition"
+                    onclick="lenis.scrollTo('#publication')">Publications</a>
+                <a href="#contact" class="nav-link btn-draw px-4 py-2 rounded-lg text-sm font-medium transition"
+                    onclick="lenis.scrollTo('#contact')">Contact</a>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <div class="nav-el md:hidden flex items-center">
+                <button id="mobile-btn" class="text-2xl p-2 focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE DRAWER -->
+    <div id="mobile-menu" class="mobile-menu fixed inset-0 z-[60] bg-black p-6 border-l border-gray-800">
+        <div class="flex justify-between items-center mb-8">
+            <div class="text-2xl font-heading font-bold text-brand-gold">Menu</div>
+            <button id="close-menu" class="text-2xl p-1 focus:outline-none"><i class="fas fa-times"></i></button>
         </div>
 
-      </div>
+        <div class="flex flex-col space-y-6 text-center">
+            <a href="#home" class="mobile-link text-xl hover:text-brand-gold transition"
+                onclick="toggleMenu(); lenis.scrollTo('#home')">Home</a>
+            <a href="#about" class="mobile-link text-xl hover:text-brand-gold transition"
+                onclick="toggleMenu(); lenis.scrollTo('#about')">About</a>
+            <a href="#vision" class="mobile-link text-xl hover:text-brand-gold transition"
+                onclick="toggleMenu(); lenis.scrollTo('#vision')">Vision</a>
+            <a href="#certifications" class="mobile-link text-xl hover:text-brand-gold transition"
+                onclick="toggleMenu(); lenis.scrollTo('#certifications')">Certifications</a>
+            <a href="#publication" class="mobile-link text-xl hover:text-brand-gold transition"
+                onclick="toggleMenu(); lenis.scrollTo('#publication')">Publications</a>
+            <a href="#contact" class="mobile-link text-xl hover:text-brand-gold transition"
+                onclick="toggleMenu(); lenis.scrollTo('#contact')">Contact</a>
+        </div>
     </div>
-  </section>
 
-    <!-- ABOUT / INTERESTS SECTION (Feature Cards Style) -->
-  <section id="about" class="py-24 bg-black/50">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="section-title fade-up-text text-4xl font-bold text-brand-green mb-4 text-center font-heading">My Journey & Interests</h2>
-      <p class="section-subtitle fade-up-text text-gray-400 mb-16 text-center max-w-2xl mx-auto">
-        Merging creativity with logic—building engaging web experiences as a Vibe Coder, while exploring the intersection of Law and Artificial Intelligence.
-      </p>
+    <!-- HERO SECTION -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 min-h-screen flex items-center overflow-hidden">
+        <!-- Decorative scales -->
+        <i class="fas fa-balance-scale scales-bg -right-20 top-1/4"></i>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Text -->
+                <div class="hero-text-content">
+                    <h1 class="hero-el text-6xl font-extrabold text-brand-gold mb-4 font-heading">Ankush Chowrasia</h1>
 
-        <!-- Card 1 -->
-        <div class="feature-card hover-card bg-black p-8 rounded-3xl opacity-0 translate-y-12">
-          <div class="w-14 h-14 bg-brand-green/10 rounded-2xl flex items-center justify-center text-brand-green text-2xl mb-6 border border-brand-green/20">
-            <i class="fas fa-graduation-cap"></i>
-          </div>
-          <h3 class="text-white text-xl font-bold mb-3 font-heading"> Academics</h3>
-          <p class="text-gray-400 text-sm">Building a strong foundation in Humanities to understand societal structures better to integrate them into legal experience.</p>
+                    <div class="hero-el inline-flex flex-wrap gap-2 mb-6">
+                        <span
+                            class="px-3 py-1 rounded-full bg-brand-gold/10 text-brand-gold text-xs font-bold uppercase border border-brand-gold/20">Aspiring
+                            Lawyer</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-brand-gold/10 text-brand-gold text-xs font-bold uppercase border border-brand-gold/20">Legal
+                            Researcher</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-brand-gold/10 text-brand-gold text-xs font-bold uppercase border border-brand-gold/20">Class
+                            XI Humanities</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-brand-gold/10 text-brand-gold text-xs font-bold uppercase border border-brand-gold/20">Jalpaiguri,
+                            West Bengal</span>
+                    </div>
+
+                    <h2 class="hero-el text-4xl lg:text-5xl font-bold leading-tight mb-6 text-white font-heading">
+                        <span class="block"></span>Aspiring Lawyer &</span>
+                        <span class="text-gradient">Legal Researcher.</span>
+                    </h2>
+
+                    <p class="hero-el text-lg text-gray-300 mb-8 max-w-lg">Class 11 Arts student at <strong
+                            class="text-brand-gold">Saint Paul's School, Jalpaiguri</strong> with a strong interest in
+                        law, technology, and the study of society. Driven by curiosity about ideas, social structures,
+                        and how AI can be applied responsibly in the legal field.</p>
+
+                    <div class="hero-el law-quote mb-8 text-gray-400">
+                        "Justice delayed is justice denied." — William E. Gladstone
+                    </div>
+
+                    <div class="hero-el flex flex-col sm:flex-row gap-4">
+                        <a href="#certifications"
+                            class="btn-draw group bg-brand-gold text-black px-8 py-4 rounded-lg font-semibold text-lg flex items-center justify-center gap-2"
+                            onclick="lenis.scrollTo('#certifications')">
+                            View Certifications <i
+                                class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#contact"
+                            class="btn-draw px-8 py-4 rounded-lg font-semibold text-lg border border-gray-600 hover:border-transparent text-white hover:text-brand-gold flex items-center justify-center gap-2 transition-colors"
+                            onclick="lenis.scrollTo('#contact')">
+                            <i class="fas fa-paper-plane"></i> Get In Touch
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="relative flex items-center justify-center hero-image-container">
+                    <div class="relative w-full max-w-md">
+                        <div
+                            class="absolute top-0 -right-4 w-full h-full bg-gray-900 rounded-3xl transform rotate-3 opacity-30">
+                        </div>
+                        <div
+                            class="absolute top-0 -right-8 w-full h-full bg-brand-gold rounded-3xl transform rotate-6 opacity-10">
+                        </div>
+
+                        <div
+                            class="relative bg-black rounded-3xl shadow-2xl overflow-hidden border border-gray-800 aspect-square">
+                            <img src="https://raw.githubusercontent.com/ankushchowrasia/images/244a2d7e09ba8a420cb841c83664f6dd9b1a55ac/linkedinpfp.jpg"
+                                alt="Ankush Chowrasia - Aspiring Lawyer" class="w-full h-full object-cover">
+
+                            <div
+                                class="absolute bottom-6 left-6 bg-black/90 backdrop-blur-sm p-4 rounded-xl shadow-lg flex items-center gap-3 border border-gray-800">
+                                <div class="bg-brand-gold p-2 rounded-full text-black"><i class="fas fa-gavel"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400">Current Focus</p>
+                                    <p class="font-bold text-white text-sm">Law & Legal Technology</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
         </div>
+    </section>
 
-        <!-- Card 2 -->
-        <div class="feature-card hover-card bg-black p-8 rounded-3xl opacity-0 translate-y-12">
-          <div class="w-14 h-14 bg-brand-green/10 rounded-2xl flex items-center justify-center text-brand-green text-2xl mb-6 border border-brand-green/20">
-            <i class="fas fa-laptop-code"></i>
-          </div>
-          <h3 class="text-white text-xl font-bold mb-3 font-heading">Vibe Coder</h3>
-          <p class="text-gray-400 text-sm">Frontend Developer & Web Administrator crafting responsive websites and managing digital systems.</p>
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-24 bg-black/50">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="section-title fade-up-text text-4xl font-bold text-brand-gold mb-4 text-center font-heading">My
+                Journey to Law</h2>
+            <p class="section-subtitle fade-up-text text-gray-400 mb-16 text-center max-w-2xl mx-auto">
+                Building a strong foundation in Humanities while exploring the intersection of traditional legal
+                practice and emerging technologies.
+            </p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Card 1: Academic Foundation -->
+                <div class="feature-card hover-card bg-black p-8 rounded-3xl opacity-0 translate-y-12">
+                    <div
+                        class="w-14 h-14 bg-brand-gold/10 rounded-2xl flex items-center justify-center text-brand-gold text-2xl mb-6 border border-brand-gold/20">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-white text-xl font-bold mb-3 font-heading">Academic Foundation</h3>
+                    <p class="text-gray-400 text-sm">ISC Humanities at <strong>Saint Paul's School, Jalpaiguri</strong>
+                        (2025-2027). Building expertise in Political Science, History, Economics, and Sociology.</p>
+                </div>
+
+                <!-- Card 2: Constitutional Values -->
+                <div class="feature-card hover-card bg-black p-8 rounded-3xl opacity-0 translate-y-12">
+                    <div
+                        class="w-14 h-14 bg-brand-gold/10 rounded-2xl flex items-center justify-center text-brand-gold text-2xl mb-6 border border-brand-gold/20">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <h3 class="text-white text-xl font-bold mb-3 font-heading">Constitutional Values</h3>
+                    <p class="text-gray-400 text-sm">Deeply interested in constitutional law, fundamental rights, and
+                        the framework that upholds democracy and individual liberties in India.</p>
+                </div>
+
+                <!-- Card 3: Legal Tech -->
+                <div class="feature-card hover-card bg-black p-8 rounded-3xl opacity-0 translate-y-12">
+                    <div
+                        class="w-14 h-14 bg-brand-gold/10 rounded-2xl flex items-center justify-center text-brand-gold text-2xl mb-6 border border-brand-gold/20">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="text-white text-xl font-bold mb-3 font-heading">AI & Research</h3>
+                    <p class="text-gray-400 text-sm">Actively exploring generative AI in research-oriented projects,
+                        combining social awareness with analytical skills. Published author on sociological studies.</p>
+                </div>
+
+                <!-- Card 4: Advocacy Goals -->
+                <div class="feature-card hover-card bg-black p-8 rounded-3xl opacity-0 translate-y-12">
+                    <div
+                        class="w-14 h-14 bg-brand-gold/10 rounded-2xl flex items-center justify-center text-brand-gold text-2xl mb-6 border border-brand-gold/20">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="text-white text-xl font-bold mb-3 font-heading">Future Advocate</h3>
+                    <p class="text-gray-400 text-sm">Aspiring to become an attorney who combines traditional legal
+                        expertise with technological innovation to champion justice and equity for all.</p>
+                </div>
+
+            </div>
         </div>
+    </section>
 
-        <!-- Card 3 -->
-        <div class="feature-card hover-card bg-black p-8 rounded-3xl opacity-0 translate-y-12">
-          <div class="w-14 h-14 bg-brand-green/10 rounded-2xl flex items-center justify-center text-brand-green text-2xl mb-6 border border-brand-green/20">
-            <i class="fas fa-brain"></i>
-          </div>
-          <h3 class="text-white text-xl font-bold mb-3 font-heading">AI Explorer</h3>
-          <p class="text-gray-400 text-sm">Completed Google's courses on GenAI and LLMs.Created my own Chatbot using Open AI API Integrating AI into daily workflow.</p>
+    <!-- VISION SECTION -->
+    <section id="vision" class="py-24">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="fade-up-text text-4xl text-brand-gold font-bold mb-4 text-center font-heading">My Vision for Law
+            </h2>
+            <p class="fade-up-text text-gray-400 mb-12 text-center max-w-2xl mx-auto">
+                I believe the future of law lies at the intersection of tradition and innovation.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+
+                <!-- Vision Card 1 -->
+                <div
+                    class="vision-card fade-up-text bg-gradient-to-br from-brand-gold/5 to-transparent p-8 rounded-3xl border border-brand-gold/20">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div
+                            class="w-12 h-12 bg-brand-gold/10 rounded-xl flex items-center justify-center text-brand-gold text-xl border border-brand-gold/30">
+                            <i class="fas fa-scale-balanced"></i>
+                        </div>
+                        <h3 class="text-white text-xl font-bold font-heading">Access to Justice</h3>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed">I am passionate about making legal services accessible to
+                        those who cannot afford them. Technology can bridge this gap, and I aim to be part of that
+                        change.</p>
+                </div>
+
+                <!-- Vision Card 2 -->
+                <div
+                    class="vision-card fade-up-text bg-gradient-to-br from-brand-gold/5 to-transparent p-8 rounded-3xl border border-brand-gold/20">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div
+                            class="w-12 h-12 bg-brand-gold/10 rounded-xl flex items-center justify-center text-brand-gold text-xl border border-brand-gold/30">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="text-white text-xl font-bold font-heading">AI in Legal Practice</h3>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed">Understanding AI helps future lawyers leverage technology
+                        for legal research, document review, and case prediction while maintaining ethical standards.
+                    </p>
+                </div>
+
+                <!-- Vision Card 3 -->
+                <div
+                    class="vision-card fade-up-text bg-gradient-to-br from-brand-gold/5 to-transparent p-8 rounded-3xl border border-brand-gold/20">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div
+                            class="w-12 h-12 bg-brand-gold/10 rounded-xl flex items-center justify-center text-brand-gold text-xl border border-brand-gold/30">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3 class="text-white text-xl font-bold font-heading">Continuous Learning</h3>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed">The legal landscape is ever-evolving. From cyber law to
+                        environmental regulations, I am committed to lifelong learning and adapting to new legal
+                        challenges.</p>
+                </div>
+
+                <!-- Vision Card 4 -->
+                <div
+                    class="vision-card fade-up-text bg-gradient-to-br from-brand-gold/5 to-transparent p-8 rounded-3xl border border-brand-gold/20">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div
+                            class="w-12 h-12 bg-brand-gold/10 rounded-xl flex items-center justify-center text-brand-gold text-xl border border-brand-gold/30">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 class="text-white text-xl font-bold font-heading">Ethical Practice</h3>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed">Above all, I believe in the sanctity of legal ethics. An
+                        attorney's duty is not just to win, but to uphold truth, fairness, and the rule of law.</p>
+                </div>
+
+            </div>
         </div>
+    </section>
 
-        <!-- Card 4 -->
-        <div class="feature-card hover-card bg-black p-8 rounded-3xl opacity-0 translate-y-12">
-          <div class="w-14 h-14 bg-brand-green/10 rounded-2xl flex items-center justify-center text-brand-green text-2xl mb-6 border border-brand-green/20">
-            <i class="fas fa-gavel"></i>
-          </div>
-          <h3 class="text-white text-xl font-bold mb-3 font-heading">Future Attorney</h3>
-          <p class="text-gray-400 text-sm">Passionate about law, justice, and integrating AI in the field
+    <!-- CERTIFICATIONS SECTION -->
+    <section id="certifications" class="py-24 bg-black/30">
+        <div class="max-w-5xl mx-auto px-4">
+            <!-- Header with underline -->
+            <div class="mb-12 text-center">
+                <h2 class="fade-up-text text-4xl md:text-5xl text-brand-gold font-bold mb-3 font-heading">Certifications
+                </h2>
+                <div class="w-12 h-1 bg-brand-gold mx-auto mb-4"></div>
+                <p class="fade-up-text text-gray-400">Key milestones in my technical journey.</p>
+            </div>
+
+            <!-- Certification Cards -->
+            <div class="space-y-6">
+
+                <!-- Certificate 1: Open University -->
+                <div
+                    class="course-card bg-gray-900/50 rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
+                    <div class="flex flex-col md:flex-row">
+                        <!-- Image -->
+                        <div class="md:w-64 shrink-0 bg-gray-900 p-4">
+                            <img src="https://raw.githubusercontent.com/ankushchowrasia/images/5f79332ff55688a497653e73635e0487cd398127/Screenshot%202026-01-04%20121859.png"
+                                class="w-full h-48 md:h-full object-contain rounded-lg"
+                                alt="Open University Certificate">
+                        </div>
+                        <!-- Content -->
+                        <div class="flex-1 p-6">
+                            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                                <div class="flex-1">
+                                    <h3 class="text-white text-xl font-bold mb-1 font-heading">Introducing Research in
+                                        Law and Beyond</h3>
+                                    <p class="text-brand-gold text-sm mb-3">The Open University • January 2026</p>
+                                    <p class="text-gray-400 text-sm leading-relaxed mb-3">
+                                        Foundational course focused on legal research skills, literature review
+                                        techniques, and research methodology—developing structured approaches to legal
+                                        and interdisciplinary research.
+                                    </p>
+                                    <p class="text-brand-gold/80 text-xs italic border-l-2 border-brand-gold/50 pl-3">
+                                        <i class="fas fa-lightbulb mr-1"></i> Essential Foundation — Supports interests
+                                        in legal research, policy analysis, and academic writing for aspiring legal
+                                        professionals.
+                                    </p>
+                                </div>
+                                <!-- Buttons -->
+                                <div class="flex flex-row md:flex-col gap-2 shrink-0">
+                                    <span
+                                        class="px-4 py-2 rounded-lg bg-brand-gold text-black text-sm font-bold flex items-center justify-center gap-2">
+                                        Verified <i class="fas fa-check-circle"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- Tags -->
+                            <div class="flex flex-wrap gap-2 mt-4 pt-4 border-t border-gray-800">
+                                <span
+                                    class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs uppercase font-medium">Legal
+                                    Research</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs uppercase font-medium">Research
+                                    Methodology</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs uppercase font-medium">Literature
+                                    Review</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs uppercase font-medium">Open
+                                    University</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certificate 2: AI FOR ALL -->
+                <div
+                    class="course-card bg-gray-900/50 rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
+                    <div class="flex flex-col md:flex-row">
+                        <!-- Image -->
+                        <div class="md:w-64 shrink-0 bg-gray-900 p-4">
+                            <img src="https://lh3.googleusercontent.com/d/1gGz8Vz-vASEbI3r2ZZcM8gZAaYAZiCud"
+                                class="w-full h-48 md:h-full object-contain rounded-lg" alt="AI For All Certificate">
+                        </div>
+                        <!-- Content -->
+                        <div class="flex-1 p-6">
+                            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                                <div class="flex-1">
+                                    <h3 class="text-white text-xl font-bold mb-1 font-heading">AI FOR ALL</h3>
+                                    <p class="text-brand-gold text-sm mb-3">Ministry of Education & Intel • 2024</p>
+                                    <p class="text-gray-400 text-sm leading-relaxed mb-3">
+                                        Professional certification validating expertise in understanding AI
+                                        fundamentals, machine learning concepts, and their real-world applications
+                                        across industries.
+                                    </p>
+                                    <p class="text-brand-gold/80 text-xs italic border-l-2 border-brand-gold/50 pl-3">
+                                        <i class="fas fa-lightbulb mr-1"></i> Legal AI Integration — Understanding AI
+                                        helps future lawyers leverage technology for legal research, case analysis, and
+                                        client service automation.
+                                    </p>
+                                </div>
+                                <!-- Buttons -->
+                                <div class="flex flex-row md:flex-col gap-2 shrink-0">
+                                    <a href="https://ai-for-all.in/#/badge?id=U2FsdGVkX1p1L2u3SPexZOwo9ns1L2a3S4hTjBA6rNs1L2a3S4hwpLyZnMyGXcLBv1J2x1I95NhEWVQlnObML1"
+                                        target="_blank"
+                                        class="px-4 py-2 rounded-lg bg-brand-gold text-black text-sm font-bold hover:bg-brand-gold/90 transition flex items-center justify-center gap-2">
+                                        View & Verify <i class="fas fa-check-circle"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Tags -->
+                            <div class="flex flex-wrap gap-2 mt-4 pt-4 border-t border-gray-800">
+                                <span
+                                    class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs uppercase font-medium">AI
+                                    Fundamentals</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs uppercase font-medium">Machine
+                                    Learning</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs uppercase font-medium">Intel</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certificate 2: Generative AI Fundamentals -->
+                <div
+                    class="course-card bg-gray-900/50 rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
+                    <div class="flex flex-col md:flex-row">
+                        <!-- Image -->
+                        <div class="md:w-64 shrink-0 bg-gray-900 p-4">
+                            <img src="https://lh3.googleusercontent.com/d/1Y6E1ieyCjxsr3adkOQwMw2D9nJso48NS"
+                                class="w-full h-48 md:h-full object-contain rounded-lg" alt="Generative AI Certificate">
+                        </div>
+                        <!-- Content -->
+                        <div class="flex-1 p-6">
+                            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                                <div class="flex-1">
+                                    <h3 class="text-white text-xl font-bold mb-1 font-heading">Generative AI
+                                        Fundamentals</h3>
+                                    <p class="text-brand-gold text-sm mb-3">Google Cloud • 2024</p>
+                                    <p class="text-gray-400 text-sm leading-relaxed mb-3">
+                                        Comprehensive course covering text generation models, image synthesis, prompt
+                                        engineering, and practical applications of generative AI technology.
+                                    </p>
+                                    <p class="text-brand-gold/80 text-xs italic border-l-2 border-brand-gold/50 pl-3">
+                                        <i class="fas fa-lightbulb mr-1"></i> Legal Document Automation — GenAI skills
+                                        enable drafting legal documents, summarizing case files, and automating
+                                        repetitive legal tasks efficiently.
+                                    </p>
+                                </div>
+                                <!-- Buttons -->
+                                <div class="flex flex-row md:flex-col gap-2 shrink-0">
+                                    <a href="https://www.cloudskillsboost.google/public_profiles/27c75b1d-1c65-42f0-b354-bfd925ee078e/badges/17732468"
+                                        target="_blank"
+                                        class="px-4 py-2 rounded-lg bg-brand-gold text-black text-sm font-bold hover:bg-brand-gold/90 transition flex items-center justify-center gap-2">
+                                        View & Verify <i class="fas fa-check-circle"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Tags -->
+                            <div class="flex flex-wrap gap-2 mt-4 pt-4 border-t border-gray-800">
+                                <span
+                                    class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs uppercase font-medium">Generative
+                                    AI</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs uppercase font-medium">Prompt
+                                    Engineering</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs uppercase font-medium">Google
+                                    Cloud</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certificate 3: Large Language Models -->
+                <div
+                    class="course-card bg-gray-900/50 rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
+                    <div class="flex flex-col md:flex-row">
+                        <!-- Image -->
+                        <div class="md:w-64 shrink-0 bg-gray-900 p-4">
+                            <img src="https://lh3.googleusercontent.com/d/1RBiWf8o6lVpI5irtComSPxYhqwNC_Ugm"
+                                class="w-full h-48 md:h-full object-contain rounded-lg" alt="LLM Certificate">
+                        </div>
+                        <!-- Content -->
+                        <div class="flex-1 p-6">
+                            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                                <div class="flex-1">
+                                    <h3 class="text-white text-xl font-bold mb-1 font-heading">Introduction to Large
+                                        Language Models</h3>
+                                    <p class="text-brand-gold text-sm mb-3">Google Cloud • 2024</p>
+                                    <p class="text-gray-400 text-sm leading-relaxed mb-3">
+                                        Deep dive into how LLMs like Gemini and GPT work internally, understanding
+                                        transformer architecture, and their potential for legal research and document
+                                        analysis.
+                                    </p>
+                                    <p class="text-brand-gold/80 text-xs italic border-l-2 border-brand-gold/50 pl-3">
+                                        <i class="fas fa-lightbulb mr-1"></i> Legal Research Revolution — LLM knowledge
+                                        enables advanced legal research, precedent analysis, and understanding
+                                        AI-powered legal tools transforming the profession.
+                                    </p>
+                                </div>
+                                <!-- Buttons -->
+                                <div class="flex flex-row md:flex-col gap-2 shrink-0">
+                                    <a href="https://www.cloudskillsboost.google/public_profiles/27c75b1d-1c65-42f0-b354-bfd925ee078e/badges/17984568"
+                                        target="_blank"
+                                        class="px-4 py-2 rounded-lg bg-brand-gold text-black text-sm font-bold hover:bg-brand-gold/90 transition flex items-center justify-center gap-2">
+                                        View & Verify <i class="fas fa-check-circle"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Tags -->
+                            <div class="flex flex-wrap gap-2 mt-4 pt-4 border-t border-gray-800">
+                                <span
+                                    class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs uppercase font-medium">LLM</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs uppercase font-medium">Transformers</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs uppercase font-medium">Legal
+                                    Tech</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs uppercase font-medium">NLP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certificate 4: Byte Brigade - AKRITI Frontend Engineering -->
+                <div
+                    class="course-card bg-gray-900/50 rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
+                    <div class="flex flex-col md:flex-row">
+                        <!-- Image -->
+                        <div class="md:w-64 shrink-0 bg-gray-900 p-4">
+                            <img src="https://raw.githubusercontent.com/ankushchowrasia/images/5f79332ff55688a497653e73635e0487cd398127/Screenshot%202026-01-04%20131245.png"
+                                class="w-full h-48 md:h-full object-contain rounded-lg" alt="Byte Brigade Certificate">
+                        </div>
+                        <!-- Content -->
+                        <div class="flex-1 p-6">
+                            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                                <div class="flex-1">
+                                    <h3 class="text-white text-xl font-bold mb-1 font-heading">AKRITI: Frontend
+                                        Engineering</h3>
+                                    <p class="text-brand-gold text-sm mb-3">Byte Brigade • 4th Place • 2024</p>
+                                    <p class="text-gray-400 text-sm leading-relaxed mb-3">
+                                        Certificate of Recognition for securing 4th place in the AKRITI Frontend
+                                        Engineering contest, demonstrating strong web development and design skills.
+                                    </p>
+                                    <p class="text-brand-gold/80 text-xs italic border-l-2 border-brand-gold/50 pl-3">
+                                        <i class="fas fa-lightbulb mr-1"></i> Interest in Technology & Law — Experience
+                                        in coding and AI applications relevant to research, automation, and building
+                                        legal tech solutions.
+                                    </p>
+                                </div>
+                                <!-- Buttons -->
+                                <div class="flex flex-row md:flex-col gap-2 shrink-0">
+                                    <span
+                                        class="px-4 py-2 rounded-lg bg-brand-gold text-black text-sm font-bold flex items-center justify-center gap-2">
+                                        Verified <i class="fas fa-check-circle"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- Tags -->
+                            <div class="flex flex-wrap gap-2 mt-4 pt-4 border-t border-gray-800">
+                                <span
+                                    class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs uppercase font-medium">Frontend</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs uppercase font-medium">Web
+                                    Development</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs uppercase font-medium">Competition</span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs uppercase font-medium">Design</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
+    </section>
 
-      </div>
+    <!-- PUBLICATION SECTION -->
+    <section id="publication" class="py-20">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="fade-up-text text-4xl text-brand-gold font-bold mb-4 text-center font-heading">Research &
+                Publication</h2>
+            <p class="fade-up-text text-gray-400 mb-12 text-center max-w-2xl mx-auto">
+                Exploring social issues through research and academic writing.
+            </p>
+
+            <div
+                class="fade-up-text bg-gradient-to-br from-brand-gold/5 to-transparent p-8 rounded-3xl border border-brand-gold/20 hover-card">
+                <div class="flex flex-col md:flex-row gap-6 items-start">
+                    <div
+                        class="w-16 h-16 bg-brand-gold/10 rounded-2xl flex items-center justify-center text-brand-gold text-3xl border border-brand-gold/20 shrink-0">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="flex-1">
+                        <span
+                            class="inline-block px-3 py-1 rounded-full bg-brand-gold/20 text-brand-gold text-xs font-bold uppercase mb-3">Research
+                            Paper</span>
+                        <h3 class="text-white text-2xl font-bold mb-3 font-heading">Poverty and Crime: A Sociological
+                            Study of Jalpaiguri, West Bengal</h3>
+                        <p class="text-gray-400 leading-relaxed mb-4">A comprehensive sociological analysis exploring
+                            the correlation between poverty and crime in the Jalpaiguri district. This research examines
+                            socio-economic factors, local dynamics, and their impact on criminal behavior patterns in
+                            the region.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs">Sociology</span>
+                            <span class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs">Criminology</span>
+                            <span class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs">West Bengal</span>
+                            <span class="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-xs">Social
+                                Research</span>
+                        </div>
+                        <a href="https://www.scribd.com/document/917303591/POVERTY-AND-CRIME-A-SOCIOLOGICAL-STUDY-OF-JALPAIGURI"
+                            target="_blank"
+                            class="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-brand-gold text-black text-sm font-bold hover:bg-brand-gold/90 transition">
+                            <i class="fas fa-book-open"></i> View Publication
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-24">
+        <div class="max-w-4xl mx-auto px-4 contact-container opacity-0 translate-y-16">
+
+            <h2 class="text-4xl md:text-5xl text-brand-gold font-bold text-center mb-2 fade-up-text font-heading">
+                Get In Touch
+            </h2>
+            <p class="text-center text-gray-300 mb-12 fade-up-text">
+                Interested in discussing law, technology, or potential collaborations? I'd love to hear from you.
+            </p>
+
+            <form action="https://formspree.io/f/xdkwzggb" method="POST"
+                class="bg-[#0a0f1a] border border-[#C9A227]/30 p-10 rounded-3xl shadow-lg relative overflow-hidden">
+
+                <!-- Glow effect behind form -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-gold/5 rounded-full blur-3xl -z-10"></div>
+
+                <!-- GRID NAME + EMAIL -->
+                <div class="grid md:grid-cols-2 gap-6">
+
+                    <!-- NAME -->
+                    <div>
+                        <label class="text-brand-gold text-sm font-semibold flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-user"></i> Name
+                        </label>
+                        <input type="text" name="name" required
+                            class="w-full px-4 py-3 bg-[#0d1320] border border-[#C9A227]/20 text-white rounded-xl focus:border-[#C9A227] outline-none transition-colors">
+                    </div>
+
+                    <!-- EMAIL -->
+                    <div>
+                        <label class="text-brand-gold text-sm font-semibold flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-envelope"></i> Email
+                        </label>
+                        <input type="email" name="email" required
+                            class="w-full px-4 py-3 bg-[#0d1320] border border-[#C9A227]/20 text-white rounded-xl focus:border-[#C9A227] outline-none transition-colors">
+                    </div>
+
+                </div>
+
+                <!-- SUBJECT -->
+                <div class="mt-6">
+                    <label class="text-brand-gold text-sm font-semibold flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-tag"></i> Subject
+                    </label>
+                    <select name="subject" required
+                        class="w-full px-4 py-3 bg-[#0d1320] border border-[#C9A227]/20 text-white rounded-xl focus:border-[#C9A227] outline-none transition-colors">
+                        <option value="">Select a topic...</option>
+                        <option value="General Inquiry">General Inquiry</option>
+                        <option value="Collaboration">Collaboration Opportunity</option>
+                        <option value="Legal Tech Discussion">Legal Tech Discussion</option>
+                        <option value="Academic">Academic Discussion</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <!-- MESSAGE BOX -->
+                <div class="mt-6">
+                    <label class="text-brand-gold text-sm font-semibold flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-comment"></i> Message
+                    </label>
+                    <textarea name="message" rows="6" required
+                        class="w-full px-4 py-3 bg-[#0d1320] border border-[#C9A227]/20 text-white rounded-xl focus:border-[#C9A227] outline-none transition-colors"
+                        placeholder="Share your thoughts, questions, or ideas..."></textarea>
+                </div>
+
+                <!-- SUBMIT BUTTON -->
+                <div class="mt-8">
+                    <button type="submit"
+                        class="btn-draw bg-brand-gold text-black font-bold text-lg px-10 py-4 rounded-lg flex items-center gap-3 hover:shadow-lg hover:shadow-brand-gold/30 transition w-full md:w-auto justify-center">
+                        <i class="fa-solid fa-paper-plane"></i> Send Message
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black pt-20 pb-10 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4">
+
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+                <!-- BRAND -->
+                <div class="text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start gap-2 mb-4">
+                        <div
+                            class="w-8 h-8 bg-brand-gold rounded-lg text-black flex items-center justify-center font-bold text-sm">
+                            <i class="fas fa-balance-scale text-xs"></i>
+                        </div>
+                        <span class="text-xl font-bold font-heading">Ankush <span
+                                class="text-brand-gold">Chowrasia</span></span>
+                    </div>
+                    <p class="text-sm text-gray-400 max-w-xs">
+                        Aspiring Attorney | Exploring the intersection of Law, Justice, and Technology.
+                    </p>
+                </div>
+
+                <!-- SOCIAL LINKS -->
+                <div class="flex gap-4">
+                    <a href="https://www.facebook.com/profile.php?id=100074737849819" target="_blank" title="Facebook"
+                        class="w-10 h-10 border-2 border-brand-gold text-brand-gold flex items-center justify-center rounded-full hover:bg-brand-gold hover:text-black transition">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ankushchowrasia27/" target="_blank" title="LinkedIn"
+                        class="w-10 h-10 border-2 border-brand-gold text-brand-gold flex items-center justify-center rounded-full hover:bg-brand-gold hover:text-black transition">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.instagram.com/ankushchowrasia/" target="_blank" title="Instagram"
+                        class="w-10 h-10 border-2 border-brand-gold text-brand-gold flex items-center justify-center rounded-full hover:bg-brand-gold hover:text-black transition">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://ankushchowrasia1.blogspot.com/" target="_blank" title="Blog"
+                        class="w-10 h-10 border-2 border-brand-gold text-brand-gold flex items-center justify-center rounded-full hover:bg-brand-gold hover:text-black transition">
+                        <i class="fab fa-blogger-b"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quote -->
+            <div class="text-center mb-8">
+                <p class="text-gray-500 italic text-sm">"The first duty of society is justice." — Alexander Hamilton</p>
+            </div>
+
+            <!-- BOTTOM -->
+            <div
+                class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 relative">
+                <p class="text-xs text-gray-500">© <span id="year"></span> Ankush Chowrasia. All rights reserved.</p>
+                <div class="flex items-center gap-2 text-xs text-gray-500 md:absolute md:left-1/2 md:-translate-x-1/2">
+                    <span>Crafted with <i class="fas fa-heart text-brand-gold"></i> by</span>
+                    <a href="https://www.linkedin.com/in/ankushchowrasia27/" target="_blank"
+                        class="px-3 py-1 rounded-full border border-brand-gold text-brand-gold font-bold hover:bg-brand-gold hover:text-black transition-all shadow-[0_0_10px_rgba(201,162,39,0.3)] hover:shadow-[0_0_20px_rgba(201,162,39,0.6)]">
+                        Ankush Chowrasia
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL FOR CERTIFICATE DETAILS -->
+    <div id="projectModal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 hidden modal-backdrop">
+        <div class="bg-black/90 modal-content rounded-3xl w-full max-w-lg mx-auto p-8 relative">
+            <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i
+                    class="fas fa-times text-xl"></i></button>
+
+            <h3 id="modalTitle" class="text-2xl font-bold text-brand-gold mb-4 font-heading">Certificate Title</h3>
+            <p id="modalDetails" class="text-gray-300 mb-8 leading-relaxed">Description goes here.</p>
+
+            <a id="modalLink" href="#" target="_blank"
+                class="btn-draw inline-flex items-center gap-2 bg-brand-gold text-black px-6 py-3 rounded-lg font-bold hover:bg-white transition">
+                View Certificate <i class="fas fa-external-link-alt"></i>
+            </a>
+        </div>
     </div>
-  </section>
 
-  <!-- ACHIEVEMENTS (Courses Style) -->
-  <section id="achievements" class="py-24">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="mb-12">
-        <h2 class="fade-up-text text-4xl text-brand-green font-bold mb-2 font-heading">Certifications & Projects</h2>
-        <p class="fade-up-text text-white">Recognized by Google, Intel, and the Ministry of Education.</p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-        <!-- Item 1: AI FOR ALL -->
-        <div class="course-card bg-black rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
-          <div class="relative h-48 bg-gray-900 p-4">
-             <img src="https://lh3.googleusercontent.com/d/1gGz8Vz-vASEbI3r2ZZcM8gZAaYAZiCud" class="w-full h-full object-contain" alt="AI For All">
-             <div class="absolute top-4 left-4 bg-black/90 px-3 py-1 rounded-full text-xs font-bold text-brand-green border border-brand-green/30">Certificate</div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-white text-lg font-bold mb-2 font-heading">AI FOR ALL</h3>
-            <p class="text-sm text-gray-400 mb-4">Awarded by Ministry of Education & Intel for completing the AI For All program.</p>
-            <div class="flex justify-between items-center border-t border-gray-800 pt-4">
-              <span class="text-sm font-bold text-brand-green">Ministry of Education</span>
-              <button class="text-sm font-semibold hover:text-brand-green view-btn" 
-                data-title="AI FOR ALL"
-                data-details="Certificate awarded by the Ministry of Education and Intel for completing the AI For All program."
-                data-link="https://ai-for-all.in/#/badge?id=U2FsdGVkX1p1L2u3SPexZOwo9ns1L2a3S4hTjBA6rNs1L2a3S4hwpLyZnMyGXcLBv1J2x1I95NhEWVQlnObML1">
-                View Proof
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Item 2: Generative AI -->
-        <div class="course-card bg-black rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
-          <div class="relative h-48 bg-gray-900 p-4">
-             <img src="https://lh3.googleusercontent.com/d/1Y6E1ieyCjxsr3adkOQwMw2D9nJso48NS" class="w-full h-full object-contain" alt="Generative AI">
-             <div class="absolute top-4 left-4 bg-black/90 px-3 py-1 rounded-full text-xs font-bold text-brand-green border border-brand-green/30">Certificate</div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-white text-lg font-bold mb-2 font-heading">Generative AI Fundamentals</h3>
-            <p class="text-sm text-gray-400 mb-4">Completed Google's course covering text models, image models, and real-world applications.</p>
-            <div class="flex justify-between items-center border-t border-gray-800 pt-4">
-              <span class="text-sm font-bold text-brand-green">Google Cloud</span>
-              <button class="text-sm font-semibold hover:text-brand-green view-btn"
-                 data-title="Generative AI Fundamentals"
-                 data-details="Completed Google's course on Generative AI, covering text models, image models, and real-world applications."
-                 data-link="https://www.cloudskillsboost.google/public_profiles/27c75b1d-1c65-42f0-b354-bfd925ee078e/badges/17732468">
-                View Proof
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Item 3: LLM -->
-        <div class="course-card bg-black rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
-          <div class="relative h-48 bg-gray-900 p-4">
-             <img src="https://lh3.googleusercontent.com/d/1RBiWf8o6lVpI5irtComSPxYhqwNC_Ugm" class="w-full h-full object-contain" alt="LLM">
-             <div class="absolute top-4 left-4 bg-black/90 px-3 py-1 rounded-full text-xs font-bold text-brand-green border border-brand-green/30">Certificate</div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-white text-lg font-bold mb-2 font-heading">Large Language Models</h3>
-            <p class="text-sm text-gray-400 mb-4">Deep dive into how models like Gemini and GPT work internally, certified by Google.</p>
-            <div class="flex justify-between items-center border-t border-gray-800 pt-4">
-              <span class="text-sm font-bold text-brand-green">Google Cloud</span>
-              <button class="text-sm font-semibold hover:text-brand-green view-btn"
-                data-title="Large Language Models"
-                data-details="Completed Google's course on LLMs, learning how models like Gemini and GPT work internally."
-                data-link="https://www.cloudskillsboost.google/public_profiles/27c75b1d-1c65-42f0-b354-bfd925ee078e/badges/17984568">
-                View Proof
-              </button>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Item 4: Project -->
-        <div class="course-card bg-black rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
-          <div class="relative h-48 bg-gray-900 p-4">
-             <img src="https://raw.githubusercontent.com/ankushchowrasia/images/4c194ded86ea8e51cc47661648241ed33137879a/NexTGen%20AI%20(1).png" class="w-full h-full object-contain" alt="NexTGen AI">
-             <div class="absolute top-4 left-4 bg-black/90 px-3 py-1 rounded-full text-xs font-bold text-white border border-white/30">Project</div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-white text-lg font-bold mb-2 font-heading">NexTGen AI Chatbot</h3>
-            <p class="text-sm text-gray-400 mb-4">A personal AI project exploring conversational interfaces and custom knowledge bases.</p>
-            <div class="flex justify-between items-center border-t border-gray-800 pt-4">
-              <span class="text-sm font-bold text-brand-green">Personal Project</span>
-              <a href="https://nextgen-ai-enhanced.pages.dev/" target="_blank" class="text-sm font-semibold hover:text-brand-green">
-                Visit Site
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Item 5: NexTGen Classes -->
-        <div class="course-card bg-black rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
-          <div class="relative h-48 bg-gray-900 p-4">
-             <img src="https://raw.githubusercontent.com/ankushchowrasia/NexTGen-Classes/dc7a913fc8fe117129395286ebfe739d5ea3bb67/NexTGen%20Classes%20new%201.png" class="w-full h-full object-contain" alt="NexTGen Classes">
-             <div class="absolute top-4 left-4 bg-black/90 px-3 py-1 rounded-full text-xs font-bold text-white border border-white/30">Project</div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-white text-lg font-bold mb-2 font-heading">NexTGen Classes Website</h3>
-            <p class="text-sm text-gray-400 mb-4">An educational platform designed and developed for NexTGen Classes.</p>
-            <div class="flex justify-between items-center border-t border-gray-800 pt-4">
-              <span class="text-sm font-bold text-brand-green">Web Development</span>
-              <a href="https://nextgenclasses.vercel.app" target="_blank" class="text-sm font-semibold hover:text-brand-green">
-                Visit Site
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Item 6: Silverspoon.Co -->
-        <div class="course-card bg-black rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
-          <div class="relative h-48 bg-gray-900 p-4">
-             <img src="https://raw.githubusercontent.com/ankushchowrasia16/Silverspoon.co-restaurant/b38e5d5cb3f1ab03df211b677de5a6ce902e3338/silverspoon.cofavicon.png" class="w-full h-full object-contain" alt="Silverspoon.Co">
-             <div class="absolute top-4 left-4 bg-black/90 px-3 py-1 rounded-full text-xs font-bold text-white border border-white/30">Project</div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-white text-lg font-bold mb-2 font-heading">Silverspoon.Co Website</h3>
-            <p class="text-sm text-gray-400 mb-4">A restaurant platform designed as a submission for Akriti Phase 2 - Frontend Engineering Contest.</p>
-            <div class="flex justify-between items-center border-t border-gray-800 pt-4">
-              <span class="text-sm font-bold text-brand-green">Frontend Contest</span>
-              <a href="https://silverspoonco.vercel.app" target="_blank" class="text-sm font-semibold hover:text-brand-green">
-                Visit Site
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <section id="contact" class="py-24">
-    <div class="max-w-4xl mx-auto px-4 contact-container opacity-0 translate-y-16">
-
-      <h2 class="text-4xl md:text-5xl text-brand-green font-bold text-center mb-2 fade-up-text font-heading">
-        Get In Touch
-      </h2>
-      <p class="text-center text-gray-300 mb-12 fade-up-text">
-        Feel free to reach out for collaborations or just to say hi.
-      </p>
-
-      <form action="https://formspree.io/f/xdkwzggb" method="POST"
-        class="bg-[#0a0f1a] border border-[#00BF63]/30 p-10 rounded-3xl shadow-lg relative overflow-hidden">
-        
-        <!-- Glow effect behind form -->
-        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-green/5 rounded-full blur-3xl -z-10"></div>
-
-        <!-- GRID NAME + EMAIL -->
-        <div class="grid md:grid-cols-2 gap-6">
-
-          <!-- NAME -->
-          <div>
-            <label class="text-brand-green text-sm font-semibold flex items-center gap-2 mb-2">
-              <i class="fa-solid fa-user"></i> Name
-            </label>
-            <input type="text" name="name" required
-              class="w-full px-4 py-3 bg-[#0d1320] border border-[#00BF63]/20 text-white rounded-xl focus:border-[#00BF63] outline-none transition-colors">
-          </div>
-
-          <!-- EMAIL -->
-          <div>
-            <label class="text-brand-green text-sm font-semibold flex items-center gap-2 mb-2">
-              <i class="fa-solid fa-envelope"></i> Email
-            </label>
-            <input type="email" name="email" required
-              class="w-full px-4 py-3 bg-[#0d1320] border border-[#00BF63]/20 text-white rounded-xl focus:border-[#00BF63] outline-none transition-colors">
-          </div>
-
-        </div>
-
-        <!-- MESSAGE BOX -->
-        <div class="mt-6">
-          <label class="text-brand-green text-sm font-semibold flex items-center gap-2 mb-2">
-            <i class="fa-solid fa-comment"></i> Message
-          </label>
-          <textarea name="message" rows="6" required
-            class="w-full px-4 py-3 bg-[#0d1320] border border-[#00BF63]/20 text-white rounded-xl focus:border-[#00BF63] outline-none transition-colors"></textarea>
-        </div>
-
-        <!-- SUBMIT BUTTON -->
-        <div class="mt-8">
-          <button type="submit"
-            class="btn-draw bg-brand-green text-black font-bold text-lg px-10 py-4 rounded-lg flex items-center gap-3 hover:shadow-lg hover:shadow-brand-green/30 transition w-full md:w-auto justify-center">
-            <i class="fa-solid fa-paper-plane"></i> Send Message
-          </button>
-        </div>
-
-      </form>
-
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="bg-black pt-20 pb-10 border-t border-gray-800">
-    <div class="max-w-7xl mx-auto px-4">
-
-      <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
-        <!-- BRAND -->
-        <div class="text-center md:text-left">
-          <div class="flex items-center justify-center md:justify-start gap-2 mb-4">
-            <div class="w-7 h-7 bg-brand-green rounded-lg text-black flex items-center justify-center font-bold text-sm">A</div>
-            <span class="text-xl font-bold font-heading">Ankush <span class="text-brand-green">Chowrasia</span></span>
-          </div>
-          <p class="text-sm text-gray-400 max-w-xs">
-            Exploring the intersection of Law, AI, and Humanities.
-          </p>
-        </div>
-
-        <!-- SOCIAL LINKS -->
-        <div class="flex gap-4">
-          <a href="https://www.facebook.com/profile.php?id=100074737849819" target="_blank"
-             class="w-10 h-10 border-2 border-brand-green text-brand-green flex items-center justify-center rounded-full hover:bg-brand-green hover:text-black transition">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/ankushchowrasia27/" target="_blank"
-             class="w-10 h-10 border-2 border-brand-green text-brand-green flex items-center justify-center rounded-full hover:bg-brand-green hover:text-black transition">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a href="https://www.instagram.com/ankushchowrasia/" target="_blank"
-             class="w-10 h-10 border-2 border-brand-green text-brand-green flex items-center justify-center rounded-full hover:bg-brand-green hover:text-black transition">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- BOTTOM -->
-      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 relative">
-        <p class="text-xs text-gray-500">© <span id="year"></span> Ankush Chowrasia. All rights reserved.</p>
-        <div class="flex items-center gap-2 text-xs text-gray-500 md:absolute md:left-1/2 md:-translate-x-1/2">
-           <span>Designed with <i class="fas fa-heart text-brand-green"></i> creativity of</span>
-           <a href="https://www.linkedin.com/in/ankushchowrasia27/" target="_blank" class="px-3 py-1 rounded-full border border-brand-green text-brand-green font-bold hover:bg-brand-green hover:text-black transition-all shadow-[0_0_10px_rgba(0,191,99,0.3)] hover:shadow-[0_0_20px_rgba(0,191,99,0.6)]">
-             Ankush Chowrasia
-           </a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- MODAL FOR DETAILS -->
-  <div id="projectModal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 hidden modal-backdrop">
-    <div class="bg-black/90 modal-content rounded-3xl w-full max-w-lg mx-auto p-8 relative">
-        <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
-        
-        <h3 id="modalTitle" class="text-2xl font-bold text-brand-green mb-4 font-heading">Project Title</h3>
-        <p id="modalDetails" class="text-gray-300 mb-8 leading-relaxed">Description goes here.</p>
-        
-        <a id="modalLink" href="#" target="_blank" class="btn-draw inline-flex items-center gap-2 bg-brand-green text-black px-6 py-3 rounded-lg font-bold hover:bg-white transition">
-           View Proof <i class="fas fa-external-link-alt"></i>
-        </a>
-    </div>
-  </div>
-
-  <!-- SCRIPTS -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-
-    // -----------------------------
-    // CUSTOM CURSOR
-    // -----------------------------
-    const cursor = document.getElementById('cursor-dot');
-    if (cursor) {
-        gsap.set(cursor, {xPercent: -50, yPercent: -50});
-
-        const moveCursorX = gsap.quickTo(cursor, "x", { duration: 0.15, ease: "power3.out" });
-        const moveCursorY = gsap.quickTo(cursor, "y", { duration: 0.15, ease: "power3.out" });
-
-        window.addEventListener("mousemove", (e) => {
-          if (cursor.style.opacity === "") gsap.to(cursor, { opacity: 1, duration: 0.5 });
-          if (moveCursorX && moveCursorY) {
-             moveCursorX(e.clientX);
-             moveCursorY(e.clientY);
-          }
-        });
-    }
-
-    // -----------------------------
-    // BACKGROUND ANIMATION (CANVAS)
-    // -----------------------------
-    const canvas = document.getElementById('bg-canvas');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        let width, height, particles = [];
-        const colors = ['#00BF63', '#00FFAA', '#FFFFFF']; // Brand Colors
-
-        function initBg() {
-          resize();
-          createParticles();
-          animateBg();
+    <!-- SCRIPTS -->
+    <script>
+        // Make toggleMenu and lenis globally accessible
+        let lenis;
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (!mobileMenu) return;
+            const isOpen = mobileMenu.classList.toggle('open');
+            isOpen ? lenis.stop() : lenis.start();
         }
-        
-        function resize() {
-          width = canvas.width = window.innerWidth;
-          height = canvas.height = window.innerHeight;
-        }
-        
-        function createParticles() {
-          particles = [];
-          const count = Math.floor(width * height / 15000);
-          for (let i = 0; i < count; i++) {
-            particles.push({
-              x: Math.random() * width,
-              y: Math.random() * height,
-              vx: (Math.random() - 0.5) * 0.5,
-              vy: (Math.random() - 0.5) * 0.5,
-              size: Math.random() * 2,
-              color: colors[Math.floor(Math.random() * colors.length)],
-              alpha: Math.random() * 0.5 + 0.1
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // -----------------------------
+            // CUSTOM CURSOR
+            // -----------------------------
+            const cursor = document.getElementById('cursor-dot');
+            if (cursor) {
+                gsap.set(cursor, { xPercent: -50, yPercent: -50 });
+
+                const moveCursorX = gsap.quickTo(cursor, "x", { duration: 0.15, ease: "power3.out" });
+                const moveCursorY = gsap.quickTo(cursor, "y", { duration: 0.15, ease: "power3.out" });
+
+                window.addEventListener("mousemove", (e) => {
+                    if (cursor.style.opacity === "") gsap.to(cursor, { opacity: 1, duration: 0.5 });
+                    if (moveCursorX && moveCursorY) {
+                        moveCursorX(e.clientX);
+                        moveCursorY(e.clientY);
+                    }
+                });
+            }
+
+            // -----------------------------
+            // BACKGROUND ANIMATION (CANVAS)
+            // -----------------------------
+            const canvas = document.getElementById('bg-canvas');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                let width, height, particles = [];
+                const colors = ['#C9A227', '#E8D48A', '#FFFFFF']; // Gold theme colors
+
+                function initBg() {
+                    resize();
+                    createParticles();
+                    animateBg();
+                }
+
+                function resize() {
+                    width = canvas.width = window.innerWidth;
+                    height = canvas.height = window.innerHeight;
+                }
+
+                function createParticles() {
+                    particles = [];
+                    const count = Math.floor(width * height / 15000);
+                    for (let i = 0; i < count; i++) {
+                        particles.push({
+                            x: Math.random() * width,
+                            y: Math.random() * height,
+                            vx: (Math.random() - 0.5) * 0.4,
+                            vy: (Math.random() - 0.5) * 0.4,
+                            size: Math.random() * 2,
+                            color: colors[Math.floor(Math.random() * colors.length)],
+                            alpha: Math.random() * 0.4 + 0.1
+                        });
+                    }
+                }
+
+                function animateBg() {
+                    ctx.clearRect(0, 0, width, height);
+                    particles.forEach((p, i) => {
+                        p.x += p.vx; p.y += p.vy;
+                        if (p.x < 0) p.x = width; if (p.x > width) p.x = 0;
+                        if (p.y < 0) p.y = height; if (p.y > height) p.y = 0;
+
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                        ctx.fillStyle = p.color;
+                        ctx.globalAlpha = p.alpha;
+                        ctx.fill();
+
+                        for (let j = i + 1; j < particles.length; j++) {
+                            const p2 = particles[j];
+                            const dx = p.x - p2.x;
+                            const dy = p.y - p2.y;
+                            const dist = Math.sqrt(dx * dx + dy * dy);
+
+                            if (dist < 100) {
+                                ctx.beginPath();
+                                ctx.strokeStyle = '#C9A227';
+                                ctx.globalAlpha = 0.08 * (1 - dist / 100);
+                                ctx.lineWidth = 0.5;
+                                ctx.moveTo(p.x, p.y);
+                                ctx.lineTo(p2.x, p2.y);
+                                ctx.stroke();
+                            }
+                        }
+                    });
+                    requestAnimationFrame(animateBg);
+                }
+
+                window.addEventListener('resize', () => { resize(); createParticles(); });
+                initBg();
+            }
+
+            // -----------------------------
+            // LENIS SMOOTH SCROLL INIT
+            // -----------------------------
+            lenis = new Lenis({
+                duration: 1.2,
+                smoothWheel: true,
             });
-          }
-        }
-        
-        function animateBg() {
-          ctx.clearRect(0, 0, width, height);
-          particles.forEach((p, i) => {
-            p.x += p.vx; p.y += p.vy;
-            if (p.x < 0) p.x = width; if (p.x > width) p.x = 0;
-            if (p.y < 0) p.y = height; if (p.y > height) p.y = 0;
-            
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            ctx.fillStyle = p.color;
-            ctx.globalAlpha = p.alpha;
-            ctx.fill();
-            
-            for (let j = i + 1; j < particles.length; j++) {
-              const p2 = particles[j];
-              const dx = p.x - p2.x;
-              const dy = p.y - p2.y;
-              const dist = Math.sqrt(dx * dx + dy * dy);
-              
-              if (dist < 100) {
-                ctx.beginPath();
-                ctx.strokeStyle = '#00BF63';
-                ctx.globalAlpha = 0.1 * (1 - dist / 100);
-                ctx.lineWidth = 0.5;
-                ctx.moveTo(p.x, p.y);
-                ctx.lineTo(p2.x, p2.y);
-                ctx.stroke();
-              }
+
+            lenis.on('scroll', (e) => {
+                ScrollTrigger.update();
+            });
+
+            gsap.ticker.add((time) => {
+                lenis.raf(time * 1000);
+            });
+
+            gsap.ticker.lagSmoothing(0);
+
+            // Make lenis globally accessible
+            window.lenis = lenis;
+
+            // -----------------------------
+            // GSAP ANIMATIONS
+            // -----------------------------
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+            if (navbar) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 20) {
+                        navbar.classList.add('bg-black/90', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-gray-800', 'py-2');
+                        navbar.classList.remove('bg-transparent', 'py-4');
+                    } else {
+                        navbar.classList.remove('bg-black/90', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-gray-800', 'py-2');
+                        navbar.classList.add('bg-transparent', 'py-4');
+                    }
+                });
             }
-          });
-          requestAnimationFrame(animateBg);
-        }
-        
-        window.addEventListener('resize', () => { resize(); createParticles(); });
-        initBg();
-    }
 
-    // -----------------------------
-    // LENIS SMOOTH SCROLL INIT
-    // -----------------------------
-    const lenis = new Lenis({
-      duration: 1.2,
-      smoothWheel: true,
-    });
+            // Hero Stagger Animation
+            const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+            heroTl.from(".nav-el", { y: -20, opacity: 0, duration: 0.8, stagger: 0.05, delay: 0.1 });
+            heroTl.from(".hero-el", { y: 30, opacity: 0, duration: 1, stagger: 0.1 }, "-=0.4");
+            heroTl.from(".hero-image-container", { x: 50, opacity: 0, duration: 1.2, ease: "power2.out" }, "-=0.8");
 
-    lenis.on('scroll', (e) => {
-        ScrollTrigger.update();
-    });
-    
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-    
-    gsap.ticker.lagSmoothing(0);
+            // Fade Up Text Animation
+            ScrollTrigger.batch(".fade-up-text", {
+                onEnter: batch => gsap.to(batch, { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, overwrite: true }),
+                start: "top 85%",
+            });
 
-    // -----------------------------
-    // GSAP ANIMATIONS
-    // -----------------------------
-    gsap.registerPlugin(ScrollTrigger);
+            // Feature Cards Animation
+            gsap.to(".feature-card", {
+                scrollTrigger: { trigger: "#about", start: "top 75%" },
+                y: 0, opacity: 1, duration: 0.8, stagger: 0.1
+            });
 
-    // Navbar
-    const navbar = document.getElementById('navbar');
-    if (navbar) {
-        window.addEventListener('scroll', () => {
-          if (window.scrollY > 20) {
-            navbar.classList.add('bg-black/90', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-gray-800', 'py-2');
-            navbar.classList.remove('bg-transparent', 'py-4');
-          } else {
-            navbar.classList.remove('bg-black/90', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-gray-800', 'py-2');
-            navbar.classList.add('bg-transparent', 'py-4');
-          }
-        });
-    }
+            // Vision Cards Animation
+            gsap.to(".vision-card", {
+                scrollTrigger: { trigger: "#vision", start: "top 75%" },
+                y: 0, opacity: 1, duration: 0.8, stagger: 0.15
+            });
 
-    // Hero Stagger
-    const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
-    heroTl.from(".nav-el", { y: -20, opacity: 0, duration: 0.8, stagger: 0.05, delay: 0.1 });
-    heroTl.from(".hero-el", { y: 30, opacity: 0, duration: 1, stagger: 0.1 }, "-=0.4");
-    heroTl.from(".hero-image-container", { x: 50, opacity: 0, duration: 1.2, ease: "power2.out" }, "-=0.8");
+            // Course Cards Animation
+            gsap.to(".course-card", {
+                scrollTrigger: { trigger: "#certifications", start: "top 75%" },
+                scale: 1, opacity: 1, duration: 0.6, stagger: 0.15, ease: "back.out(1.7)"
+            });
 
-    // Fade Up Batch
-    ScrollTrigger.batch(".fade-up-text", {
-      onEnter: batch => gsap.to(batch, { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, overwrite: true }),
-      start: "top 85%",
-    });
+            // Contact Animation
+            gsap.to(".contact-container", {
+                scrollTrigger: { trigger: "#contact", start: "top 80%" },
+                y: 0, opacity: 1, duration: 1, ease: "power3.out"
+            });
 
-    // Feature Cards
-    gsap.to(".feature-card", {
-      scrollTrigger: { trigger: "#about", start: "top 75%" },
-      y: 0, opacity: 1, duration: 0.8, stagger: 0.1
-    });
+            // -----------------------------
+            // MOBILE MENU
+            // -----------------------------
+            const mobileBtn = document.getElementById('mobile-btn');
+            const closeMenuBtn = document.getElementById('close-menu');
 
-    // Course Cards
-    gsap.to(".course-card", {
-      scrollTrigger: { trigger: "#achievements", start: "top 75%" },
-      scale: 1, opacity: 1, duration: 0.6, stagger: 0.15, ease: "back.out(1.7)"
-    });
+            if (mobileBtn) mobileBtn.addEventListener('click', toggleMenu);
+            if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
 
-    // Contact
-    gsap.to(".contact-container", {
-      scrollTrigger: { trigger: "#contact", start: "top 80%" },
-      y: 0, opacity: 1, duration: 1, ease: "power3.out"
-    });
+            // -----------------------------
+            // MODAL LOGIC
+            // -----------------------------
+            const modal = document.getElementById('projectModal');
+            const closeModal = document.getElementById('closeModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDetails = document.getElementById('modalDetails');
+            const modalLink = document.getElementById('modalLink');
+            const viewBtns = document.querySelectorAll('.view-btn');
 
-    // -----------------------------
-    // MOBILE MENU
-    // -----------------------------
-    const mobileBtn = document.getElementById('mobile-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const closeMenuBtn = document.getElementById('close-menu');
+            viewBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (modalTitle) modalTitle.innerText = btn.dataset.title;
+                    if (modalDetails) modalDetails.innerText = btn.dataset.details;
+                    if (modalLink) modalLink.href = btn.dataset.link;
+                    if (modal) {
+                        modal.classList.remove('hidden');
+                        lenis.stop();
+                    }
+                });
+            });
 
-    function toggleMenu() {
-        if (!mobileMenu) return;
-        const isOpen = mobileMenu.classList.toggle('open');
-        isOpen ? lenis.stop() : lenis.start();
-    }
-    
-    if (mobileBtn) mobileBtn.addEventListener('click', toggleMenu);
-    if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
-
-    // -----------------------------
-    // MODAL LOGIC
-    // -----------------------------
-    const modal = document.getElementById('projectModal');
-    const closeModal = document.getElementById('closeModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDetails = document.getElementById('modalDetails');
-    const modalLink = document.getElementById('modalLink');
-    const viewBtns = document.querySelectorAll('.view-btn');
-
-    viewBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            if (modalTitle) modalTitle.innerText = btn.dataset.title;
-            if (modalDetails) modalDetails.innerText = btn.dataset.details;
-            if (modalLink) modalLink.href = btn.dataset.link;
-            if (modal) {
-                modal.classList.remove('hidden');
-                lenis.stop();
+            function hideModal() {
+                if (modal) {
+                    modal.classList.add('hidden');
+                    lenis.start();
+                }
             }
+
+            if (closeModal) closeModal.addEventListener('click', hideModal);
+            if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) hideModal(); });
+
+            // Dynamic Year
+            const yearEl = document.getElementById('year');
+            if (yearEl) yearEl.innerText = new Date().getFullYear();
+
         });
-    });
-
-    function hideModal() {
-        if (modal) {
-            modal.classList.add('hidden');
-            lenis.start();
-        }
-    }
-
-    if (closeModal) closeModal.addEventListener('click', hideModal);
-    if (modal) modal.addEventListener('click', (e) => { if(e.target === modal) hideModal(); });
-
-    // Year
-    const yearEl = document.getElementById('year');
-    if (yearEl) yearEl.innerText = new Date().getFullYear();
-
-    });
-  </script>
+    </script>
 </body>
+
 </html>
