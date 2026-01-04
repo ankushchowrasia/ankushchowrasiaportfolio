@@ -148,6 +148,59 @@
         </div>
     </main>
 
+    <!-- Blog Modal Overlay -->
+    <div id="blogModal" class="fixed inset-0 z-[100] hidden">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeBlogModal()"></div>
+
+        <!-- Modal Content -->
+        <div class="relative h-full overflow-y-auto">
+            <div class="max-w-4xl mx-auto px-4 py-8 min-h-full">
+                <!-- Close Button -->
+                <button onclick="closeBlogModal()"
+                    class="fixed top-4 right-4 z-[110] w-12 h-12 bg-gray-900 border border-gray-700 rounded-full flex items-center justify-center text-white hover:bg-brand-gold hover:text-black transition group">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+
+                <!-- Back Button -->
+                <button onclick="closeBlogModal()"
+                    class="mb-6 text-brand-gold hover:text-white transition flex items-center gap-2">
+                    <i class="fas fa-arrow-left"></i> Back to Blogs
+                </button>
+
+                <!-- Blog Header -->
+                <div id="modalBlogHeader" class="mb-8">
+                    <!-- Thumbnail -->
+                    <div class="relative h-64 md:h-80 rounded-2xl overflow-hidden mb-6">
+                        <img id="modalBlogImage" src="" alt="" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span id="modalBlogDate"
+                                class="bg-brand-gold text-black px-4 py-1 rounded-full text-sm font-medium"></span>
+                        </div>
+                    </div>
+
+                    <!-- Title -->
+                    <h1 id="modalBlogTitle" class="text-3xl md:text-4xl font-bold text-white font-heading mb-4"></h1>
+                </div>
+
+                <!-- Blog Content -->
+                <div id="modalBlogContent"
+                    class="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-4">
+                    <!-- Content will be injected here -->
+                </div>
+
+                <!-- Footer -->
+                <div class="mt-12 pt-8 border-t border-gray-800">
+                    <button onclick="closeBlogModal()"
+                        class="px-6 py-3 bg-brand-gold text-black rounded-lg font-bold hover:bg-brand-gold/90 transition flex items-center gap-2">
+                        <i class="fas fa-arrow-left"></i> Back to All Blogs
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="border-t border-gray-800 py-8">
         <div class="max-w-6xl mx-auto px-4 text-center">
@@ -218,10 +271,27 @@ Thus, we can say that AI cannot completely replace human judges, but they can ju
 
         let allBlogs = [];
 
+        // Helper to strip images from HTML content
+        function stripImages(html) {
+            // Remove img tags from content
+            return html.replace(/<img[^>]*>/gi, '');
+        }
+
+        // Helper to strip all HTML tags and get plain text
+        function stripHtml(html) {
+            const tmp = document.createElement('div');
+            tmp.innerHTML = html;
+            return tmp.textContent || tmp.innerText || '';
+        }
+
         // Create blog card HTML
         function createBlogCard(blog) {
+            // Strip images from content, then get plain text
+            const contentWithoutImages = stripImages(blog.content);
+            const plainTextContent = stripHtml(contentWithoutImages);
+
             return `
-                <article class="blog-card bg-gray-900/50 rounded-2xl overflow-hidden border border-gray-800 hover-card group" data-date="${blog.publishedDateISO}">
+                <article onclick="openBlogModal('${blog.id}')" class="cursor-pointer blog-card bg-gray-900/50 rounded-2xl overflow-hidden border border-gray-800 hover-card group" data-date="${blog.publishedDateISO}">
                     <div class="relative h-48 overflow-hidden">
                         <img src="${blog.thumbnail}" alt="${blog.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                         <div class="absolute top-3 left-3 bg-black/80 px-3 py-1 rounded-full text-xs text-brand-gold font-medium">
@@ -229,13 +299,40 @@ Thus, we can say that AI cannot completely replace human judges, but they can ju
                         </div>
                     </div>
                     <div class="p-5">
-                        <h3 class="text-white text-lg font-bold mb-3 font-heading">${blog.title}</h3>
-                        <div class="text-gray-400 text-sm space-y-2 max-h-48 overflow-y-auto">
-                            ${blog.content.split('\n').filter(p => p.trim()).map(p => `<p>${p}</p>`).join('')}
-                        </div>
+                        <h3 class="text-white text-lg font-bold mb-3 font-heading line-clamp-2">${blog.title}</h3>
+                        <p class="text-gray-400 text-sm line-clamp-4">${plainTextContent.substring(0, 300)}...</p>
                     </div>
                 </article>
             `;
+        }
+
+        // Modal Functions
+        function openBlogModal(blogId) {
+            const blog = allBlogs.find(b => b.id === blogId);
+            if (!blog) return;
+
+            // Populate Modal
+            document.getElementById('modalBlogImage').src = blog.thumbnail;
+            document.getElementById('modalBlogDate').textContent = blog.publishedDate;
+            document.getElementById('modalBlogTitle').textContent = blog.title;
+
+            // Format content: Strip images for clean text, replace newlines with paragraphs
+            // using the stripImages helper we defined earlier
+            const cleanContent = stripImages(blog.content);
+            document.getElementById('modalBlogContent').innerHTML = cleanContent;
+
+            // Show Modal
+            const modal = document.getElementById('blogModal');
+            modal.classList.remove('hidden');
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBlogModal() {
+            const modal = document.getElementById('blogModal');
+            modal.classList.add('hidden');
+            // Restore body scroll
+            document.body.style.overflow = 'auto';
         }
 
         // Render blogs
