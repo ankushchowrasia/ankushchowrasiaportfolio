@@ -273,7 +273,7 @@
                 <a href="#certifications" class="nav-link btn-draw px-4 py-2 rounded-lg text-sm font-medium transition"
                     onclick="lenis.scrollTo('#certifications')">Certifications</a>
                 <a href="#publication" class="nav-link btn-draw px-4 py-2 rounded-lg text-sm font-medium transition"
-                    onclick="lenis.scrollTo('#publication')">Publications</a>
+                    onclick="lenis.scrollTo('#publication')">Publication & Blogs</a>
                 <a href="#contact" class="nav-link btn-draw px-4 py-2 rounded-lg text-sm font-medium transition"
                     onclick="lenis.scrollTo('#contact')">Contact</a>
             </div>
@@ -304,7 +304,7 @@
             <a href="#certifications" class="mobile-link text-xl hover:text-brand-gold transition"
                 onclick="toggleMenu(); lenis.scrollTo('#certifications')">Certifications</a>
             <a href="#publication" class="mobile-link text-xl hover:text-brand-gold transition"
-                onclick="toggleMenu(); lenis.scrollTo('#publication')">Publications</a>
+                onclick="toggleMenu(); lenis.scrollTo('#publication')">Publication & Blogs</a>
             <a href="#contact" class="mobile-link text-xl hover:text-brand-gold transition"
                 onclick="toggleMenu(); lenis.scrollTo('#contact')">Contact</a>
         </div>
@@ -849,6 +849,37 @@
                     </div>
                 </div>
             </div>
+
+            <!-- RECENT BLOGS -->
+            <div class="mt-16">
+                <div class="flex justify-between items-center mb-8">
+                    <h3 class="fade-up-text text-2xl text-white font-bold font-heading">Recent Blogs</h3>
+                    <a href="blogs.html"
+                        class="fade-up-text text-brand-gold hover:text-white transition text-sm font-medium flex items-center gap-2">
+                        View All <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Dynamic Blog Cards Container -->
+                <div id="recent-blogs-container" class="grid md:grid-cols-3 gap-6">
+                    <!-- Loading skeleton -->
+                    <div class="blog-skeleton bg-gray-900/50 rounded-2xl h-72 animate-pulse border border-gray-800">
+                    </div>
+                    <div class="blog-skeleton bg-gray-900/50 rounded-2xl h-72 animate-pulse border border-gray-800">
+                    </div>
+                    <div class="blog-skeleton bg-gray-900/50 rounded-2xl h-72 animate-pulse border border-gray-800">
+                    </div>
+                </div>
+
+                <!-- View All Button -->
+                <div class="text-center mt-8">
+                    <a href="blogs.html"
+                        class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-gold text-black font-bold hover:bg-brand-gold/90 transition">
+                        <i class="fas fa-blog"></i> View All Blogs
+                    </a>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -1233,6 +1264,76 @@
             // Dynamic Year
             const yearEl = document.getElementById('year');
             if (yearEl) yearEl.innerText = new Date().getFullYear();
+
+            // -----------------------------
+            // DYNAMIC BLOG LOADING
+            // -----------------------------
+            const seedBlogs = [
+                {
+                    id: 'seed-1',
+                    title: 'Lesser-Known Facts About Indian Laws',
+                    content: 'You can be arrested without committing a crime. Indian law allows preventive detention, where a person can be detained to prevent a possible future offence...',
+                    thumbnail: 'https://raw.githubusercontent.com/ankushchowrasia/blogs-/e870d84bed6e7e16c9f7d933c186a68f6d2b30b1/Screenshot%202026-01-03%20124122.png',
+                    publishedDate: 'January 3, 2026',
+                    publishedDateISO: '2026-01-03'
+                },
+                {
+                    id: 'seed-2',
+                    title: 'Why Judicial Independence Is the Backbone of Democracy?',
+                    content: 'In my opinion judicial independence is a fundamental pillar of democracy. It ensures that courts function without external pressure from authorities...',
+                    thumbnail: 'https://raw.githubusercontent.com/ankushchowrasia/blogs-/e870d84bed6e7e16c9f7d933c186a68f6d2b30b1/Screenshot%202026-01-02%20133747.png',
+                    publishedDate: 'January 2, 2026',
+                    publishedDateISO: '2026-01-02'
+                },
+                {
+                    id: 'seed-3',
+                    title: 'Can Technology Replace Human Judges?',
+                    content: 'In my opinion, technology cannot replace human judges in courts; it can only assist judges in providing judgments because law is not just a subject of rules and data...',
+                    thumbnail: 'https://raw.githubusercontent.com/ankushchowrasia/blogs-/e870d84bed6e7e16c9f7d933c186a68f6d2b30b1/Screenshot%202026-01-01%20204357.png',
+                    publishedDate: 'January 1, 2026',
+                    publishedDateISO: '2026-01-01'
+                }
+            ];
+
+            function createBlogCard(blog) {
+                return `
+                    <div class="fade-up-text bg-gray-900/50 rounded-2xl overflow-hidden border border-gray-800 hover-card group">
+                        <div class="relative h-40 overflow-hidden">
+                            <img src="${blog.thumbnail}" alt="${blog.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute top-3 left-3 bg-black/80 px-3 py-1 rounded-full text-xs text-brand-gold font-medium">
+                                ${blog.publishedDate}
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <h4 class="text-white font-bold mb-2 font-heading line-clamp-2">${blog.title}</h4>
+                            <p class="text-gray-400 text-sm line-clamp-3">${blog.content.substring(0, 150)}...</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            async function loadRecentBlogs() {
+                const container = document.getElementById('recent-blogs-container');
+                if (!container) return;
+
+                try {
+                    // Try to fetch from API (works on Vercel)
+                    const response = await fetch('/api/blogs');
+                    if (response.ok) {
+                        const data = await response.json();
+                        const blogs = data.blogs.slice(0, 3); // Only latest 3
+                        container.innerHTML = blogs.map(createBlogCard).join('');
+                        return;
+                    }
+                } catch (error) {
+                    console.log('API not available, using seed data');
+                }
+
+                // Fallback to seed data for local development
+                container.innerHTML = seedBlogs.slice(0, 3).map(createBlogCard).join('');
+            }
+
+            loadRecentBlogs();
 
         });
     </script>
