@@ -1438,12 +1438,18 @@
                 const modal = document.getElementById('blogModal');
                 modal.classList.remove('hidden');
                 document.body.style.overflow = 'hidden';
+
+                // Stop Lenis if it exists
+                if (typeof lenis !== 'undefined' && lenis) lenis.stop();
             }
 
             window.closeBlogModal = function () {
                 const modal = document.getElementById('blogModal');
                 modal.classList.add('hidden');
                 document.body.style.overflow = 'auto';
+
+                // Start Lenis if it exists
+                if (typeof lenis !== 'undefined' && lenis) lenis.start();
             }
 
             async function loadRecentBlogs() {
