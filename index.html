@@ -811,7 +811,7 @@
 
     <!-- PUBLICATION SECTION -->
     <section id="publication" class="py-20">
-        <div class="max-w-4xl mx-auto px-4">
+        <div class="max-w-6xl mx-auto px-4">
             <h2 class="fade-up-text text-4xl text-brand-gold font-bold mb-4 text-center font-heading">Research &
                 Publication</h2>
             <p class="fade-up-text text-gray-400 mb-12 text-center max-w-2xl mx-auto">
@@ -1348,7 +1348,15 @@
                 }
             ];
 
+            // Helper to strip HTML tags from content
+            function stripHtml(html) {
+                const tmp = document.createElement('div');
+                tmp.innerHTML = html;
+                return tmp.textContent || tmp.innerText || '';
+            }
+
             function createBlogCard(blog) {
+                const cleanContent = stripHtml(blog.content).substring(0, 150);
                 return `
                     <div class="fade-up-text bg-gray-900/50 rounded-2xl overflow-hidden border border-gray-800 hover-card group">
                         <div class="relative h-40 overflow-hidden">
@@ -1359,7 +1367,7 @@
                         </div>
                         <div class="p-5">
                             <h4 class="text-white font-bold mb-2 font-heading line-clamp-2">${blog.title}</h4>
-                            <p class="text-gray-400 text-sm line-clamp-3">${blog.content.substring(0, 150)}...</p>
+                            <p class="text-gray-400 text-sm line-clamp-3">${cleanContent}...</p>
                         </div>
                     </div>
                 `;
