@@ -82,6 +82,7 @@
         .text-gradient {
             background: linear-gradient(135deg, var(--brand-gold), #E8D48A);
             -webkit-background-clip: text;
+            background-clip: text;
             color: transparent
         }
 
@@ -96,6 +97,53 @@
             box-shadow: 0 20px 40px -5px rgba(201, 162, 39, .12);
             border-bottom: 3px solid var(--brand-gold);
             border-color: var(--brand-gold);
+        }
+
+        /* Certificate Card - Matching Glow Effect */
+        .cert-card {
+            position: relative;
+            background: rgba(17, 24, 39, 0.5);
+            border: 1px solid rgba(201, 162, 39, 0.5);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Default glowing border effect - matching timeline cards */
+            box-shadow:
+                0 0 15px rgba(201, 162, 39, 0.25),
+                0 0 30px rgba(201, 162, 39, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            animation: certGlowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes certGlowPulse {
+
+            0%,
+            100% {
+                box-shadow:
+                    0 0 15px rgba(201, 162, 39, 0.25),
+                    0 0 30px rgba(201, 162, 39, 0.1),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+                border-color: rgba(201, 162, 39, 0.5);
+            }
+
+            50% {
+                box-shadow:
+                    0 0 20px rgba(201, 162, 39, 0.4),
+                    0 0 40px rgba(201, 162, 39, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                border-color: rgba(201, 162, 39, 0.7);
+            }
+        }
+
+        .cert-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            border-color: rgba(201, 162, 39, 0.9);
+            box-shadow:
+                0 0 30px rgba(201, 162, 39, 0.5),
+                0 0 60px rgba(201, 162, 39, 0.3),
+                0 20px 40px -10px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            animation: none;
         }
 
         /* Lenis Recommended CSS */
@@ -235,6 +283,498 @@
             font-style: italic;
             border-left: 3px solid #C9A227;
             padding-left: 1.5rem;
+        }
+
+        /* ========== TIMELINE LIGHTNING EFFECTS ========== */
+
+        /* Animated Timeline Line with Lightning Glow */
+        .timeline-line-animated {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg,
+                    transparent 0%,
+                    #C9A227 5%,
+                    #C9A227 95%,
+                    transparent 100%);
+            box-shadow:
+                0 0 10px rgba(201, 162, 39, 0.5),
+                0 0 20px rgba(201, 162, 39, 0.3),
+                0 0 30px rgba(201, 162, 39, 0.2);
+        }
+
+        @media (min-width: 768px) {
+            .timeline-line-animated {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Lightning Pulse Animation on Line */
+        .timeline-line-animated::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -4px;
+            width: 10px;
+            height: 60px;
+            background: linear-gradient(180deg,
+                    transparent,
+                    rgba(255, 223, 128, 0.9),
+                    rgba(201, 162, 39, 1),
+                    rgba(255, 223, 128, 0.9),
+                    transparent);
+            filter: blur(3px);
+            animation: lightningPulse 3s ease-in-out infinite;
+            box-shadow:
+                0 0 20px rgba(255, 223, 128, 0.8),
+                0 0 40px rgba(201, 162, 39, 0.6);
+        }
+
+        /* Secondary Lightning Pulse (offset timing) */
+        .timeline-line-animated::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -2px;
+            width: 6px;
+            height: 40px;
+            background: linear-gradient(180deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.9),
+                    rgba(255, 223, 128, 1),
+                    rgba(255, 255, 255, 0.9),
+                    transparent);
+            filter: blur(2px);
+            animation: lightningPulse 3s ease-in-out infinite 1.5s;
+        }
+
+        @keyframes lightningPulse {
+
+            0%,
+            100% {
+                top: -60px;
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+
+        /* Timeline Node - Electric Glow */
+        .timeline-node {
+            position: absolute;
+            left: -5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #FFE68A 0%, #C9A227 50%, #8B6914 100%);
+            box-shadow:
+                0 0 10px rgba(201, 162, 39, 0.8),
+                0 0 20px rgba(201, 162, 39, 0.5),
+                0 0 30px rgba(201, 162, 39, 0.3),
+                inset 0 0 5px rgba(255, 255, 255, 0.5);
+            animation: nodeGlow 2s ease-in-out infinite;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-node {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        .timeline-node::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            transform: translate(-50%, -50%);
+            animation: nodeRing 2s ease-out infinite;
+        }
+
+        .timeline-node::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            transform: translate(-50%, -50%);
+            animation: nodeRing 2s ease-out infinite 0.3s;
+        }
+
+        @keyframes nodeGlow {
+
+            0%,
+            100% {
+                box-shadow:
+                    0 0 10px rgba(201, 162, 39, 0.8),
+                    0 0 20px rgba(201, 162, 39, 0.5),
+                    0 0 30px rgba(201, 162, 39, 0.3),
+                    inset 0 0 5px rgba(255, 255, 255, 0.5);
+            }
+
+            50% {
+                box-shadow:
+                    0 0 15px rgba(255, 223, 128, 1),
+                    0 0 30px rgba(201, 162, 39, 0.8),
+                    0 0 45px rgba(201, 162, 39, 0.5),
+                    inset 0 0 8px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        @keyframes nodeRing {
+            0% {
+                width: 12px;
+                height: 12px;
+                opacity: 1;
+            }
+
+            100% {
+                width: 48px;
+                height: 48px;
+                opacity: 0;
+            }
+        }
+
+        /* Timeline Card - Electric Hover Effect */
+        .timeline-card {
+            position: relative;
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(201, 162, 39, 0.5);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            /* Default glowing border effect */
+            box-shadow:
+                0 0 15px rgba(201, 162, 39, 0.25),
+                0 0 30px rgba(201, 162, 39, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            animation: cardGlowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes cardGlowPulse {
+
+            0%,
+            100% {
+                box-shadow:
+                    0 0 15px rgba(201, 162, 39, 0.25),
+                    0 0 30px rgba(201, 162, 39, 0.1),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+                border-color: rgba(201, 162, 39, 0.5);
+            }
+
+            50% {
+                box-shadow:
+                    0 0 20px rgba(201, 162, 39, 0.4),
+                    0 0 40px rgba(201, 162, 39, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                border-color: rgba(201, 162, 39, 0.7);
+            }
+        }
+
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                    rgba(201, 162, 39, 0.15) 0%,
+                    transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .timeline-card:hover::before {
+            opacity: 1;
+        }
+
+        .timeline-card::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg,
+                    transparent 30%,
+                    rgba(201, 162, 39, 0.4) 50%,
+                    transparent 70%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 18px;
+            animation: borderShimmer 3s linear infinite;
+            background-size: 200% 200%;
+        }
+
+        .timeline-card:hover::after {
+            opacity: 1;
+        }
+
+        @keyframes borderShimmer {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            border-color: rgba(201, 162, 39, 0.6);
+            box-shadow:
+                0 20px 40px -10px rgba(0, 0, 0, 0.4),
+                0 0 40px -10px rgba(201, 162, 39, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        /* Electric Spark Effect on Hover */
+        .timeline-card .spark {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #FFE68A;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            filter: blur(1px);
+            box-shadow: 0 0 6px #FFE68A, 0 0 12px #C9A227;
+        }
+
+        .timeline-card:hover .spark {
+            animation: spark 0.6s ease-out forwards;
+        }
+
+        .timeline-card .spark:nth-child(1) {
+            top: 0;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .timeline-card .spark:nth-child(2) {
+            top: 10%;
+            right: 0;
+            animation-delay: 0.1s;
+        }
+
+        .timeline-card .spark:nth-child(3) {
+            bottom: 0;
+            left: 50%;
+            animation-delay: 0.2s;
+        }
+
+        .timeline-card .spark:nth-child(4) {
+            top: 50%;
+            left: 0;
+            animation-delay: 0.15s;
+        }
+
+        @keyframes spark {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(0.5) translateY(-10px);
+            }
+        }
+
+        /* Year Badge Lightning Style */
+        .timeline-year-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            background: linear-gradient(135deg, #C9A227 0%, #E8D48A 50%, #C9A227 100%);
+            color: #0A0A0A;
+            font-weight: 700;
+            font-size: 1.125rem;
+            border-radius: 9999px;
+            position: relative;
+            box-shadow:
+                0 4px 20px rgba(201, 162, 39, 0.4),
+                0 0 40px rgba(201, 162, 39, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        .timeline-year-badge::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border-radius: 9999px;
+            background: linear-gradient(135deg,
+                    rgba(201, 162, 39, 0.5),
+                    transparent,
+                    rgba(201, 162, 39, 0.5));
+            z-index: -1;
+            animation: rotateGlow 4s linear infinite;
+        }
+
+        @keyframes badgePulse {
+
+            0%,
+            100% {
+                box-shadow:
+                    0 4px 20px rgba(201, 162, 39, 0.4),
+                    0 0 40px rgba(201, 162, 39, 0.2);
+            }
+
+            50% {
+                box-shadow:
+                    0 4px 30px rgba(201, 162, 39, 0.6),
+                    0 0 60px rgba(201, 162, 39, 0.4);
+            }
+        }
+
+        @keyframes rotateGlow {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Date Badge Glow */
+        .timeline-date {
+            display: inline-block;
+            padding: 4px 10px;
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 6px;
+            color: #C9A227;
+            font-size: 0.75rem;
+            font-family: monospace;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-card:hover .timeline-date {
+            background: rgba(201, 162, 39, 0.2);
+            border-color: rgba(201, 162, 39, 0.6);
+            box-shadow: 0 0 10px rgba(201, 162, 39, 0.3);
+        }
+
+        /* Timeline Item Hover - Node Enhancement */
+        .timeline-item:hover .timeline-node {
+            transform: translateX(-50%) scale(1.3);
+            background: radial-gradient(circle, #FFF 0%, #FFE68A 30%, #C9A227 60%, #8B6914 100%);
+            box-shadow:
+                0 0 20px rgba(255, 223, 128, 1),
+                0 0 40px rgba(201, 162, 39, 0.8),
+                0 0 60px rgba(201, 162, 39, 0.5);
+        }
+
+        @media (max-width: 767px) {
+            .timeline-item:hover .timeline-node {
+                transform: scale(1.3);
+            }
+        }
+
+        /* Connector Line to Cards */
+        .timeline-connector {
+            position: absolute;
+            top: 50%;
+            height: 2px;
+            background: linear-gradient(90deg,
+                    rgba(201, 162, 39, 0.8),
+                    rgba(201, 162, 39, 0.2));
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-connector.left {
+            right: 100%;
+            width: 0;
+        }
+
+        .timeline-connector.right {
+            left: 100%;
+            width: 0;
+            background: linear-gradient(90deg,
+                    rgba(201, 162, 39, 0.2),
+                    rgba(201, 162, 39, 0.8));
+        }
+
+        .timeline-card:hover .timeline-connector {
+            width: 30px;
+            box-shadow: 0 0 10px rgba(201, 162, 39, 0.5);
+        }
+
+        /* Stagger Animation for Timeline Items - GSAP handles initial state */
+        .timeline-item {
+            /* Animation handled by GSAP ScrollTrigger */
+        }
+
+        .timeline-item.revealed {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        @keyframes revealItem {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Electric Arc Effect (decorative) */
+        .electric-arc {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        .electric-arc path {
+            stroke: url(#lightning-gradient);
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            filter: drop-shadow(0 0 4px #C9A227);
         }
     </style>
 </head>
@@ -547,16 +1087,13 @@
             </div>
 
             <!-- Timeline Container -->
-            <div class="relative">
-                <!-- Vertical Line -->
-                <div
-                    class="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand-gold via-brand-gold/50 to-transparent">
-                </div>
+            <div class="relative" id="timeline-container">
+                <!-- Animated Lightning Line -->
+                <div class="timeline-line-animated"></div>
 
                 <!-- 2026 Header -->
                 <div class="relative z-10 text-center mb-12">
-                    <span
-                        class="inline-block px-4 py-2 bg-brand-gold text-black font-bold rounded-full text-lg shadow-glow">2026</span>
+                    <span class="timeline-year-badge">2026</span>
                 </div>
 
                 <!-- Timeline Item: Law & Justice (upGrad) -->
@@ -567,19 +1104,20 @@
                             </h3>
                             <p class="text-brand-gold text-sm font-semibold">upGrad Certification</p>
                         </div>
-                        <div
-                            class="absolute left-[-5px] md:left-1/2 md:-ml-[5px] w-3 h-3 rounded-full bg-brand-gold shadow-[0_0_10px_2px_rgba(201,162,39,0.6)]">
-                        </div>
+                        <div class="timeline-node"></div>
                         <div class="md:hidden mb-2">
                             <div
                                 class="inline-block px-2 py-1 rounded bg-brand-gold/10 text-brand-gold text-xs font-mono mb-1">
                                 Jan 4, 2026</div>
                         </div>
                         <div class="md:w-5/12 md:pl-8">
-                            <div
-                                class="p-6 bg-gray-900/80 backdrop-blur-sm border border-brand-gold/20 rounded-2xl hover:border-brand-gold/50 transition-colors shadow-lg group hover:bg-gray-900">
-                                <span
-                                    class="hidden md:inline-block px-2 py-1 rounded bg-brand-gold/10 text-brand-gold text-xs font-mono mb-3">Jan
+                            <div class="timeline-card">
+                                <!-- Spark effects -->
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="timeline-date hidden md:inline-block mb-3">Jan
                                     4, 2026</span>
                                 <h3 class="md:hidden text-lg font-bold text-white font-heading mb-1">Law and Justice in
                                     a Globalizing World</h3>
@@ -601,19 +1139,20 @@
                             </h3>
                             <p class="text-brand-gold text-sm font-semibold">The Open University</p>
                         </div>
-                        <div
-                            class="absolute left-[-5px] md:left-1/2 md:-ml-[5px] w-3 h-3 rounded-full bg-brand-gold shadow-[0_0_10px_2px_rgba(201,162,39,0.6)]">
-                        </div>
+                        <div class="timeline-node"></div>
                         <div class="md:hidden mb-2">
                             <div
                                 class="inline-block px-2 py-1 rounded bg-brand-gold/10 text-brand-gold text-xs font-mono mb-1">
                                 Jan 3, 2026</div>
                         </div>
                         <div class="md:w-5/12 md:pr-8 text-left md:text-right">
-                            <div
-                                class="p-6 bg-gray-900/80 backdrop-blur-sm border border-brand-gold/20 rounded-2xl hover:border-brand-gold/50 transition-colors shadow-lg group hover:bg-gray-900">
-                                <span
-                                    class="hidden md:inline-block px-2 py-1 rounded bg-brand-gold/10 text-brand-gold text-xs font-mono mb-3">Jan
+                            <div class="timeline-card">
+                                <!-- Spark effects -->
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="timeline-date hidden md:inline-block mb-3">Jan
                                     3, 2026</span>
                                 <h3 class="md:hidden text-lg font-bold text-white font-heading mb-1">Introducing
                                     Research in Law and Beyond</h3>
@@ -634,19 +1173,20 @@
                             <h3 class="text-xl font-bold text-white font-heading">Launched Legal Blog</h3>
                             <p class="text-brand-gold text-sm font-semibold">Legal Commentary & Analysis</p>
                         </div>
-                        <div
-                            class="absolute left-[-5px] md:left-1/2 md:-ml-[5px] w-3 h-3 rounded-full bg-brand-gold shadow-[0_0_10px_2px_rgba(201,162,39,0.6)]">
-                        </div>
+                        <div class="timeline-node"></div>
                         <div class="md:hidden mb-2">
                             <div
                                 class="inline-block px-2 py-1 rounded bg-brand-gold/10 text-brand-gold text-xs font-mono mb-1">
                                 Jan 1, 2026</div>
                         </div>
                         <div class="md:w-5/12 md:pl-8">
-                            <div
-                                class="p-6 bg-gray-900/80 backdrop-blur-sm border border-brand-gold/20 rounded-2xl hover:border-brand-gold/50 transition-colors shadow-lg group hover:bg-gray-900">
-                                <span
-                                    class="hidden md:inline-block px-2 py-1 rounded bg-brand-gold/10 text-brand-gold text-xs font-mono mb-3">Jan
+                            <div class="timeline-card">
+                                <!-- Spark effects -->
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="timeline-date hidden md:inline-block mb-3">Jan
                                     1, 2026</span>
                                 <h3 class="md:hidden text-lg font-bold text-white font-heading mb-1">Launched Legal Blog
                                 </h3>
@@ -662,8 +1202,7 @@
 
                 <!-- 2025 Header -->
                 <div class="relative z-10 text-center mb-12 mt-16">
-                    <span
-                        class="inline-block px-4 py-2 bg-brand-gold text-black font-bold rounded-full text-lg shadow-glow">2025</span>
+                    <span class="timeline-year-badge">2025</span>
                 </div>
 
                 <!-- Timeline Item: AKRITI Contest -->
@@ -673,19 +1212,20 @@
                             <h3 class="text-xl font-bold text-white font-heading">AKRITI Frontend Contest</h3>
                             <p class="text-brand-gold text-sm font-semibold">Byte Brigade - 4th Place</p>
                         </div>
-                        <div
-                            class="absolute left-[-5px] md:left-1/2 md:-ml-[5px] w-3 h-3 rounded-full bg-brand-gold shadow-[0_0_10px_2px_rgba(201,162,39,0.6)]">
-                        </div>
+                        <div class="timeline-node"></div>
                         <div class="md:hidden mb-2">
                             <div
                                 class="inline-block px-2 py-1 rounded bg-brand-gold/10 text-brand-gold text-xs font-mono mb-1">
                                 Dec 30, 2025</div>
                         </div>
                         <div class="md:w-5/12 md:pr-8 text-left md:text-right">
-                            <div
-                                class="p-6 bg-gray-900/80 backdrop-blur-sm border border-brand-gold/20 rounded-2xl hover:border-brand-gold/50 transition-colors shadow-lg group hover:bg-gray-900">
-                                <span
-                                    class="hidden md:inline-block px-2 py-1 rounded bg-brand-gold/10 text-brand-gold text-xs font-mono mb-3">Dec
+                            <div class="timeline-card">
+                                <!-- Spark effects -->
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="timeline-date hidden md:inline-block mb-3">Dec
                                     30, 2025</span>
                                 <h3 class="md:hidden text-lg font-bold text-white font-heading mb-1">AKRITI Frontend
                                     Contest</h3>
@@ -708,19 +1248,20 @@
                             <p class="text-brand-gold text-sm font-semibold">"Poverty and Crime: A Sociological Study"
                             </p>
                         </div>
-                        <div
-                            class="absolute left-[-5px] md:left-1/2 md:-ml-[5px] w-3 h-3 rounded-full bg-brand-gold shadow-[0_0_10px_2px_rgba(201,162,39,0.6)]">
-                        </div>
+                        <div class="timeline-node"></div>
                         <div class="md:hidden mb-2">
                             <div
                                 class="inline-block px-2 py-1 rounded bg-brand-gold/10 text-brand-gold text-xs font-mono mb-1">
                                 Sep 15, 2025</div>
                         </div>
                         <div class="md:w-5/12 md:pl-8">
-                            <div
-                                class="p-6 bg-gray-900/80 backdrop-blur-sm border border-brand-gold/20 rounded-2xl hover:border-brand-gold/50 transition-colors shadow-lg group hover:bg-gray-900">
-                                <span
-                                    class="hidden md:inline-block px-2 py-1 rounded bg-brand-gold/10 text-brand-gold text-xs font-mono mb-3">Sep
+                            <div class="timeline-card">
+                                <!-- Spark effects -->
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="timeline-date hidden md:inline-block mb-3">Sep
                                     15, 2025</span>
                                 <h3 class="md:hidden text-lg font-bold text-white font-heading mb-1">Research
                                     Publication</h3>
@@ -741,19 +1282,20 @@
                             <h3 class="text-xl font-bold text-white font-heading">Large Language Models</h3>
                             <p class="text-brand-gold text-sm font-semibold">Google Cloud Certification</p>
                         </div>
-                        <div
-                            class="absolute left-[-5px] md:left-1/2 md:-ml-[5px] w-3 h-3 rounded-full bg-brand-gold shadow-[0_0_10px_2px_rgba(201,162,39,0.6)]">
-                        </div>
+                        <div class="timeline-node"></div>
                         <div class="md:hidden mb-2">
                             <div
                                 class="inline-block px-2 py-1 rounded bg-brand-gold/10 text-brand-gold text-xs font-mono mb-1">
                                 Sep 1, 2025</div>
                         </div>
                         <div class="md:w-5/12 md:pr-8 text-left md:text-right">
-                            <div
-                                class="p-6 bg-gray-900/80 backdrop-blur-sm border border-brand-gold/20 rounded-2xl hover:border-brand-gold/50 transition-colors shadow-lg group hover:bg-gray-900">
-                                <span
-                                    class="hidden md:inline-block px-2 py-1 rounded bg-brand-gold/10 text-brand-gold text-xs font-mono mb-3">Sep
+                            <div class="timeline-card">
+                                <!-- Spark effects -->
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="timeline-date hidden md:inline-block mb-3">Sep
                                     1, 2025</span>
                                 <h3 class="md:hidden text-lg font-bold text-white font-heading mb-1">Large Language
                                     Models</h3>
@@ -774,19 +1316,20 @@
                             <h3 class="text-xl font-bold text-white font-heading">Generative AI Fundamentals</h3>
                             <p class="text-brand-gold text-sm font-semibold">Google Cloud Certification</p>
                         </div>
-                        <div
-                            class="absolute left-[-5px] md:left-1/2 md:-ml-[5px] w-3 h-3 rounded-full bg-brand-gold shadow-[0_0_10px_2px_rgba(201,162,39,0.6)]">
-                        </div>
+                        <div class="timeline-node"></div>
                         <div class="md:hidden mb-2">
                             <div
                                 class="inline-block px-2 py-1 rounded bg-brand-gold/10 text-brand-gold text-xs font-mono mb-1">
                                 Aug 22, 2025</div>
                         </div>
                         <div class="md:w-5/12 md:pl-8">
-                            <div
-                                class="p-6 bg-gray-900/80 backdrop-blur-sm border border-brand-gold/20 rounded-2xl hover:border-brand-gold/50 transition-colors shadow-lg group hover:bg-gray-900">
-                                <span
-                                    class="hidden md:inline-block px-2 py-1 rounded bg-brand-gold/10 text-brand-gold text-xs font-mono mb-3">Aug
+                            <div class="timeline-card">
+                                <!-- Spark effects -->
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="timeline-date hidden md:inline-block mb-3">Aug
                                     22, 2025</span>
                                 <h3 class="md:hidden text-lg font-bold text-white font-heading mb-1">Generative AI
                                     Fundamentals</h3>
@@ -807,19 +1350,20 @@
                             <h3 class="text-xl font-bold text-white font-heading">AI FOR ALL</h3>
                             <p class="text-brand-gold text-sm font-semibold">Ministry of Education & Intel</p>
                         </div>
-                        <div
-                            class="absolute left-[-5px] md:left-1/2 md:-ml-[5px] w-3 h-3 rounded-full bg-brand-gold shadow-[0_0_10px_2px_rgba(201,162,39,0.6)]">
-                        </div>
+                        <div class="timeline-node"></div>
                         <div class="md:hidden mb-2">
                             <div
                                 class="inline-block px-2 py-1 rounded bg-brand-gold/10 text-brand-gold text-xs font-mono mb-1">
                                 Aug 15, 2025</div>
                         </div>
                         <div class="md:w-5/12 md:pr-8 text-left md:text-right">
-                            <div
-                                class="p-6 bg-gray-900/80 backdrop-blur-sm border border-brand-gold/20 rounded-2xl hover:border-brand-gold/50 transition-colors shadow-lg group hover:bg-gray-900">
-                                <span
-                                    class="hidden md:inline-block px-2 py-1 rounded bg-brand-gold/10 text-brand-gold text-xs font-mono mb-3">Aug
+                            <div class="timeline-card">
+                                <!-- Spark effects -->
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="timeline-date hidden md:inline-block mb-3">Aug
                                     15, 2025</span>
                                 <h3 class="md:hidden text-lg font-bold text-white font-heading mb-1">AI FOR ALL</h3>
                                 <p class="md:hidden text-brand-gold text-xs font-semibold mb-3">Ministry of Education &
@@ -840,19 +1384,20 @@
                             <h3 class="text-xl font-bold text-white font-heading">Commenced ISC - Humanities</h3>
                             <p class="text-brand-gold text-sm font-semibold">Saint Paul's School</p>
                         </div>
-                        <div
-                            class="absolute left-[-5px] md:left-1/2 md:-ml-[5px] w-3 h-3 rounded-full bg-brand-gold shadow-[0_0_10px_2px_rgba(201,162,39,0.6)]">
-                        </div>
+                        <div class="timeline-node"></div>
                         <div class="md:hidden mb-2">
                             <div
                                 class="inline-block px-2 py-1 rounded bg-brand-gold/10 text-brand-gold text-xs font-mono mb-1">
                                 Apr 8, 2025</div>
                         </div>
                         <div class="md:w-5/12 md:pl-8">
-                            <div
-                                class="p-6 bg-gray-900/80 backdrop-blur-sm border border-brand-gold/20 rounded-2xl hover:border-brand-gold/50 transition-colors shadow-lg group hover:bg-gray-900">
-                                <span
-                                    class="hidden md:inline-block px-2 py-1 rounded bg-brand-gold/10 text-brand-gold text-xs font-mono mb-3">Apr
+                            <div class="timeline-card">
+                                <!-- Spark effects -->
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="timeline-date hidden md:inline-block mb-3">Apr
                                     8, 2025</span>
                                 <h3 class="md:hidden text-lg font-bold text-white font-heading mb-1">Commenced ISC -
                                     Humanities</h3>
@@ -873,19 +1418,20 @@
                             <h3 class="text-xl font-bold text-white font-heading">Completed ICSE</h3>
                             <p class="text-brand-gold text-sm font-semibold">Saint Paul's School - 82%</p>
                         </div>
-                        <div
-                            class="absolute left-[-5px] md:left-1/2 md:-ml-[5px] w-3 h-3 rounded-full bg-brand-gold shadow-[0_0_10px_2px_rgba(201,162,39,0.6)]">
-                        </div>
+                        <div class="timeline-node"></div>
                         <div class="md:hidden mb-2">
                             <div
                                 class="inline-block px-2 py-1 rounded bg-brand-gold/10 text-brand-gold text-xs font-mono mb-1">
                                 Mar 26, 2025</div>
                         </div>
                         <div class="md:w-5/12 md:pr-8 text-left md:text-right">
-                            <div
-                                class="p-6 bg-gray-900/80 backdrop-blur-sm border border-brand-gold/20 rounded-2xl hover:border-brand-gold/50 transition-colors shadow-lg group hover:bg-gray-900">
-                                <span
-                                    class="hidden md:inline-block px-2 py-1 rounded bg-brand-gold/10 text-brand-gold text-xs font-mono mb-3">Mar
+                            <div class="timeline-card">
+                                <!-- Spark effects -->
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="spark"></span>
+                                <span class="timeline-date hidden md:inline-block mb-3">Mar
                                     26, 2025</span>
                                 <h3 class="md:hidden text-lg font-bold text-white font-heading mb-1">Completed ICSE</h3>
                                 <p class="md:hidden text-brand-gold text-xs font-semibold mb-3">Saint Paul's School -
@@ -918,8 +1464,7 @@
             <div class="space-y-6">
 
                 <!-- Certificate 1: upGrad - Law and Justice in a Globalizing World -->
-                <div
-                    class="course-card bg-gray-900/50 rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
+                <div class="cert-card opacity-0 scale-95">
                     <div class="flex flex-col md:flex-row">
                         <!-- Image -->
                         <div class="md:w-64 shrink-0 bg-gray-900 p-4">
@@ -971,8 +1516,7 @@
                 </div>
 
                 <!-- Certificate 2: Open University -->
-                <div
-                    class="course-card bg-gray-900/50 rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
+                <div class="cert-card opacity-0 scale-95">
                     <div class="flex flex-col md:flex-row">
                         <!-- Image -->
                         <div class="md:w-64 shrink-0 bg-gray-900 p-4">
@@ -1026,8 +1570,7 @@
                 </div>
 
                 <!-- Certificate 2: AI FOR ALL -->
-                <div
-                    class="course-card bg-gray-900/50 rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
+                <div class="cert-card opacity-0 scale-95">
                     <div class="flex flex-col md:flex-row">
                         <!-- Image -->
                         <div class="md:w-64 shrink-0 bg-gray-900 p-4">
@@ -1076,8 +1619,7 @@
                 </div>
 
                 <!-- Certificate 2: Generative AI Fundamentals -->
-                <div
-                    class="course-card bg-gray-900/50 rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
+                <div class="cert-card opacity-0 scale-95">
                     <div class="flex flex-col md:flex-row">
                         <!-- Image -->
                         <div class="md:w-64 shrink-0 bg-gray-900 p-4">
@@ -1127,8 +1669,7 @@
                 </div>
 
                 <!-- Certificate 3: Large Language Models -->
-                <div
-                    class="course-card bg-gray-900/50 rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
+                <div class="cert-card opacity-0 scale-95">
                     <div class="flex flex-col md:flex-row">
                         <!-- Image -->
                         <div class="md:w-64 shrink-0 bg-gray-900 p-4">
@@ -1179,8 +1720,7 @@
                 </div>
 
                 <!-- Certificate 4: Byte Brigade - AKRITI Frontend Engineering -->
-                <div
-                    class="course-card bg-gray-900/50 rounded-2xl overflow-hidden hover-card opacity-0 scale-95 border border-gray-800">
+                <div class="cert-card opacity-0 scale-95">
                     <div class="flex flex-col md:flex-row">
                         <!-- Image -->
                         <div class="md:w-64 shrink-0 bg-gray-900 p-4">
@@ -1724,8 +2264,8 @@
                 y: 0, opacity: 1, duration: 0.8, stagger: 0.15
             });
 
-            // Course Cards Animation
-            gsap.to(".course-card", {
+            // Certificate Cards Animation
+            gsap.to(".cert-card", {
                 scrollTrigger: { trigger: "#certifications", start: "top 75%" },
                 scale: 1, opacity: 1, duration: 0.6, stagger: 0.15, ease: "back.out(1.7)"
             });
@@ -1924,6 +2464,125 @@
             }
 
             loadRecentBlogs();
+
+            // ========== TIMELINE LIGHTNING ANIMATIONS ==========
+
+            // Mouse tracking for timeline cards - creates follow glow effect
+            const timelineCards = document.querySelectorAll('.timeline-card');
+            timelineCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / rect.width) * 100;
+                    const y = ((e.clientY - rect.top) / rect.height) * 100;
+                    card.style.setProperty('--mouse-x', `${x}%`);
+                    card.style.setProperty('--mouse-y', `${y}%`);
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.setProperty('--mouse-x', '50%');
+                    card.style.setProperty('--mouse-y', '50%');
+                });
+            });
+
+            // Timeline items reveal animation with stagger
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            if (timelineItems.length > 0) {
+                gsap.set(timelineItems, { opacity: 0, y: 40 });
+
+                ScrollTrigger.batch('.timeline-item', {
+                    onEnter: (batch) => {
+                        gsap.to(batch, {
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.8,
+                            stagger: 0.15,
+                            ease: "power3.out",
+                            onComplete: () => {
+                                batch.forEach(item => item.classList.add('revealed'));
+                            }
+                        });
+                    },
+                    start: "top 85%",
+                    once: true
+                });
+            }
+
+            // Timeline year badges pulse enhancement
+            const yearBadges = document.querySelectorAll('.timeline-year-badge');
+            yearBadges.forEach(badge => {
+                // Add subtle hover scale effect
+                badge.addEventListener('mouseenter', () => {
+                    gsap.to(badge, {
+                        scale: 1.1,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+                badge.addEventListener('mouseleave', () => {
+                    gsap.to(badge, {
+                        scale: 1,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+            });
+
+            // Timeline nodes pulse on scroll into view
+            const timelineNodes = document.querySelectorAll('.timeline-node');
+            timelineNodes.forEach((node, index) => {
+                ScrollTrigger.create({
+                    trigger: node,
+                    start: "top 80%",
+                    onEnter: () => {
+                        gsap.fromTo(node,
+                            { scale: 0, opacity: 0 },
+                            {
+                                scale: 1,
+                                opacity: 1,
+                                duration: 0.5,
+                                delay: index * 0.1,
+                                ease: "back.out(1.7)"
+                            }
+                        );
+                    },
+                    once: true
+                });
+            });
+
+            // Optional: Random lightning flicker effect on line
+            const timelineLine = document.querySelector('.timeline-line-animated');
+            if (timelineLine) {
+                // Create occasional intense flicker
+                const triggerFlicker = () => {
+                    const intensity = Math.random();
+                    if (intensity > 0.7) {
+                        gsap.to(timelineLine, {
+                            boxShadow: `
+                                0 0 20px rgba(255, 223, 128, 0.9),
+                                0 0 40px rgba(201, 162, 39, 0.7),
+                                0 0 60px rgba(201, 162, 39, 0.5)
+                            `,
+                            duration: 0.1,
+                            yoyo: true,
+                            repeat: 2,
+                            ease: "power4.inOut",
+                            onComplete: () => {
+                                gsap.to(timelineLine, {
+                                    boxShadow: `
+                                        0 0 10px rgba(201, 162, 39, 0.5),
+                                        0 0 20px rgba(201, 162, 39, 0.3),
+                                        0 0 30px rgba(201, 162, 39, 0.2)
+                                    `,
+                                    duration: 0.3
+                                });
+                            }
+                        });
+                    }
+                };
+
+                // Trigger flicker randomly every 2-5 seconds
+                setInterval(triggerFlicker, 2000 + Math.random() * 3000);
+            }
 
         });
     </script>
