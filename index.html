@@ -86,6 +86,18 @@
             color: transparent
         }
 
+        /* Remove underline from hero subtitle */
+        .hero-text-content h2 .text-gradient {
+            border: none !important;
+            border-bottom: none !important;
+            text-decoration: none !important;
+        }
+
+        .hero-text-content h2 .text-gradient::after,
+        .hero-text-content h2 .text-gradient::before {
+            display: none !important;
+        }
+
         /* Card Hover Effects */
         .hover-card {
             transition: all .3s cubic-bezier(.4, 0, .2, 1);
@@ -744,9 +756,6 @@
         }
 
         /* Stagger Animation for Timeline Items - GSAP handles initial state */
-        .timeline-item {
-            /* Animation handled by GSAP ScrollTrigger */
-        }
 
         .timeline-item.revealed {
             opacity: 1 !important;
@@ -776,10 +785,382 @@
             stroke-linecap: round;
             filter: drop-shadow(0 0 4px #C9A227);
         }
+
+        /* ========== ANIMATION #9: PAGE LOADER ========== */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0A0A0A;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .page-loader.loaded {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-percentage {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #C9A227;
+            text-shadow: 0 0 20px rgba(201, 162, 39, 0.5);
+        }
+
+        .loader-bar {
+            width: 200px;
+            height: 2px;
+            background: rgba(201, 162, 39, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .loader-progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #C9A227, #E8D48A, #C9A227);
+            box-shadow: 0 0 10px rgba(201, 162, 39, 0.5);
+        }
+
+        /* ========== ANIMATION #21: SCROLL PROGRESS INDICATOR ========== */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #C9A227, #E8D48A);
+            z-index: 9998;
+            box-shadow: 0 0 10px rgba(201, 162, 39, 0.5);
+            transition: width 0.1s linear;
+        }
+
+        /* ========== ANIMATION #22: STICKY NAVBAR ========== */
+        #navbar.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        /* ========== ANIMATION #23: ACTIVE NAV HIGHLIGHT ========== */
+        .nav-link.active {
+            color: #C9A227 !important;
+            position: relative;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 2px;
+            background: #C9A227;
+            border-radius: 2px;
+        }
+
+        /* ========== ANIMATION #2, #3, #4: TEXT REVEAL ANIMATIONS ========== */
+        .text-reveal {
+            clip-path: inset(0 100% 0 0);
+            animation: textReveal 0.8s ease forwards;
+            animation-play-state: paused;
+        }
+
+        .text-reveal.animate {
+            animation-play-state: running;
+        }
+
+        @keyframes textReveal {
+            to {
+                clip-path: inset(0 0 0 0);
+            }
+        }
+
+        .underline-draw {
+            position: relative;
+            display: inline-block;
+        }
+
+        .underline-draw::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #C9A227, #E8D48A);
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 2px;
+        }
+
+        .underline-draw.animate::after {
+            width: 100%;
+        }
+
+        .letter-reveal {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* ========== ANIMATION #15: TYPEWRITER EFFECT ========== */
+        .typewriter {
+            display: inline;
+            border-right: 2px solid #C9A227;
+            animation: blink 0.7s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        /* ========== ANIMATION #16: TEXT SCRAMBLE ========== */
+        .scramble-text {
+            font-family: monospace;
+        }
+
+        /* ========== ANIMATION #6: SECTION DIVIDERS ========== */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: transparent;
+            position: relative;
+            margin: 0;
+            overflow: visible;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #C9A227, transparent);
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section-divider.animate::before {
+            width: 80%;
+        }
+
+        .section-divider::after {
+            content: '§';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            color: #C9A227;
+            font-size: 1.5rem;
+            background: #0A0A0A;
+            padding: 0 1rem;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.5s;
+        }
+
+        .section-divider.animate::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* ========== ANIMATION #7: QUOTE ROTATION ========== */
+        .quote-carousel {
+            position: relative;
+            min-height: 80px;
+            overflow: hidden;
+        }
+
+        .quote-item {
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .quote-item.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .quote-author {
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.4s ease 0.3s;
+        }
+
+        .quote-item.active .quote-author {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ========== ANIMATION #8: SECTION TRANSITIONS ========== */
+        .section-animate {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== ANIMATION #10: ICON SCALE-IN ========== */
+        /* Icons animate via GSAP, no initial hidden state needed */
+
+        /* ========== ANIMATION #13: HOVER RIPPLE EFFECT ========== */
+        .ripple-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple-effect .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(201, 162, 39, 0.4);
+            transform: scale(0);
+            animation: rippleAnim 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes rippleAnim {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* ========== ANIMATION #17: COUNTER ANIMATION ========== */
+        .counter {
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* ========== ANIMATION #18: PARALLAX ELEMENTS ========== */
+        .parallax-slow {
+            will-change: transform;
+        }
+
+        .parallax-fast {
+            will-change: transform;
+        }
+
+        /* ========== ANIMATION #19: IMAGE REVEAL ========== */
+        .image-reveal {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-reveal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #C9A227;
+            z-index: 1;
+            transform: translateX(-101%);
+        }
+
+        .image-reveal.animate::before {
+            animation: imageRevealMask 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .image-reveal img {
+            transform: scale(1.2);
+            transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+        }
+
+        .image-reveal.animate img {
+            transform: scale(1);
+        }
+
+        @keyframes imageRevealMask {
+            0% {
+                transform: translateX(-101%);
+            }
+
+            50% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(101%);
+            }
+        }
+
+        /* ========== ANIMATION #20: ANIMATED GRADIENTS ========== */
+        .gradient-animate {
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* ========== ANIMATION #25: STAGGER GRID ========== */
+        /* Cards animate via GSAP, keeping existing styling */
+
+        /* ========== ANIMATION #1: TIMELINE SCROLL PROGRESS ========== */
+        .timeline-scroll-progress {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 0;
+            background: linear-gradient(180deg, #C9A227, #E8D48A);
+            box-shadow: 0 0 15px rgba(201, 162, 39, 0.6);
+            z-index: 5;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-scroll-progress {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
     </style>
 </head>
 
 <body class="text-white antialiased">
+
+    <!-- ANIMATION #9: PAGE LOADER -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-percentage" id="loaderPercentage">0%</div>
+        <div class="loader-bar">
+            <div class="loader-progress" id="loaderProgress"></div>
+        </div>
+    </div>
+
+    <!-- ANIMATION #21: SCROLL PROGRESS INDICATOR -->
+    <div class="scroll-progress" id="scrollProgress"></div>
 
     <!-- Background Canvas -->
     <canvas id="bg-canvas"></canvas>
@@ -858,8 +1239,6 @@
 
     <!-- HERO SECTION -->
     <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 min-h-screen flex items-center overflow-hidden">
-        <!-- Decorative scales -->
-        <i class="fas fa-balance-scale scales-bg -right-20 top-1/4"></i>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -871,9 +1250,11 @@
                             Chowrasia</span>
                     </h1>
 
-                    <h2 class="hero-el text-4xl lg:text-5xl font-bold leading-tight mb-6 text-white font-heading">
+                    <h2 class="hero-el text-4xl lg:text-5xl font-bold leading-tight mb-6 text-white font-heading"
+                        style="border: none; text-decoration: none;">
                         <span class="block"></span>Aspiring Lawyer &</span>
-                        <span class="text-gradient">Legal Researcher.</span>
+                        <span class="text-gradient" style="border: none; text-decoration: none;">Legal
+                            Researcher.</span>
                     </h2>
 
                     <p class="hero-el text-lg text-gray-300 mb-8 max-w-lg">Class 11 Arts student at <strong
@@ -881,8 +1262,28 @@
                         law, technology, and the study of society. Driven by curiosity about ideas, social structures,
                         and how technology can be applied responsibly in the legal field.</p>
 
-                    <div class="hero-el law-quote mb-8 text-gray-400">
-                        "Justice delayed is justice denied." — William E. Gladstone
+                    <!-- ANIMATION #7: ROTATING QUOTES CAROUSEL -->
+                    <div class="hero-el law-quote mb-8 text-gray-400 quote-carousel" id="quoteCarousel">
+                        <div class="quote-item active">
+                            <span class="quote-text">"Justice delayed is justice denied."</span>
+                            <span class="quote-author"> — William E. Gladstone</span>
+                        </div>
+                        <div class="quote-item">
+                            <span class="quote-text">"The first duty of society is justice."</span>
+                            <span class="quote-author"> — Alexander Hamilton</span>
+                        </div>
+                        <div class="quote-item">
+                            <span class="quote-text">"Injustice anywhere is a threat to justice everywhere."</span>
+                            <span class="quote-author"> — Martin Luther King Jr.</span>
+                        </div>
+                        <div class="quote-item">
+                            <span class="quote-text">"Law is reason, free from passion."</span>
+                            <span class="quote-author"> — Aristotle</span>
+                        </div>
+                        <div class="quote-item">
+                            <span class="quote-text">"Be the change you wish to see in the world."</span>
+                            <span class="quote-author"> — Mahatma Gandhi</span>
+                        </div>
                     </div>
 
                     <div class="hero-el flex flex-col sm:flex-row gap-4">
@@ -936,9 +1337,13 @@
     <!-- ABOUT SECTION -->
     <section id="about" class="py-24 bg-black/50">
         <div class="max-w-7xl mx-auto px-4">
-            <h2 class="section-title fade-up-text text-4xl font-bold text-brand-gold mb-4 text-center font-heading">My
-                Journey to Law</h2>
-            <p class="section-subtitle fade-up-text text-gray-400 mb-16 text-center max-w-2xl mx-auto">
+            <div class="text-center">
+                <h2
+                    class="section-title fade-up-text text-4xl font-bold text-brand-gold mb-4 font-heading italic border-b-2 border-brand-gold pb-2 inline-block">
+                    My
+                    Journey to Law</h2>
+            </div>
+            <p class="section-subtitle fade-up-text text-gray-400 mb-16 text-center max-w-2xl mx-auto mt-6">
                 Building a strong foundation in Humanities while exploring the intersection of traditional legal
                 practice and emerging technologies.
             </p>
@@ -948,7 +1353,7 @@
                 <!-- Card 1: Academic Foundation -->
                 <div class="feature-card hover-card bg-black p-8 rounded-3xl opacity-0 translate-y-12">
                     <div
-                        class="w-14 h-14 bg-brand-gold/10 rounded-2xl flex items-center justify-center text-brand-gold text-2xl mb-6 border border-brand-gold/20">
+                        class="w-14 h-14 bg-brand-gold rounded-2xl flex items-center justify-center text-black text-2xl mb-6">
                         <i class="fas fa-graduation-cap"></i>
                     </div>
                     <h3 class="text-white text-xl font-bold mb-3 font-heading">Academic Foundation</h3>
@@ -959,7 +1364,7 @@
                 <!-- Card 2: Constitutional Values -->
                 <div class="feature-card hover-card bg-black p-8 rounded-3xl opacity-0 translate-y-12">
                     <div
-                        class="w-14 h-14 bg-brand-gold/10 rounded-2xl flex items-center justify-center text-brand-gold text-2xl mb-6 border border-brand-gold/20">
+                        class="w-14 h-14 bg-brand-gold rounded-2xl flex items-center justify-center text-black text-2xl mb-6">
                         <i class="fas fa-landmark"></i>
                     </div>
                     <h3 class="text-white text-xl font-bold mb-3 font-heading">Constitutional Values</h3>
@@ -970,7 +1375,7 @@
                 <!-- Card 3: Legal Tech -->
                 <div class="feature-card hover-card bg-black p-8 rounded-3xl opacity-0 translate-y-12">
                     <div
-                        class="w-14 h-14 bg-brand-gold/10 rounded-2xl flex items-center justify-center text-brand-gold text-2xl mb-6 border border-brand-gold/20">
+                        class="w-14 h-14 bg-brand-gold rounded-2xl flex items-center justify-center text-black text-2xl mb-6">
                         <i class="fas fa-robot"></i>
                     </div>
                     <h3 class="text-white text-xl font-bold mb-3 font-heading">Technology & Research</h3>
@@ -982,7 +1387,7 @@
                 <!-- Card 4: Advocacy Goals -->
                 <div class="feature-card hover-card bg-black p-8 rounded-3xl opacity-0 translate-y-12">
                     <div
-                        class="w-14 h-14 bg-brand-gold/10 rounded-2xl flex items-center justify-center text-brand-gold text-2xl mb-6 border border-brand-gold/20">
+                        class="w-14 h-14 bg-brand-gold rounded-2xl flex items-center justify-center text-black text-2xl mb-6">
                         <i class="fas fa-balance-scale"></i>
                     </div>
                     <h3 class="text-white text-xl font-bold mb-3 font-heading">Future Advocate</h3>
@@ -997,8 +1402,11 @@
     <!-- VISION SECTION -->
     <section id="vision" class="py-24">
         <div class="max-w-5xl mx-auto px-4">
-            <h2 class="fade-up-text text-4xl text-brand-gold font-bold mb-4 text-center font-heading">My Vision for Law
-            </h2>
+            <div class="text-center">
+                <h2
+                    class="fade-up-text text-4xl text-brand-gold font-bold mb-4 font-heading italic border-b-2 border-brand-gold pb-2 inline-block">
+                    My Vision for Law</h2>
+            </div>
             <p class="fade-up-text text-gray-400 mb-12 text-center max-w-2xl mx-auto">
                 I believe the future of law lies at the intersection of tradition and innovation.
             </p>
@@ -1080,10 +1488,10 @@
         <div class="max-w-4xl mx-auto px-4 relative z-10">
             <!-- Header -->
             <div class="mb-16 text-center">
-                <h2 class="section-title fade-up-text text-4xl font-bold text-brand-gold mb-3 font-heading">My Legal
-                    Journey</h2>
-                <div class="w-12 h-1 bg-brand-gold mx-auto mb-4"></div>
-                <p class="fade-up-text text-gray-400">Milestones in academia, research, and technology.</p>
+                <h2
+                    class="fade-up-text text-4xl font-bold text-brand-gold mb-4 font-heading italic border-b-2 border-brand-gold pb-2 inline-block">
+                    My Legal Journey</h2>
+                <p class="fade-up-text text-gray-400 mt-4">Milestones in academia, research, and technology.</p>
             </div>
 
             <!-- Timeline Container -->
@@ -1454,10 +1862,10 @@
         <div class="max-w-5xl mx-auto px-4">
             <!-- Header with underline -->
             <div class="mb-12 text-center">
-                <h2 class="fade-up-text text-4xl md:text-5xl text-brand-gold font-bold mb-3 font-heading">Certifications
-                </h2>
-                <div class="w-12 h-1 bg-brand-gold mx-auto mb-4"></div>
-                <p class="fade-up-text text-gray-400">Key milestones in my technical journey.</p>
+                <h2
+                    class="fade-up-text text-4xl text-brand-gold font-bold mb-4 font-heading italic border-b-2 border-brand-gold pb-2 inline-block">
+                    Certifications</h2>
+                <p class="fade-up-text text-gray-400 mt-4">Key milestones in my technical journey.</p>
             </div>
 
             <!-- Certification Cards -->
@@ -1776,8 +2184,11 @@
     <!-- PUBLICATION SECTION -->
     <section id="publication" class="py-20">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="fade-up-text text-4xl text-brand-gold font-bold mb-4 text-center font-heading">Research &
-                Publication</h2>
+            <div class="text-center">
+                <h2
+                    class="fade-up-text text-4xl text-brand-gold font-bold mb-4 font-heading italic border-b-2 border-brand-gold pb-2 inline-block">
+                    Research & Publication</h2>
+            </div>
             <p class="fade-up-text text-gray-400 mb-12 text-center max-w-2xl mx-auto">
                 Exploring social issues through research and academic writing.
             </p>
@@ -1904,9 +2315,11 @@
     <section id="contact" class="py-24">
         <div class="max-w-4xl mx-auto px-4 contact-container opacity-0 translate-y-16">
 
-            <h2 class="text-4xl md:text-5xl text-brand-gold font-bold text-center mb-2 fade-up-text font-heading">
-                Get In Touch
-            </h2>
+            <div class="text-center">
+                <h2
+                    class="text-4xl text-brand-gold font-bold mb-2 fade-up-text font-heading italic border-b-2 border-brand-gold pb-2 inline-block">
+                    Get In Touch</h2>
+            </div>
             <p class="text-center text-gray-300 mb-12 fade-up-text">
                 Interested in discussing law, technology, or potential collaborations? I'd love to hear from you.
             </p>
@@ -2107,6 +2520,38 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+
+            // -----------------------------
+            // PAGE LOADER ANIMATION (0-100% in 3 seconds)
+            // -----------------------------
+            const loaderElement = document.getElementById('pageLoader');
+            const loaderPercentage = document.getElementById('loaderPercentage');
+            const loaderProgress = document.getElementById('loaderProgress');
+
+            if (loaderElement && loaderPercentage && loaderProgress) {
+                let progress = 0;
+                const duration = 3000; // 3 seconds
+                const startTime = Date.now();
+
+                function updateLoader() {
+                    const elapsed = Date.now() - startTime;
+                    progress = Math.min((elapsed / duration) * 100, 100);
+
+                    loaderPercentage.textContent = Math.round(progress) + '%';
+                    loaderProgress.style.width = progress + '%';
+
+                    if (progress < 100) {
+                        requestAnimationFrame(updateLoader);
+                    } else {
+                        // Fade out loader after completion
+                        setTimeout(() => {
+                            loaderElement.classList.add('loaded');
+                        }, 200);
+                    }
+                }
+
+                updateLoader();
+            }
 
             // -----------------------------
             // CUSTOM CURSOR
@@ -2633,6 +3078,291 @@
                 // Trigger flicker randomly every 2-5 seconds
                 setInterval(triggerFlicker, 2000 + Math.random() * 3000);
             }
+
+            // ========== ANIMATION #9: PAGE LOADER ==========
+            const pageLoader = document.getElementById('pageLoader');
+            if (pageLoader) {
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        pageLoader.classList.add('loaded');
+                    }, 1000);
+                });
+            }
+
+            // ========== ANIMATION #21: SCROLL PROGRESS INDICATOR ==========
+            const scrollProgress = document.getElementById('scrollProgress');
+            if (scrollProgress) {
+                window.addEventListener('scroll', () => {
+                    const scrollTop = window.scrollY;
+                    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    const scrollPercent = (scrollTop / docHeight) * 100;
+                    scrollProgress.style.width = scrollPercent + '%';
+                });
+            }
+
+            // ========== ANIMATION #22: STICKY NAVBAR ==========
+            const navbarElement = document.getElementById('navbar');
+            if (navbarElement) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 100) {
+                        navbarElement.classList.add('scrolled');
+                    } else {
+                        navbarElement.classList.remove('scrolled');
+                    }
+                });
+            }
+
+            // ========== ANIMATION #23: ACTIVE SECTION HIGHLIGHT ==========
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            function updateActiveNav() {
+                const scrollPos = window.scrollY + 200;
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === '#' + sectionId) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+            window.addEventListener('scroll', updateActiveNav);
+            updateActiveNav();
+
+            // ========== ANIMATION #7: QUOTE ROTATION ==========
+            const quoteItems = document.querySelectorAll('.quote-item');
+            if (quoteItems.length > 1) {
+                let currentQuote = 0;
+                setInterval(() => {
+                    quoteItems[currentQuote].classList.remove('active');
+                    currentQuote = (currentQuote + 1) % quoteItems.length;
+                    quoteItems[currentQuote].classList.add('active');
+                }, 5000);
+            }
+
+            // ========== ANIMATION #2, #3, #4: TEXT REVEAL ==========
+            const sectionTitles = document.querySelectorAll('.section-title, h2.text-4xl');
+            sectionTitles.forEach(title => {
+                title.classList.add('underline-draw');
+                ScrollTrigger.create({
+                    trigger: title,
+                    start: 'top 85%',
+                    onEnter: () => {
+                        title.classList.add('animate');
+                    },
+                    once: true
+                });
+            });
+
+            // ========== ANIMATION #8: SECTION TRANSITIONS ==========
+            const animateSections = document.querySelectorAll('section');
+            animateSections.forEach(section => {
+                gsap.from(section, {
+                    opacity: 0,
+                    y: 30,
+                    duration: 0.8,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 90%',
+                        toggleActions: 'play none none none'
+                    }
+                });
+            });
+
+            // ========== ANIMATION #10: ICON SCALE-IN ==========
+            const iconContainers = document.querySelectorAll('.fa-graduation-cap, .fa-landmark, .fa-robot, .fa-balance-scale, .fa-scale-balanced, .fa-brain, .fa-book-open, .fa-handshake');
+            iconContainers.forEach((icon, index) => {
+                icon.classList.add('icon-scale');
+                ScrollTrigger.create({
+                    trigger: icon,
+                    start: 'top 90%',
+                    onEnter: () => {
+                        gsap.to(icon, {
+                            scale: 1,
+                            opacity: 1,
+                            duration: 0.5,
+                            delay: index * 0.05,
+                            ease: 'back.out(1.7)'
+                        });
+                    },
+                    once: true
+                });
+            });
+
+            // ========== ANIMATION #13: HOVER RIPPLE EFFECT ==========
+            const rippleButtons = document.querySelectorAll('.btn-draw, .bg-brand-gold');
+            rippleButtons.forEach(btn => {
+                btn.classList.add('ripple-effect');
+                btn.addEventListener('click', function (e) {
+                    const rect = this.getBoundingClientRect();
+                    const ripple = document.createElement('span');
+                    ripple.className = 'ripple';
+                    ripple.style.left = (e.clientX - rect.left) + 'px';
+                    ripple.style.top = (e.clientY - rect.top) + 'px';
+                    ripple.style.width = ripple.style.height = '20px';
+                    this.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+
+            // ========== ANIMATION #15: TYPEWRITER EFFECT ==========
+            const heroTitle = document.querySelector('.hero-el.text-7xl .text-gradient');
+            if (heroTitle) {
+                const text = heroTitle.textContent;
+                heroTitle.textContent = '';
+                heroTitle.classList.add('typewriter');
+                let i = 0;
+                const typeWriter = () => {
+                    if (i < text.length) {
+                        heroTitle.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 50);
+                    } else {
+                        heroTitle.classList.remove('typewriter');
+                    }
+                };
+                setTimeout(typeWriter, 1200);
+            }
+
+            // ========== ANIMATION #18: PARALLAX SCROLLING ==========
+            const parallaxElements = document.querySelectorAll('.scales-bg, .absolute.bg-brand-gold');
+            parallaxElements.forEach(el => {
+                gsap.to(el, {
+                    y: () => window.innerHeight * 0.3,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: el.closest('section') || el,
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: 1
+                    }
+                });
+            });
+
+            // ========== ANIMATION #19: IMAGE REVEAL ==========
+            const images = document.querySelectorAll('.hero-image-container img, .cert-card img');
+            images.forEach(img => {
+                const wrapper = img.closest('div');
+                if (wrapper) {
+                    wrapper.classList.add('image-reveal');
+                    ScrollTrigger.create({
+                        trigger: wrapper,
+                        start: 'top 85%',
+                        onEnter: () => wrapper.classList.add('animate'),
+                        once: true
+                    });
+                }
+            });
+
+            // ========== ANIMATION #25: STAGGER GRID REVEAL ==========
+            const gridCards = document.querySelectorAll('.feature-card, .cert-card, .vision-card');
+            gridCards.forEach((card, index) => {
+                card.classList.add('stagger-item');
+                ScrollTrigger.create({
+                    trigger: card,
+                    start: 'top 90%',
+                    onEnter: () => {
+                        gsap.to(card, {
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.6,
+                            delay: (index % 4) * 0.1,
+                            ease: 'power2.out'
+                        });
+                    },
+                    once: true
+                });
+            });
+
+            // ========== ANIMATION #17: COUNTER ANIMATION ==========
+            const counters = document.querySelectorAll('[data-count]');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                ScrollTrigger.create({
+                    trigger: counter,
+                    start: 'top 85%',
+                    onEnter: () => {
+                        gsap.to({ val: 0 }, {
+                            val: target,
+                            duration: 2,
+                            ease: 'power2.out',
+                            onUpdate: function () {
+                                counter.textContent = Math.round(this.targets()[0].val);
+                            }
+                        });
+                    },
+                    once: true
+                });
+            });
+
+            // ========== ANIMATION #24: PARTICLE MOUSE INTERACTION ==========
+            // Enhanced particle interaction with cursor
+            let mouseX = window.innerWidth / 2;
+            let mouseY = window.innerHeight / 2;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            // Modify the existing animateBg function to include mouse interaction
+            // This is handled in the canvas animation section above
+
+            // ========== ANIMATION #20: ANIMATED GRADIENTS ==========
+            const gradientSections = document.querySelectorAll('#about, #vision');
+            gradientSections.forEach(section => {
+                section.classList.add('gradient-animate');
+                section.style.background = 'linear-gradient(-45deg, rgba(201, 162, 39, 0.02), rgba(10, 10, 10, 1), rgba(201, 162, 39, 0.03), rgba(10, 10, 10, 1))';
+                section.style.backgroundSize = '400% 400%';
+            });
+
+            // ========== ANIMATION #1: SCROLL-LINKED TIMELINE ==========
+            const timelineContainer = document.getElementById('timeline-container');
+            if (timelineContainer) {
+                // Create the scroll progress element
+                const timelineProgress = document.createElement('div');
+                timelineProgress.className = 'timeline-scroll-progress';
+                timelineContainer.prepend(timelineProgress);
+
+                ScrollTrigger.create({
+                    trigger: timelineContainer,
+                    start: 'top 80%',
+                    end: 'bottom 20%',
+                    onUpdate: (self) => {
+                        const progress = self.progress * 100;
+                        timelineProgress.style.height = progress + '%';
+                    }
+                });
+            }
+
+            // ========== ANIMATION #6: SECTION DIVIDERS ==========
+            // Add section dividers between major sections dynamically
+            const majorSections = ['#about', '#vision', '#timeline', '#certifications', '#publication', '#contact'];
+            majorSections.forEach((sectionId, index) => {
+                if (index > 0) {
+                    const section = document.querySelector(sectionId);
+                    if (section) {
+                        const divider = document.createElement('div');
+                        divider.className = 'section-divider';
+                        section.parentNode.insertBefore(divider, section);
+
+                        ScrollTrigger.create({
+                            trigger: divider,
+                            start: 'top 85%',
+                            onEnter: () => divider.classList.add('animate'),
+                            once: true
+                        });
+                    }
+                }
+            });
 
         });
     </script>
