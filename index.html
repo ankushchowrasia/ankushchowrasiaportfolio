@@ -2128,17 +2128,41 @@
             }
 
             // -----------------------------
-            // BACKGROUND ANIMATION (CANVAS)
+            // BACKGROUND ANIMATION (CANVAS) - Law Symbols
             // -----------------------------
             const canvas = document.getElementById('bg-canvas');
             if (canvas) {
                 const ctx = canvas.getContext('2d');
-                let width, height, particles = [];
-                const colors = ['#C9A227', '#E8D48A', '#FFFFFF']; // Gold theme colors
+                let width, height, symbols = [];
+
+                // Golden color palette for law symbols
+                const goldColors = [
+                    '#C9A227', // Brand gold
+                    '#E8D48A', // Light gold
+                    '#D4AF37', // Metallic gold
+                    '#B8860B', // Dark golden rod
+                    '#FFD700', // Pure gold
+                ];
+
+                // Law-related symbols (Unicode characters)
+                const lawSymbols = [
+                    '⚖',  // Scales of Justice
+                    '§',   // Section/Paragraph symbol
+                    '¶',   // Pilcrow/Paragraph
+                    '⚜',  // Fleur-de-lis (legal symbol)
+                    '☆',   // Star (authority)
+                    '♜',   // Rook (represents strength/court)
+                    '⬡',   // Hexagon (gavel-like)
+                    '◈',   // Diamond (precious justice)
+                    '⊛',   // Circled asterisk
+                    '✦',   // Star
+                    '❖',   // Diamond
+                    '⟁',   // Triangle (pyramid of law)
+                ];
 
                 function initBg() {
                     resize();
-                    createParticles();
+                    createSymbols();
                     animateBg();
                 }
 
@@ -2147,56 +2171,82 @@
                     height = canvas.height = window.innerHeight;
                 }
 
-                function createParticles() {
-                    particles = [];
-                    const count = Math.floor(width * height / 15000);
+                function createSymbols() {
+                    symbols = [];
+                    // Fewer symbols than dust particles for elegance
+                    const count = Math.floor(width * height / 35000);
                     for (let i = 0; i < count; i++) {
-                        particles.push({
+                        symbols.push({
                             x: Math.random() * width,
                             y: Math.random() * height,
-                            vx: (Math.random() - 0.5) * 0.4,
-                            vy: (Math.random() - 0.5) * 0.4,
-                            size: Math.random() * 2,
-                            color: colors[Math.floor(Math.random() * colors.length)],
-                            alpha: Math.random() * 0.4 + 0.1
+                            vx: (Math.random() - 0.5) * 0.3,
+                            vy: (Math.random() - 0.5) * 0.3,
+                            size: Math.random() * 16 + 10, // Larger for symbols (10-26px)
+                            symbol: lawSymbols[Math.floor(Math.random() * lawSymbols.length)],
+                            color: goldColors[Math.floor(Math.random() * goldColors.length)],
+                            alpha: Math.random() * 0.25 + 0.05, // Subtle opacity (0.05-0.3)
+                            rotation: Math.random() * Math.PI * 2,
+                            rotationSpeed: (Math.random() - 0.5) * 0.01 // Gentle rotation
                         });
                     }
                 }
 
                 function animateBg() {
                     ctx.clearRect(0, 0, width, height);
-                    particles.forEach((p, i) => {
-                        p.x += p.vx; p.y += p.vy;
-                        if (p.x < 0) p.x = width; if (p.x > width) p.x = 0;
-                        if (p.y < 0) p.y = height; if (p.y > height) p.y = 0;
 
-                        ctx.beginPath();
-                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                        ctx.fillStyle = p.color;
-                        ctx.globalAlpha = p.alpha;
-                        ctx.fill();
+                    symbols.forEach((s, i) => {
+                        // Update position
+                        s.x += s.vx;
+                        s.y += s.vy;
+                        s.rotation += s.rotationSpeed;
 
-                        for (let j = i + 1; j < particles.length; j++) {
-                            const p2 = particles[j];
-                            const dx = p.x - p2.x;
-                            const dy = p.y - p2.y;
+                        // Wrap around screen edges
+                        if (s.x < -s.size) s.x = width + s.size;
+                        if (s.x > width + s.size) s.x = -s.size;
+                        if (s.y < -s.size) s.y = height + s.size;
+                        if (s.y > height + s.size) s.y = -s.size;
+
+                        // Draw symbol
+                        ctx.save();
+                        ctx.translate(s.x, s.y);
+                        ctx.rotate(s.rotation);
+                        ctx.globalAlpha = s.alpha;
+                        ctx.fillStyle = s.color;
+                        ctx.font = `${s.size}px serif`;
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+
+                        // Add subtle glow effect
+                        ctx.shadowColor = s.color;
+                        ctx.shadowBlur = 8;
+
+                        ctx.fillText(s.symbol, 0, 0);
+                        ctx.restore();
+
+                        // Draw subtle connecting lines between nearby symbols
+                        for (let j = i + 1; j < symbols.length; j++) {
+                            const s2 = symbols[j];
+                            const dx = s.x - s2.x;
+                            const dy = s.y - s2.y;
                             const dist = Math.sqrt(dx * dx + dy * dy);
 
-                            if (dist < 100) {
+                            if (dist < 150) {
                                 ctx.beginPath();
                                 ctx.strokeStyle = '#C9A227';
-                                ctx.globalAlpha = 0.08 * (1 - dist / 100);
+                                ctx.globalAlpha = 0.04 * (1 - dist / 150);
                                 ctx.lineWidth = 0.5;
-                                ctx.moveTo(p.x, p.y);
-                                ctx.lineTo(p2.x, p2.y);
+                                ctx.moveTo(s.x, s.y);
+                                ctx.lineTo(s2.x, s2.y);
                                 ctx.stroke();
                             }
                         }
                     });
+
+                    ctx.globalAlpha = 1;
                     requestAnimationFrame(animateBg);
                 }
 
-                window.addEventListener('resize', () => { resize(); createParticles(); });
+                window.addEventListener('resize', () => { resize(); createSymbols(); });
                 initBg();
             }
 
