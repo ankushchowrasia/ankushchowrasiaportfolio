@@ -1,109 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Under Maintenance | Ankush Chowrasia</title>
-    <meta name="description" content="Ankush Chowrasia's portfolio is currently under maintenance. Please contact via LinkedIn.">
-
-    <!-- Tailwind CDN -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objection! | Under Maintenance</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Icons & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: { gold: '#C9A227', dark: '#0A0A0A' }
-                    },
-                    fontFamily: { 
-                        sans: ['Inter', 'sans-serif'], 
-                        heading: ['Playfair Display', 'serif'] 
-                    }
-                }
-            }
-        }
-    </script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <style>
         body {
             background-color: #0A0A0A;
-            /* Ensures no scrollbars if content is small */
-            overflow: hidden; 
+            color: #F5F0E6;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+        h1, h2, .font-heading {
+            font-family: 'Playfair Display', serif;
         }
 
-        /* Elegant card container glow */
-        .maintenance-card {
-            border: 1px solid rgba(201, 162, 39, 0.3);
-            box-shadow: 
-                0 0 30px rgba(201, 162, 39, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            animation: cardGlowPulse 4s ease-in-out infinite;
+        .gavel-container {
+            transform-origin: bottom right;
         }
 
-        @keyframes cardGlowPulse {
-            0%, 100% {
-                box-shadow: 
-                    0 0 30px rgba(201, 162, 39, 0.1),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-                border-color: rgba(201, 162, 39, 0.3);
-            }
-            50% {
-                box-shadow: 
-                    0 0 50px rgba(201, 162, 39, 0.2),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-                border-color: rgba(201, 162, 39, 0.6);
-            }
+        .stamp {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(5);
+            font-size: clamp(4rem, 10vw, 8rem);
+            color: #ef4444;
+            border: 8px solid #ef4444;
+            padding: 1rem 3rem;
+            border-radius: 20px;
+            font-weight: 900;
+            text-transform: uppercase;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 100;
+            transform-origin: center;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.5), inset 0 0 20px rgba(239, 68, 68, 0.5);
+            text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
         }
 
-        /* Subtle pulsing gear icon */
-        .spin-slow {
-            animation: spin 8s linear infinite;
+        .paper {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(201, 162, 39, 0.15);
+            width: 60px;
+            height: 80px;
+            z-index: -1;
+            pointer-events: none;
+            border-radius: 4px;
+        }
+        .paper::after {
+            content: '';
+            position: absolute;
+            top: 10px; left: 10px; right: 10px;
+            height: 2px;
+            background: rgba(201, 162, 39, 0.2);
+            box-shadow: 0 8px 0 rgba(201, 162, 39, 0.2), 0 16px 0 rgba(201, 162, 39, 0.2), 0 24px 0 rgba(201, 162, 39, 0.2);
         }
 
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .btn-dodge {
+            position: relative;
+            transition: color 0.2s, border-color 0.2s;
         }
     </style>
 </head>
+<body class="min-h-screen flex items-center justify-center relative">
 
-<body class="text-white font-sans min-h-screen flex items-center justify-center p-4 relative">
+    <!-- The Unexpected Stamp -->
+    <div id="overruled-stamp" class="stamp font-heading rotate-[-15deg]">OVERRULED!</div>
 
-    <!-- Decorative Background Glow -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20rem] md:w-[40rem] h-[20rem] md:h-[40rem] bg-brand-gold/10 rounded-full blur-[100px] md:blur-[150px] pointer-events-none -z-10"></div>
-
-    <!-- Main Content Container -->
-    <main class="maintenance-card bg-[#0d1117]/80 backdrop-blur-xl p-10 md:p-16 rounded-3xl text-center max-w-2xl w-full flex flex-col items-center relative z-10 transform transition-all hover:scale-[1.02] duration-500">
+    <div id="main-card" class="bg-[#111] border border-[#C9A227]/30 p-10 md:p-16 rounded-3xl shadow-[0_0_50px_rgba(201,162,39,0.15)] text-center max-w-2xl mx-4 relative z-10 opacity-0 scale-90">
         
-        <!-- Icon -->
-        <div class="w-20 h-20 bg-brand-gold/10 border border-brand-gold/40 rounded-2xl flex items-center justify-center text-brand-gold text-4xl mb-8 shadow-[0_0_20px_rgba(201,162,39,0.2)]">
-            <i class="fas fa-cog spin-slow"></i>
+        <!-- Animated Gavel -->
+        <div class="text-6xl text-[#C9A227] mb-6 flex justify-center items-end h-24">
+            <div id="gavel" class="gavel-container inline-block">
+                <i class="fa-solid fa-gavel"></i>
+            </div>
+            <div class="w-12 h-2 bg-[#C9A227]/50 rounded ml-2 mb-2"></div>
         </div>
 
-        <!-- Headings -->
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-gold font-heading mb-6 tracking-tight">
-            Page under maintenance..
+        <h1 id="headline" class="text-5xl md:text-6xl font-bold mb-4 font-heading text-white">
+            <span class="text-[#C9A227] italic">OBJECTION!</span>
         </h1>
+        <h2 class="text-2xl font-semibold mb-6 text-gray-300">Premises Under Maintenance</h2>
         
-        <p class="text-gray-400 text-lg md:text-xl mb-12 max-w-md font-light">
-            Contact on LinkedIn only.
+        <p class="text-gray-400 mb-8 leading-relaxed text-lg">
+            The Honorable <strong class="text-[#C9A227]">Ankush Chowrasia</strong> has sentenced this portfolio to a mandatory redesign. All bugs have been held in contempt of court. We are currently filing a <em>Habeas Corpus</em> for the missing code.
         </p>
 
-        <!-- Action Button -->
-        <a href="https://www.linkedin.com/in/ankushchowrasia27/" target="_blank" rel="noopener noreferrer" 
-           class="group bg-brand-gold text-[#0A0A0A] px-8 py-4 rounded-xl font-bold flex items-center gap-3 hover:bg-white transition-all duration-300 shadow-[0_0_20px_rgba(201,162,39,0.3)] hover:shadow-[0_0_35px_rgba(201,162,39,0.6)] text-lg">
-            <i class="fab fa-linkedin text-2xl group-hover:scale-110 transition-transform duration-300"></i> 
-            <span>LinkedIn Profile</span>
-        </a>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="https://www.linkedin.com/in/ankushchowrasia27/" target="_blank" 
+               class="bg-[#C9A227] text-black font-bold px-8 py-4 rounded-xl flex items-center gap-3 hover:bg-white hover:scale-105 transition-all w-full sm:w-auto justify-center shadow-[0_0_20px_rgba(201,162,39,0.4)]">
+                <i class="fa-brands fa-linkedin text-xl"></i> Serve Notice on LinkedIn
+            </a>
+            
+            <!-- The Funny Button -->
+            <button id="appeal-btn" 
+               class="btn-dodge border border-gray-600 text-gray-300 font-bold px-8 py-4 rounded-xl flex items-center gap-3 hover:text-white hover:border-red-500 w-full sm:w-auto justify-center">
+                <i class="fa-solid fa-scale-unbalanced"></i> Appeal Decision
+            </button>
+        </div>
+    </div>
 
-    </main>
+    <script>
+        // Initial Screen Load Animation (Gavel Strike & Shake)
+        const tl = gsap.timeline();
 
+        tl.to("#main-card", {
+            opacity: 1,
+            scale: 1,
+            duration: 0.8,
+            ease: "back.out(1.5)"
+        })
+        .fromTo("#gavel", 
+            { rotation: -45 }, 
+            { rotation: 15, duration: 0.15, ease: "power2.in" },
+            "+=0.2"
+        )
+        // Screen shake on gavel hit
+        .to("body", {
+            x: -8, y: 8,
+            duration: 0.05,
+            yoyo: true,
+            repeat: 5
+        })
+        .to("#headline", {
+            scale: 1.05,
+            color: "#ef4444",
+            duration: 0.1,
+            yoyo: true,
+            repeat: 1
+        }, "<")
+        // Gavel recoil
+        .to("#gavel", {
+            rotation: -20,
+            duration: 0.4,
+            ease: "back.out(2)"
+        });
+
+        // The "Unexpected" Button Logic
+        const appealBtn = document.getElementById('appeal-btn');
+        let hoverCount = 0;
+
+        // Button evades the cursor on the first 2 hovers
+        appealBtn.addEventListener('mouseenter', () => {
+            if (hoverCount < 2) {
+                const x = (Math.random() - 0.5) * 150;
+                const y = (Math.random() - 0.5) * 80;
+                gsap.to(appealBtn, {
+                    x: x,
+                    y: y,
+                    duration: 0.2,
+                    ease: "power1.out"
+                });
+                hoverCount++;
+            } else {
+                gsap.to(appealBtn, { x: 0, y: 0, duration: 0.2 });
+            }
+        });
+
+        // The Grand Denial
+        appealBtn.addEventListener('click', () => {
+            const stamp = document.getElementById('overruled-stamp');
+            
+            // Reset stamp state
+            gsap.set(stamp, { scale: 5, opacity: 0, rotation: -15 });
+            
+            const stampTl = gsap.timeline();
+            stampTl.to(stamp, {
+                scale: 1,
+                opacity: 1,
+                duration: 0.3,
+                ease: "power4.in"
+            })
+            // Massive shake
+            .to("#main-card", {
+                x: (i) => (i % 2 === 0 ? 15 : -15),
+                y: (i) => (i % 2 === 0 ? -15 : 15),
+                duration: 0.05,
+                repeat: 8,
+                yoyo: true
+            })
+            // Fade away
+            .to(stamp, {
+                opacity: 0,
+                scale: 1.2,
+                duration: 0.8,
+                delay: 1.5,
+                ease: "power2.out"
+            });
+
+            // Update button UI temporarily
+            const originalText = appealBtn.innerHTML;
+            appealBtn.innerHTML = '<i class="fa-solid fa-gavel"></i> Motion Denied';
+            appealBtn.classList.add('text-red-500', 'border-red-500');
+            
+            setTimeout(() => {
+                appealBtn.innerHTML = originalText;
+                appealBtn.classList.remove('text-red-500', 'border-red-500');
+            }, 2500);
+        });
+
+        // Falling Legal Papers Background Animation
+        function createPapers() {
+            const numPapers = 15;
+            for (let i = 0; i < numPapers; i++) {
+                const paper = document.createElement('div');
+                paper.classList.add('paper');
+                
+                gsap.set(paper, {
+                    x: Math.random() * window.innerWidth,
+                    y: -100 - (Math.random() * 500),
+                    rotation: Math.random() * 360,
+                    opacity: Math.random() * 0.5 + 0.1
+                });
+                
+                document.body.appendChild(paper);
+                
+                gsap.to(paper, {
+                    y: window.innerHeight + 100,
+                    x: "+=" + ((Math.random() - 0.5) * 200),
+                    rotation: "+=" + ((Math.random() - 0.5) * 180),
+                    duration: 5 + Math.random() * 8,
+                    ease: "none",
+                    repeat: -1,
+                    delay: Math.random() * -5
+                });
+            }
+        }
+
+        window.addEventListener('load', createPapers);
+    </script>
 </body>
-
 </html>
