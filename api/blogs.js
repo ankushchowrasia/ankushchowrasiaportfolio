@@ -1,8 +1,3 @@
-Viewed blogs.js:1-200
-
-Here is the complete code for **`api/blogs.js`**:
-
-```javascript
 // Vercel Serverless Function: /api/blogs.js
 // Securely fetches blogs from Blogger public feed or Blogger API v3
 
@@ -84,7 +79,7 @@ function normalizeUnicodeText(str) {
             if (code >= 0x1D7CE && code <= 0x1D7D7) return String.fromCharCode(code - 0x1D7CE + 48);
             return char;
         })
-        .replace(/[\u2013\u2014]/g, '-'); // replace en/em dashes with hyphens
+        .replace(/[\u2013\u2014]/g, '-');
 }
 
 // Create slug from title
@@ -202,4 +197,3 @@ module.exports = async (req, res) => {
         source: 'seed-fallback'
     });
 };
-```
