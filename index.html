@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google Analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-09TCZC6C0V"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-09TCZC6C0V');
+    </script>
+    <title>Ankush Chowrasia | Legal Education & Research</title>
+    <meta name="description" content="Personal academic portfolio of Ankush Chowrasia, a Class 12 Humanities student focusing on constitutional law, legal research, and legal technology.">
+    <meta name="keywords" content="Ankush Chowrasia, Constitutional Law, Legal Research, Legal Technology, Jalpaiguri, West Bengal, Law Student">
+    <meta name="author" content="Ankush Chowrasia">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Ankush Chowrasia | Legal Education & Research">
+    <meta property="og:description" content="Academic writings, research papers, and credentials in constitutional law and jurisprudence.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ankushchowrasia.vercel.app/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Ankush Chowrasia | Legal Education & Research">
+    <meta name="twitter:description" content="Academic writings, research papers, and credentials in constitutional law and jurisprudence.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Preloaded full articles data -->
+    <script src="blogs-data.js"></script>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-page: #09090b;
+            --bg-surface: #121215;
+            --bg-elevated: #18181c;
+            --border-subtle: #27272a;
+            --border-strong: #3f3f46;
+            --text-main: #ffffff;
+            --text-muted: #ffffff;
+            --text-faint: #d4d4d8;
+            --accent: #ffffff;
+            --accent-contrast: #09090b;
+            --font-serif: 'Lora', Georgia, serif;
+            --font-sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --container-max: 1080px;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: #ffffff;
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 16px;
+            background: #ffffff;
+            color: #000000;
+            padding: 8px 14px;
+            font-weight: 600;
+            z-index: 1000;
+            transition: top 0.2s;
+        }
+        .skip-link:focus {
+            top: 16px;
+        }
+
+        /* Navigation */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: #09090b;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .brand-link {
+            font-family: var(--font-serif);
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--text-main);
+        }
+
+        .brand-link:hover {
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: color 0.15s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: var(--text-main);
+        }
+
+        .btn-resume {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 7px 14px;
+            border: 1px solid var(--border-strong);
+            border-radius: 4px;
+            color: var(--text-main);
+            transition: border-color 0.15s ease, background-color 0.15s ease;
+        }
+
+        .btn-resume:hover {
+            border-color: var(--text-main);
+            background-color: var(--bg-surface);
+        }
+
+        /* Mobile Navigation Overlay & Drawer */
+        .mobile-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 998;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .mobile-backdrop.is-active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-toggle {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 0;
+            position: relative;
+            z-index: 1000;
+            transition: border-color 0.15s ease, background 0.15s ease;
+        }
+
+        .mobile-toggle:hover {
+            border-color: #ffffff;
+            background: var(--bg-surface);
+        }
+
+        .mobile-toggle .icon-close {
+            display: none;
+        }
+
+        .mobile-toggle.is-active .icon-hamburger {
+            display: none;
+        }
+
+        .mobile-toggle.is-active .icon-close {
+            display: block;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 80px 0 64px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-tagline {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(32px, 5vw, 46px);
+            font-weight: 700;
+            line-height: 1.2;
+            color: #ffffff;
+            margin-bottom: 18px;
+        }
+
+        .hero-desc {
+            font-size: 18px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 28px;
+            max-width: 620px;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 11px 22px;
+            background-color: var(--text-main);
+            color: var(--accent-contrast);
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 4px;
+            border: 1px solid var(--text-main);
+            transition: opacity 0.15s ease;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 11px 22px;
+            background-color: transparent;
+            color: var(--text-main);
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 4px;
+            border: 1px solid var(--border-strong);
+            transition: border-color 0.15s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-main);
+        }
+
+        .hero-photo-container {
+            width: 240px;
+            height: 240px;
+            justify-self: end;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-surface);
+        }
+
+        .hero-photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Section Layout */
+        .section {
+            padding: 72px 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .section-header {
+            margin-bottom: 36px;
+        }
+
+        .section-eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .section-heading {
+            font-family: var(--font-serif);
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.3;
+        }
+
+        .section-intro {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            max-width: 640px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 48px;
+        }
+
+        .about-prose p {
+            font-size: 16px;
+            color: var(--text-muted);
+            line-height: 1.75;
+            margin-bottom: 16px;
+        }
+
+        .about-prose p:last-child {
+            margin-bottom: 0;
+        }
+
+        .about-sidebar {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 4px;
+            padding: 24px;
+            height: fit-content;
+        }
+
+        .sidebar-item {
+            margin-bottom: 20px;
+        }
+
+        .sidebar-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .sidebar-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-faint);
+            margin-bottom: 4px;
+        }
+
+        .sidebar-value {
+            font-size: 14px;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* Articles / Writing Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .article-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            cursor: pointer;
+            transition: border-color 0.15s ease;
+        }
+
+        .article-card:hover {
+            border-color: var(--border-strong);
+        }
+
+        .article-card-thumb {
+            width: 100%;
+            height: 180px;
+            background-color: var(--bg-elevated);
+            border-bottom: 1px solid var(--border-subtle);
+            overflow: hidden;
+        }
+
+        .article-card-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .article-card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .article-card-date {
+            font-size: 12px;
+            color: var(--text-faint);
+            margin-bottom: 8px;
+        }
+
+        .article-card-title {
+            font-family: var(--font-serif);
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .article-card-excerpt {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+
+        .article-card-action {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-main);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .section-footer-link {
+            margin-top: 32px;
+            text-align: center;
+        }
+
+        /* Research Section */
+        .research-item {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 4px;
+            padding: 32px;
+        }
+
+        .research-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 14px;
+        }
+
+        .research-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            background-color: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: 3px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .research-title {
+            font-family: var(--font-serif);
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.35;
+        }
+
+        .research-date {
+            font-size: 13px;
+            color: var(--text-faint);
+            white-space: nowrap;
+        }
+
+        .research-desc {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .research-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .research-source {
+            font-size: 13px;
+            color: var(--text-faint);
+        }
+
+        /* Credentials Section */
+        .credentials-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .credential-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 4px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            transition: border-color 0.15s ease;
+        }
+
+        .credential-card:hover {
+            border-color: var(--border-strong);
+        }
+
+        .credential-image-wrapper {
+            background-color: var(--bg-elevated);
+            border-right: 1px solid var(--border-subtle);
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .credential-image-wrapper img {
+            max-width: 100%;
+            max-height: 140px;
+            object-fit: contain;
+        }
+
+        .credential-content {
+            padding: 24px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .credential-title {
+            font-family: var(--font-serif);
+            font-size: 19px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .credential-org {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .credential-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.65;
+            margin-bottom: 16px;
+        }
+
+        .credential-footer {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .verify-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-main);
+            padding: 6px 12px;
+            border: 1px solid var(--border-strong);
+            border-radius: 3px;
+            transition: border-color 0.15s ease, background-color 0.15s ease;
+        }
+
+        .verify-link:hover {
+            border-color: var(--text-main);
+            background-color: var(--bg-elevated);
+        }
+
+        .verify-static {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border: 1px solid var(--border-subtle);
+            border-radius: 3px;
+        }
+
+        /* Contact Section */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+
+        .contact-info p {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .contact-direct-item {
+            margin-bottom: 16px;
+        }
+
+        .contact-direct-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-faint);
+            margin-bottom: 4px;
+        }
+
+        .contact-direct-value {
+            font-size: 15px;
+            color: var(--text-main);
+        }
+
+        .contact-direct-value a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 4px;
+            padding: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px 14px;
+            background-color: var(--bg-page);
+            border: 1px solid var(--border-strong);
+            border-radius: 4px;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.15s ease;
+        }
+
+        .form-input:focus {
+            border-color: var(--text-main);
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 11px 16px;
+            background-color: var(--text-main);
+            color: var(--accent-contrast);
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid var(--text-main);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: opacity 0.15s ease;
+        }
+
+        .btn-submit:hover {
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .site-footer {
+            padding: 48px 0 36px;
+            background-color: var(--bg-page);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 36px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .footer-brand-title {
+            font-family: var(--font-serif);
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .footer-brand-role {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .footer-brand-location {
+            font-size: 13px;
+            color: var(--text-faint);
+            line-height: 1.6;
+        }
+
+        .footer-col-title {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+
+        .footer-nav {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-nav a {
+            font-size: 13px;
+            color: var(--text-muted);
+            transition: color 0.15s ease;
+        }
+
+        .footer-nav a:hover {
+            color: var(--text-main);
+        }
+
+        .footer-social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            transition: color 0.15s ease;
+        }
+
+        .footer-social-link:hover {
+            color: var(--text-main);
+        }
+
+        .footer-bottom {
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-faint);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-bottom a {
+            color: var(--text-faint);
+            text-decoration: underline;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--text-muted);
+        }
+
+        /* Article Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background-color: rgba(9, 9, 11, 0.94);
+            display: none;
+            overflow-y: auto;
+            padding: 40px 16px;
+        }
+
+        .modal-overlay.is-active {
+            display: block;
+        }
+
+        .modal-container {
+            max-width: 720px;
+            margin: 0 auto;
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 4px;
+            padding: 36px;
+            position: relative;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: 1px solid var(--border-strong);
+            color: var(--text-main);
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .modal-close-btn:hover {
+            border-color: var(--text-main);
+        }
+
+        .modal-thumb {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .modal-date {
+            font-size: 12px;
+            color: var(--text-faint);
+            margin-bottom: 8px;
+        }
+
+        .modal-title {
+            font-family: var(--font-serif);
+            font-size: 26px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        .modal-body {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            white-space: pre-line;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+            .hero-photo-container {
+                justify-self: start;
+                width: 180px;
+                height: 180px;
+            }
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            .credential-card {
+                grid-template-columns: 1fr;
+            }
+            .credential-image-wrapper {
+                border-right: none;
+                border-bottom: 1px solid var(--border-subtle);
+                padding: 24px;
+            }
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background: #121215;
+                border-bottom: 1px solid var(--border-strong);
+                box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
+                z-index: 999;
+                padding: 76px 20px 24px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, visibility 0.28s;
+            }
+
+            .mobile-menu.is-active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+
+            .mobile-menu ul {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                margin-bottom: 18px;
+            }
+
+            .mobile-menu a.mobile-nav-link {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                font-size: 16px;
+                font-weight: 500;
+                color: #ffffff;
+                padding: 13px 14px;
+                border-radius: 6px;
+                border: 1px solid transparent;
+                transition: background-color 0.15s ease, border-color 0.15s ease;
+            }
+
+            .mobile-menu a.mobile-nav-link:hover,
+            .mobile-menu a.mobile-nav-link:active {
+                background: var(--bg-elevated);
+                border-color: var(--border-subtle);
+            }
+
+            .mobile-menu a.mobile-nav-link svg {
+                opacity: 0.6;
+            }
+
+            .mobile-menu .mobile-resume-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                width: 100%;
+                padding: 13px 16px;
+                font-size: 15px;
+                font-weight: 600;
+                color: #09090b !important;
+                background: #ffffff;
+                border-radius: 6px;
+                text-align: center;
+                margin-top: 8px;
+            }
+
+            .container {
+                padding: 0 18px;
+            }
+            .nav-links, .nav-action {
+                display: none !important;
+            }
+            .mobile-toggle {
+                display: flex !important;
+            }
+            .section {
+                padding: 48px 0;
+            }
+            .section-heading {
+                font-size: 24px;
+            }
+            .section-intro {
+                font-size: 14px;
+                margin-bottom: 24px;
+            }
+            .hero-section {
+                padding: 40px 0 36px;
+            }
+            .hero-grid {
+                display: flex;
+                flex-direction: column-reverse;
+                align-items: center;
+                text-align: center;
+                gap: 24px;
+            }
+            .hero-photo-container {
+                width: 130px;
+                height: 130px;
+                margin: 0 auto;
+            }
+            .hero-photo-container img {
+                width: 130px;
+                height: 130px;
+            }
+            .hero-title {
+                font-size: clamp(26px, 6.8vw, 34px);
+                line-height: 1.25;
+                margin-bottom: 14px;
+            }
+            .hero-desc {
+                font-size: 15px;
+                line-height: 1.65;
+                margin: 0 auto 24px;
+            }
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+                gap: 12px;
+            }
+            .hero-actions .btn-primary,
+            .hero-actions .btn-secondary {
+                width: 100%;
+                justify-content: center;
+                padding: 13px 18px;
+                font-size: 15px;
+            }
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .about-prose p {
+                font-size: 15px;
+            }
+            .about-sidebar {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .articles-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .article-card-thumb {
+                height: 180px;
+            }
+            .section-footer-link .btn-secondary {
+                width: 100%;
+                justify-content: center;
+                padding: 13px 16px;
+            }
+            .research-item {
+                padding: 22px 18px;
+            }
+            .research-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .research-title {
+                font-size: 19px;
+            }
+            .research-desc {
+                font-size: 14px;
+            }
+            .research-actions {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+            }
+            .research-actions .btn-primary {
+                width: 100%;
+                justify-content: center;
+            }
+            .credential-card {
+                grid-template-columns: 1fr;
+            }
+            .credential-image-wrapper {
+                border-right: none;
+                border-bottom: 1px solid var(--border-subtle);
+                padding: 20px;
+            }
+            .credential-image-wrapper img {
+                max-height: 130px;
+            }
+            .credential-content {
+                padding: 20px 18px;
+            }
+            .credential-footer {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+            .credential-footer .verify-link {
+                width: 100%;
+                justify-content: center;
+            }
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+            .contact-info-card, .contact-form-card {
+                padding: 22px 18px;
+            }
+            .form-input {
+                font-size: 16px;
+                padding: 12px 14px;
+            }
+            .btn-submit {
+                padding: 14px 18px;
+                font-size: 15px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                text-align: center;
+            }
+            .footer-social-link {
+                justify-content: center;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
+            }
+            .modal-overlay {
+                padding: 20px 12px;
+            }
+            .modal-container {
+                padding: 24px 18px;
+            }
+            .modal-thumb {
+                height: 180px;
+            }
+            .modal-title {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-sidebar {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header Navigation -->
+    <div class="mobile-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
+    <header class="site-header">
+        <div class="container">
+            <nav class="nav-inner" aria-label="Main Navigation">
+                <a href="#home" class="brand-link">Ankush Chowrasia</a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#writing">Writing</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#credentials">Credentials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="nav-action">
+                    <a href="Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-resume">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        View Resume
+                    </a>
+                </div>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <svg class="icon-hamburger" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                    <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </nav>
+        </div>
+        <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+            <ul>
+                <li><a href="#about" class="mobile-nav-link"><span>About</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></a></li>
+                <li><a href="#writing" class="mobile-nav-link"><span>Writing</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></a></li>
+                <li><a href="#research" class="mobile-nav-link"><span>Written Research Papers</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></a></li>
+                <li><a href="#credentials" class="mobile-nav-link"><span>Credentials</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></a></li>
+                <li><a href="#contact" class="mobile-nav-link"><span>Contact</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></a></li>
+                <li><a href="blogs.html" class="mobile-nav-link" style="color:#ffffff;"><span>All 56 Articles Archive</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></a></li>
+            </ul>
+            <a href="Resume.pdf" target="_blank" rel="noopener noreferrer" class="mobile-resume-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                View Resume (PDF)
+            </a>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero / Introduction -->
+        <section id="home" class="hero-section">
+            <div class="container">
+                <div class="hero-grid">
+                    <div>
+                        <h1 class="hero-title">Aspiring Lawyer &<br>Legal Researcher</h1>
+                        <p class="hero-desc">Class 12 Humanities student at Saint Paul's School, Jalpaiguri, focusing on constitutional law, fundamental rights, legal research, and the intersection of law and technology.</p>
+                        <div class="hero-actions">
+                            <a href="#writing" class="btn-primary">
+                                Read Articles
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </a>
+                            <a href="#about" class="btn-secondary">Academic Background</a>
+                        </div>
+                    </div>
+                    <div class="hero-photo-container">
+                        <img src="https://raw.githubusercontent.com/ankushchowrasia/ankushchowrasiaportfolio/f441711a1f172c88766b3aac9d68df3926d34a4f/cf862466-d006-4458-a842-79bf482c7a66.png" alt="Ankush Chowrasia" width="240" height="240" loading="eager">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-eyebrow">Profile</p>
+                    <h2 class="section-heading">Academic Background & Focus</h2>
+                </div>
+                <div class="about-content">
+                    <div class="about-prose">
+                        <p>I am currently a Class 12 Humanities student at Saint Paul's School, Jalpaiguri, West Bengal. My academic pursuit centers on understanding the structural mechanisms of Indian constitutional law, the protection of civil liberties, and the sociological dimensions of crime and justice.</p>
+                        <p>Alongside formal coursework, I conduct independent academic inquiry into how legal systems adapt to modern challenges. A core area of my interest is legal technology: examining how digital access, automated research tools, and responsible technology can improve the reach of legal information without compromising judicial deliberation and accountability.</p>
+                        <p>My objective is to pursue an undergraduate legal education (LL.B.) and build a career combining legal scholarship, constitutional research, and practical advocacy.</p>
+                    </div>
+                    <div class="about-sidebar">
+                        <div class="sidebar-item">
+                            <p class="sidebar-label">Current Academic Level</p>
+                            <p class="sidebar-value">Class 12, Humanities</p>
+                        </div>
+                        <div class="sidebar-item">
+                            <p class="sidebar-label">Institution</p>
+                            <p class="sidebar-value">Saint Paul's School, Jalpaiguri</p>
+                        </div>
+                        <div class="sidebar-item">
+                            <p class="sidebar-label">Location</p>
+                            <p class="sidebar-value">West Bengal, India</p>
+                        </div>
+                        <div class="sidebar-item">
+                            <p class="sidebar-label">Primary Fields</p>
+                            <p class="sidebar-value">Constitutional Law, Jurisprudence, Legal Technology</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Writing / Articles Section -->
+        <section id="writing" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-eyebrow">Writing</p>
+                    <h2 class="section-heading">Articles & Legal Commentary</h2>
+                    <p class="section-intro">Notes and short essays exploring judicial independence, legal procedure, and the practical boundaries of technology in the court system.</p>
+                </div>
+                <div class="articles-grid" id="articlesContainer">
+                    <!-- Populated dynamically via script with fallback -->
+                </div>
+                <div class="section-footer-link">
+                    <a href="blogs.html" class="btn-secondary">
+                        View All Articles & Archives
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-eyebrow">Academic Research</p>
+                    <h2 class="section-heading">Written Research Papers</h2>
+                    <p class="section-intro">Structured field-based research examining the intersection of socio-economic disparity, local community conditions, and crime.</p>
+                </div>
+                <div class="research-item">
+                    <div class="research-header">
+                        <div>
+                            <span class="research-badge">Sociological & Policy Study</span>
+                            <h3 class="research-title">Poverty and Crime: A Sociological Study of Jalpaiguri, West Bengal</h3>
+                        </div>
+                        <span class="research-date">September 2025</span>
+                    </div>
+                    <p class="research-desc">This academic study investigates the correlation between poverty, economic vulnerability, and criminal activity in Jalpaiguri district, West Bengal. Drawing from local observations and sociological frameworks, the paper evaluates social welfare deficits, community patterns, and their broader implications for criminal justice administration and regional policy interventions.</p>
+                    <div class="research-actions">
+                        <a href="https://www.scribd.com/document/908221808/Poverty-and-Crime-A-Sociological-Study-of-Jalpaiguri-West-Bengal" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                            Read Research on Scribd
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </a>
+                        <span class="research-source">Published and archived on Scribd</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Credentials Section -->
+        <section id="credentials" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-eyebrow">Credentials</p>
+                    <h2 class="section-heading">Verified Legal Certifications</h2>
+                    <p class="section-intro">Formal university and platform courses completed to strengthen foundational knowledge in legal principles and research methods.</p>
+                </div>
+                <div class="credentials-list">
+                    <!-- Credential 1 -->
+                    <div class="credential-card">
+                        <div class="credential-image-wrapper">
+                            <img src="https://raw.githubusercontent.com/ankushchowrasia/images/cb3a0939fb2f88bc73dda3c1363d858aceee9baa/CertificateUpgrd.png" alt="upGrad Certificate for Law and Justice in a Globalizing World" loading="lazy">
+                        </div>
+                        <div class="credential-content">
+                            <h3 class="credential-title">Law and Justice in a Globalizing World</h3>
+                            <p class="credential-org">upGrad · Completed January 2026</p>
+                            <p class="credential-desc">Comprehensive examination of international law mechanisms, global justice systems, sovereignty, and constitutionalism across cross-border jurisdictions.</p>
+                            <div class="credential-footer">
+                                <a href="https://www.upgrad.com/lxp/learner/certificate/program/69593c3ffbfa5471dd69804e" target="_blank" rel="noopener noreferrer" class="verify-link">
+                                    Verify Credential
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Credential 2 -->
+                    <div class="credential-card">
+                        <div class="credential-image-wrapper">
+                            <img src="https://raw.githubusercontent.com/ankushchowrasia/images/5f79332ff55688a497653e73635e0487cd398127/Screenshot%202026-01-04%20121859.png" alt="The Open University Certificate for Introducing Research in Law and Beyond" loading="lazy">
+                        </div>
+                        <div class="credential-content">
+                            <h3 class="credential-title">Introducing Research in Law and Beyond</h3>
+                            <p class="credential-org">The Open University · Completed January 2026</p>
+                            <p class="credential-desc">Rigorous training in legal research methodology, case analysis, statutory interpretation, scholarly literature review, and ethical academic inquiry.</p>
+                            <div class="credential-footer">
+                                <span class="verify-static">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Verified Coursework
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-eyebrow">Contact</p>
+                    <h2 class="section-heading">Get in Touch</h2>
+                    <p class="section-intro">For academic discussions, research collaborations, student-led legal initiatives, or questions regarding my published writings.</p>
+                </div>
+                <div class="contact-layout">
+                    <div class="contact-info">
+                        <p>I welcome correspondence from educators, legal researchers, students, and practitioners interested in constitutional analysis, fundamental rights, and technology in law.</p>
+                        <div class="contact-direct-item">
+                            <p class="contact-direct-label">Email</p>
+                            <p class="contact-direct-value"><a href="mailto:ankushchowrasiabusiness@gmail.com">ankushchowrasiabusiness@gmail.com</a></p>
+                        </div>
+                        <div class="contact-direct-item">
+                            <p class="contact-direct-label">Location</p>
+                            <p class="contact-direct-value">Jalpaiguri, West Bengal, India (PIN 735101)</p>
+                        </div>
+                        <div class="contact-direct-item">
+                            <p class="contact-direct-label">Professional Profile</p>
+                            <p class="contact-direct-value"><a href="https://www.linkedin.com/in/ankushchowrasia27/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a></p>
+                        </div>
+                    </div>
+                    <form action="https://formspree.io/f/xdkwzggb" method="POST" class="contact-form">
+                        <div class="form-group">
+                            <label for="nameInput" class="form-label">Full Name</label>
+                            <input type="text" id="nameInput" name="name" required class="form-input" autocomplete="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="emailInput" class="form-label">Email Address</label>
+                            <input type="email" id="emailInput" name="email" required class="form-input" autocomplete="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="messageInput" class="form-label">Message</label>
+                            <textarea id="messageInput" name="message" required class="form-input" rows="4" placeholder="Briefly state the purpose of your inquiry or message."></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 class="footer-brand-title">Ankush Chowrasia</h3>
+                    <p class="footer-brand-role">Aspiring Lawyer & Legal Researcher</p>
+                    <p class="footer-brand-location">Saint Paul's School, Jalpaiguri, West Bengal, India</p>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Navigation</h4>
+                    <ul class="footer-nav">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#writing">Writing</a></li>
+                        <li><a href="#research">Research</a></li>
+                        <li><a href="#credentials">Credentials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="blogs.html">All Articles</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Connect & Legal</h4>
+                    <ul class="footer-nav">
+                        <li>
+                            <a href="https://www.linkedin.com/in/ankushchowrasia27/" target="_blank" rel="noopener noreferrer" class="footer-social-link">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                LinkedIn
+                            </a>
+                        </li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear">2026</span> Ankush Chowrasia. All rights reserved.</p>
+                <p>Non-commercial legal education and research portfolio.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Article Reader Modal -->
+    <div class="modal-overlay" id="articleModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+        <div class="modal-container">
+            <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close article">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <img id="modalImage" class="modal-thumb" src="" alt="" style="display:none;">
+            <p id="modalDate" class="modal-date"></p>
+            <h2 id="modalTitle" class="modal-title"></h2>
+            <div id="modalBody" class="modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        // Set dynamic current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle & drawer interactivity
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileBackdrop = document.getElementById('mobileBackdrop');
+
+        function openMobileMenu() {
+            if (!mobileMenu || !mobileToggle) return;
+            mobileMenu.classList.add('is-active');
+            mobileToggle.classList.add('is-active');
+            if (mobileBackdrop) mobileBackdrop.classList.add('is-active');
+            mobileToggle.setAttribute('aria-expanded', 'true');
+            mobileMenu.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            if (!mobileMenu || !mobileToggle) return;
+            mobileMenu.classList.remove('is-active');
+            mobileToggle.classList.remove('is-active');
+            if (mobileBackdrop) mobileBackdrop.classList.remove('is-active');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+            mobileMenu.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = mobileMenu && mobileMenu.classList.contains('is-active');
+                if (isOpen) {
+                    closeMobileMenu();
+                } else {
+                    openMobileMenu();
+                }
+            });
+        }
+
+        if (mobileBackdrop) {
+            mobileBackdrop.addEventListener('click', closeMobileMenu);
+        }
+
+        document.querySelectorAll('.mobile-nav-link, .mobile-resume-btn').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('is-active')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Blog seed fallback data
+        const fallbackArticles = [
+            {
+                id: 'seed-1',
+                title: 'Lesser-Known Facts About Indian Laws',
+                thumbnail: 'https://raw.githubusercontent.com/ankushchowrasia/blogs-/e870d84bed6e7e16c9f7d933c186a68f6d2b30b1/Screenshot%202026-01-03%20124122.png',
+                publishedDate: 'January 3, 2026',
+                content: `1. Preventive Detention: Under Article 22 of the Constitution and relevant statutes, a person can be detained to prevent the commission of an offense, subject to strict procedural safeguards.\n\n2. False Testimony as a Crime: Perjury under Section 191/193 of the Indian Penal Code is a punishable offense regardless of whether the false testimony swayed the outcome.\n\n3. Court-Ordered DNA Testing: In matrimonial and paternity matters, courts possess the authority to order DNA tests when essential to determine the truth and serve justice.\n\n4. Adverse Inferences: While the privilege against self-incrimination is protected under Article 20(3), unexplained silence in civil or specific evidence contexts may give rise to limited judicial inferences.\n\n5. Forum for Matrimonial Complaints: Aggrieved parties in matrimonial disputes may file complaints within jurisdictions where they reside post-separation.\n\n6. Judicial Summoning Powers: Under Section 319 of the Code of Criminal Procedure, courts may summon any person appearing to be involved in an offense, even if not charge-sheeted by police.\n\n7. Legal Notices: Many civil disputes do not statutorily mandate a prior notice, though it often serves as essential strategic documentation.\n\n8. Self-Representation: Litigants retain the constitutional right to appear in person and argue their own case without counsel.\n\n9. Contempt Jurisdiction: High Courts and the Supreme Court hold inherent constitutional powers to punish for contempt to protect judicial authority and administrative dignity.\n\n10. Judicial Notice: Courts may take judicial notice of widely acknowledged facts without requiring formal proof under the Indian Evidence Act.`
+            },
+            {
+                id: 'seed-2',
+                title: 'Understanding Judicial Independence in a Constitutional Democracy',
+                thumbnail: 'https://raw.githubusercontent.com/ankushchowrasia/blogs-/e870d84bed6e7e16c9f7d933c186a68f6d2b30b1/Screenshot%202026-01-02%20133747.png',
+                publishedDate: 'January 2, 2026',
+                content: `Judicial independence is a cornerstone of constitutional democracy. It guarantees that judges can adjudicate disputes free from external pressure, executive interference, legislative influence, or majoritarian sentiment.\n\nIn India's constitutional framework, power is separated among the legislature, executive, and judiciary. Judicial independence allows the courts to maintain checks and balances through judicial review, ensuring that legislative enactments and executive actions conform to constitutional boundaries.\n\nWithout an independent judiciary, fundamental rights lose their practical safeguard. The courts exist as the ultimate guarantor of civil liberties, ensuring that equal justice applies to all citizens regardless of status or political authority.`
+            },
+            {
+                id: 'seed-3',
+                title: 'Can Technology Replace Human Judges?',
+                thumbnail: 'https://raw.githubusercontent.com/ankushchowrasia/blogs-/e870d84bed6e7e16c9f7d933c186a68f6d2b30b1/Screenshot%202026-01-01%20204357.png',
+                publishedDate: 'January 1, 2026',
+                content: `In the contemporary legal environment, automated tools and artificial intelligence are rapidly improving case management, legal research, and document classification. These technologies assist legal professionals by reducing administrative backlogs and organizing evidence.\n\nHowever, technology cannot replace the core function of human adjudication. Law is not a mathematical deduction; it requires equitable judgment, moral reasoning, empathy, and contextual understanding of human lives.\n\nFurthermore, automated systems reflect the data on which they are trained. Past judicial records inevitably embody societal and procedural biases. Deploying autonomous decision-making in courts risks entrenching historical inequities while eroding constitutional accountability. Technology must remain an assistive research instrument, not a substitute for human judicial conscience.`
+            }
+        ];
+
+        let activeArticles = (typeof window.PRELOADED_BLOGS !== 'undefined' && window.PRELOADED_BLOGS.length)
+            ? window.PRELOADED_BLOGS.slice(0, 3)
+            : fallbackArticles;
+
+        function renderArticles(articles) {
+            const container = document.getElementById('articlesContainer');
+            if (!container) return;
+            container.innerHTML = articles.map(art => {
+                const plainText = (art.content || '').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+                const snippet = plainText.substring(0, 140);
+                return `
+                    <article class="article-card" onclick="openArticleModal('${art.id}')" tabindex="0" role="button" aria-label="Read ${art.title}">
+                        <div class="article-card-thumb">
+                            <img src="${art.thumbnail}" alt="${art.title}" loading="lazy">
+                        </div>
+                        <div class="article-card-body">
+                            <p class="article-card-date">${art.publishedDate}</p>
+                            <h3 class="article-card-title">${art.title}</h3>
+                            <p class="article-card-excerpt">${snippet}...</p>
+                            <span class="article-card-action">
+                                Read full article
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </span>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+
+        function normalizeUnicodeText(str) {
+            if (!str) return '';
+            return str
+                .replace(/[\uD835][\uDC00-\uDFFF]/g, (char) => {
+                    const code = char.codePointAt(0);
+                    if (code >= 0x1D400 && code <= 0x1D419) return String.fromCharCode(code - 0x1D400 + 65);
+                    if (code >= 0x1D41A && code <= 0x1D433) return String.fromCharCode(code - 0x1D41A + 97);
+                    if (code >= 0x1D7CE && code <= 0x1D7D7) return String.fromCharCode(code - 0x1D7CE + 48);
+                    return char;
+                })
+                .replace(/[\u2013\u2014]/g, '-');
+        }
+
+        // Blogger JSONP callback for real-time updates from Blogger without CORS
+        window.handleBloggerIndexJSONP = function(feedData) {
+            try {
+                const entries = (feedData && feedData.feed && feedData.feed.entry) ? feedData.feed.entry : [];
+                if (entries.length > 0) {
+                    const parsed = entries.slice(0, 3).map(entry => {
+                        const rawTitle = entry.title && entry.title.$t ? entry.title.$t : 'Untitled';
+                        const title = normalizeUnicodeText(rawTitle);
+                        const rawContent = entry.content && entry.content.$t ? entry.content.$t : (entry.summary ? entry.summary.$t : '');
+                        const publishedISO = entry.published && entry.published.$t ? entry.published.$t.split('T')[0] : '2026-01-01';
+                        const publishedDate = entry.published && entry.published.$t ? formatDate(entry.published.$t) : '2026';
+                        let thumbnail = '';
+                        if (entry.media$thumbnail && entry.media$thumbnail.url) {
+                            thumbnail = entry.media$thumbnail.url.replace(/=s\d+(-c)?$/, '=w800');
+                        } else {
+                            const imgMatch = rawContent.match(/<img[^>]+src=["']([^"']+)["']/i);
+                            thumbnail = imgMatch ? imgMatch[1] : 'https://raw.githubusercontent.com/ankushchowrasia/blogs-/e870d84bed6e7e16c9f7d933c186a68f6d2b30b1/Screenshot%202026-01-03%20124122.png';
+                        }
+                        const rawId = entry.id && entry.id.$t ? entry.id.$t : Math.random().toString();
+                        const idMatch = rawId.match(/\.post-(\d+)/);
+                        const id = idMatch ? idMatch[1] : rawId;
+                        return { id, title, content: rawContent, thumbnail, publishedDate, publishedDateISO: publishedISO };
+                    });
+                    activeArticles = parsed;
+                    renderArticles(activeArticles);
+                }
+            } catch (e) {
+                console.error('JSONP index parse error:', e);
+            }
+        };
+
+        async function loadArticles() {
+            // Immediately render activeArticles
+            renderArticles(activeArticles);
+
+            // 1. Try local/Vercel serverless /api/blogs endpoint
+            try {
+                const res = await fetch('/api/blogs');
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.blogs && data.blogs.length > 0) {
+                        activeArticles = data.blogs.slice(0, 3);
+                        renderArticles(activeArticles);
+                        return;
+                    }
+                }
+            } catch (err) {}
+
+            // 2. Request live Blogger feed via dynamic script tag (JSONP, zero CORS issues)
+            try {
+                const jsonpScript = document.createElement('script');
+                jsonpScript.src = 'https://ankushchowrasia1.blogspot.com/feeds/posts/default?alt=json-in-script&callback=handleBloggerIndexJSONP&max-results=5';
+                document.head.appendChild(jsonpScript);
+            } catch (jsonpErr) {}
+        }
+
+        // Modal Functionality
+        const modal = document.getElementById('articleModal');
+        const modalClose = document.getElementById('modalCloseBtn');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDate = document.getElementById('modalDate');
+        const modalBody = document.getElementById('modalBody');
+        const modalImage = document.getElementById('modalImage');
+
+        window.openArticleModal = function(id) {
+            const art = activeArticles.find(a => a.id === id);
+            if (!art) return;
+            modalTitle.textContent = art.title;
+            modalDate.textContent = art.publishedDate;
+            if (art.content && art.content.includes('<')) {
+                modalBody.innerHTML = art.content;
+            } else {
+                modalBody.textContent = art.content;
+            }
+            if (art.thumbnail) {
+                modalImage.src = art.thumbnail;
+                modalImage.alt = art.title;
+                modalImage.style.display = 'block';
+            } else {
+                modalImage.style.display = 'none';
+            }
+            modal.classList.add('is-active');
+            document.body.style.overflow = 'hidden';
+            modal.focus();
+        };
+
+        function closeArticleModal() {
+            modal.classList.remove('is-active');
+            document.body.style.overflow = '';
+        }
+
+        if (modalClose) modalClose.addEventListener('click', closeArticleModal);
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeArticleModal();
+            });
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('is-active')) {
+                    closeArticleModal();
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', loadArticles);
+    </script>
+</body>
+</html>
