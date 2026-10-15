@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google Analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-09TCZC6C0V"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-09TCZC6C0V');
+    </script>
+    <title>All Articles & Legal Commentary | Ankush Chowrasia</title>
+    <meta name="description" content="Legal insights, constitutional commentary, and essays by Ankush Chowrasia.">
+    <meta name="author" content="Ankush Chowrasia">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Preloaded full article data (56 articles) -->
+    <script src="blogs-data.js"></script>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-page: #09090b;
+            --bg-surface: #121215;
+            --bg-elevated: #18181c;
+            --border-subtle: #27272a;
+            --border-strong: #3f3f46;
+            --text-main: #ffffff;
+            --text-muted: #ffffff;
+            --text-faint: #d4d4d8;
+            --font-serif: 'Lora', Georgia, serif;
+            --font-sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --container-max: 1080px;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        .site-header {
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 16px 0;
+            background-color: var(--bg-page);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-link {
+            font-family: var(--font-serif);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .back-link {
+            font-size: 14px;
+            color: var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.15s ease;
+        }
+
+        .back-link:hover {
+            color: var(--text-main);
+        }
+
+        /* Page Content */
+        .main-content {
+            padding: 56px 0 80px;
+        }
+
+        .page-intro {
+            margin-bottom: 36px;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 32px;
+        }
+
+        .page-eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .page-title {
+            font-family: var(--font-serif);
+            font-size: clamp(30px, 4.5vw, 40px);
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .page-desc {
+            font-size: 16px;
+            color: var(--text-muted);
+            max-width: 640px;
+        }
+
+        /* Filter Box */
+        .filter-panel {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            padding: 18px 20px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: flex-end;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex: 1;
+            min-width: 170px;
+        }
+
+        .filter-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+
+        .filter-select, .filter-date-input {
+            padding: 9px 12px;
+            background-color: var(--bg-page);
+            border: 1px solid var(--border-strong);
+            border-radius: 4px;
+            color: #ffffff;
+            color-scheme: dark;
+            font-family: inherit;
+            font-size: 13.5px;
+            outline: none;
+            transition: border-color 0.15s ease;
+            width: 100%;
+        }
+
+        .filter-select:focus, .filter-date-input:focus {
+            border-color: #ffffff;
+        }
+
+        .filter-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 0 0 auto;
+        }
+
+        .btn-filter {
+            padding: 9px 16px;
+            background-color: #ffffff;
+            color: #09090b;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid #ffffff;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: opacity 0.15s ease;
+            white-space: nowrap;
+        }
+
+        .btn-filter:hover {
+            opacity: 0.9;
+        }
+
+        .btn-clear {
+            padding: 9px 14px;
+            background-color: transparent;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid var(--border-strong);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: border-color 0.15s ease, background-color 0.15s ease;
+            white-space: nowrap;
+        }
+
+        .btn-clear:hover {
+            border-color: #ffffff;
+            background-color: var(--bg-elevated);
+        }
+
+        .filter-status-bar {
+            margin-bottom: 24px;
+            padding: 10px 16px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 4px;
+            font-size: 13.5px;
+            color: #ffffff;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Articles Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .article-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            transition: border-color 0.15s ease;
+        }
+
+        .article-card:hover {
+            border-color: var(--border-strong);
+        }
+
+        .article-thumb {
+            width: 100%;
+            height: 180px;
+            background-color: var(--bg-elevated);
+            border-bottom: 1px solid var(--border-subtle);
+            overflow: hidden;
+        }
+
+        .article-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .article-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .article-date {
+            font-size: 12px;
+            color: var(--text-faint);
+            margin-bottom: 8px;
+        }
+
+        .article-title {
+            font-family: var(--font-serif);
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.35;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .article-snippet {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+
+        .article-link {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-main);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* No Results */
+        .no-results {
+            grid-column: 1 / -1;
+            padding: 48px 24px;
+            text-align: center;
+            border: 1px solid var(--border-subtle);
+            border-radius: 4px;
+            background-color: var(--bg-surface);
+        }
+
+        .no-results p {
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background-color: rgba(9, 9, 11, 0.94);
+            display: none;
+            overflow-y: auto;
+            padding: 40px 16px;
+        }
+
+        .modal-overlay.is-active {
+            display: block;
+        }
+
+        .modal-container {
+            max-width: 720px;
+            margin: 0 auto;
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 4px;
+            padding: 36px;
+            position: relative;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: 1px solid var(--border-strong);
+            color: var(--text-main);
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .modal-thumb {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border-subtle);
+            display: block;
+        }
+
+        .modal-date {
+            font-size: 12px;
+            color: var(--text-faint);
+            margin-bottom: 8px;
+        }
+
+        .modal-title {
+            font-family: var(--font-serif);
+            font-size: 26px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        .modal-body {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            white-space: pre-line;
+        }
+
+        .modal-body * {
+            background-color: transparent !important;
+            color: inherit !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        .modal-body img {
+            max-width: 100% !important;
+            height: auto !important;
+            border-radius: 4px;
+            margin: 14px 0;
+        }
+
+        .modal-body a {
+            color: var(--text-main) !important;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .site-footer {
+            border-top: 1px solid var(--border-subtle);
+            padding: 32px 0;
+            font-size: 13px;
+            color: var(--text-faint);
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-inner a {
+            color: var(--text-faint);
+            text-decoration: underline;
+        }
+
+        .footer-inner a:hover {
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 900px) {
+            .articles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 16px;
+            }
+            .page-intro {
+                padding: 32px 0 24px;
+            }
+            .page-title {
+                font-size: 26px;
+            }
+            .page-desc {
+                font-size: 15px;
+            }
+            .articles-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .article-thumb {
+                height: 180px;
+            }
+            .filter-panel {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 16px;
+                gap: 14px;
+            }
+            .filter-group {
+                min-width: 100%;
+            }
+            .filter-select, .filter-date-input {
+                font-size: 16px;
+                min-height: 44px;
+                padding: 10px 14px;
+            }
+            .filter-actions {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .btn-filter, .btn-clear {
+                width: 100%;
+                min-height: 44px;
+                justify-content: center;
+                text-align: center;
+            }
+            .modal-overlay {
+                padding: 20px 12px;
+            }
+            .modal-container {
+                padding: 24px 18px;
+            }
+            .modal-thumb {
+                height: 180px;
+            }
+            .modal-title {
+                font-size: 20px;
+            }
+            .footer-inner {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 14px;
+            }
+        }
+
+        /* Desktop Progressive Scaling */
+        @media (min-width: 1024px) {
+            :root {
+                --container-max: 1180px;
+            }
+            .container {
+                padding: 0 32px;
+            }
+            .page-title {
+                font-size: 44px;
+            }
+            .article-card-thumb {
+                height: 195px;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            :root {
+                --container-max: 1280px;
+            }
+            .container {
+                padding: 0 40px;
+            }
+            .page-title {
+                font-size: 50px;
+            }
+            .page-desc {
+                font-size: 17.5px;
+                max-width: 720px;
+            }
+            .articles-grid {
+                gap: 28px;
+            }
+            .article-card-thumb {
+                height: 210px;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            :root {
+                --container-max: 1420px;
+            }
+            .container {
+                padding: 0 48px;
+            }
+            .page-title {
+                font-size: 56px;
+            }
+            .page-desc {
+                font-size: 19px;
+                max-width: 800px;
+            }
+            .articles-grid {
+                gap: 32px;
+            }
+            .article-card-thumb {
+                height: 225px;
+            }
+            .modal-container {
+                max-width: 860px;
+                padding: 44px;
+            }
+            .modal-thumb {
+                height: 320px;
+            }
+            .modal-title {
+                font-size: 30px;
+            }
+        }
+
+        @media (min-width: 1920px) {
+            :root {
+                --container-max: 1620px;
+            }
+            .container {
+                padding: 0 64px;
+            }
+            .page-title {
+                font-size: 64px;
+            }
+            .page-desc {
+                font-size: 21px;
+                max-width: 900px;
+            }
+            .articles-grid {
+                gap: 36px;
+            }
+            .article-card-thumb {
+                height: 250px;
+            }
+            .modal-container {
+                max-width: 980px;
+                padding: 52px;
+            }
+            .modal-thumb {
+                height: 380px;
+            }
+            .modal-title {
+                font-size: 34px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="nav-inner">
+                <a href="index.html" class="brand-link">Ankush Chowrasia</a>
+                <a href="index.html" class="back-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    Back to Portfolio
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="page-intro">
+                <p class="page-eyebrow">Publications & Essays</p>
+                <h1 class="page-title">Articles & Legal Commentary</h1>
+                <p class="page-desc">Essays exploring constitutional principles, judicial discretion, criminal jurisprudence, and the application of technology within legal frameworks.</p>
+            </div>
+
+            <!-- Filter & Search Bar -->
+            <div class="filter-panel">
+                <div class="filter-group">
+                    <label for="monthFilter" class="filter-label">Filter by Month</label>
+                    <select id="monthFilter" class="filter-select" onchange="applyMonthFilter()">
+                        <option value="">All Dates (56 articles)</option>
+                        <option value="2026-02">February 2026 (24 articles)</option>
+                        <option value="2026-01">January 2026 (31 articles)</option>
+                        <option value="2026-09">September 2026 (1 article)</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterDate" class="filter-label">Or Pick Date</label>
+                    <input type="date" id="filterDate" class="filter-date-input" min="2026-01-01" max="2026-12-31" aria-label="Filter articles by exact date" onchange="applyDateFilter()">
+                </div>
+
+                <div class="filter-actions">
+                    <button onclick="applyDateFilter()" class="btn-filter">Apply Date</button>
+                    <button onclick="resetDateFilter()" class="btn-clear">Reset All</button>
+                </div>
+            </div>
+
+            <!-- Filter Status Bar -->
+            <div id="filterStatus" class="filter-status-bar">
+                <span id="filterStatusText" style="font-weight: 500;"></span>
+                <button onclick="resetDateFilter()" style="background:none; border:none; color:#ffffff; text-decoration:underline; cursor:pointer; font-size:13px; font-weight:600;">Show all 56 articles</button>
+            </div>
+
+            <!-- Grid -->
+            <div id="articlesGrid" class="articles-grid">
+                <!-- Loaded via JS -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-inner">
+                <p>&copy; <span id="currentYear">2026</span> Ankush Chowrasia. All rights reserved.</p>
+                <div style="display:flex;gap:16px;">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Article Modal -->
+    <div class="modal-overlay" id="articleModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+        <div class="modal-container">
+            <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close article">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <img id="modalImage" class="modal-thumb" src="" alt="" style="display:none;">
+            <p id="modalDate" class="modal-date"></p>
+            <h2 id="modalTitle" class="modal-title"></h2>
+            <div id="modalBody" class="modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        const seedArticles = [
+            {
+                id: 'seed-1',
+                title: 'Lesser-Known Facts About Indian Laws',
+                thumbnail: 'https://raw.githubusercontent.com/ankushchowrasia/blogs-/e870d84bed6e7e16c9f7d933c186a68f6d2b30b1/Screenshot%202026-01-03%20124122.png',
+                publishedDate: 'January 3, 2026',
+                publishedDateISO: '2026-01-03',
+                content: `1. Preventive Detention: Under Article 22 of the Constitution and relevant statutes, a person can be detained to prevent the commission of an offense, subject to strict procedural safeguards.\n\n2. False Testimony as a Crime: Perjury under Section 191/193 of the Indian Penal Code is a punishable offense regardless of whether the false testimony swayed the outcome.\n\n3. Court-Ordered DNA Testing: In matrimonial and paternity matters, courts possess the authority to order DNA tests when essential to determine the truth and serve justice.\n\n4. Adverse Inferences: While the privilege against self-incrimination is protected under Article 20(3), unexplained silence in civil or specific evidence contexts may give rise to limited judicial inferences.\n\n5. Forum for Matrimonial Complaints: Aggrieved parties in matrimonial disputes may file complaints within jurisdictions where they reside post-separation.\n\n6. Judicial Summoning Powers: Under Section 319 of the Code of Criminal Procedure, courts may summon any person appearing to be involved in an offense, even if not charge-sheeted by police.\n\n7. Legal Notices: Many civil disputes do not statutorily mandate a prior notice, though it often serves as essential strategic documentation.\n\n8. Self-Representation: Litigants retain the constitutional right to appear in person and argue their own case without counsel.\n\n9. Contempt Jurisdiction: High Courts and the Supreme Court hold inherent constitutional powers to punish for contempt to protect judicial authority and administrative dignity.\n\n10. Judicial Notice: Courts may take judicial notice of widely acknowledged facts without requiring formal proof under the Indian Evidence Act.`
+            },
+            {
+                id: 'seed-2',
+                title: 'Understanding Judicial Independence in a Constitutional Democracy',
+                thumbnail: 'https://raw.githubusercontent.com/ankushchowrasia/blogs-/e870d84bed6e7e16c9f7d933c186a68f6d2b30b1/Screenshot%202026-01-02%20133747.png',
+                publishedDate: 'January 2, 2026',
+                publishedDateISO: '2026-01-02',
+                content: `Judicial independence is a cornerstone of constitutional democracy. It guarantees that judges can adjudicate disputes free from external pressure, executive interference, legislative influence, or majoritarian sentiment.\n\nIn India's constitutional framework, power is separated among the legislature, executive, and judiciary. Judicial independence allows the courts to maintain checks and balances through judicial review, ensuring that legislative enactments and executive actions conform to constitutional boundaries.\n\nWithout an independent judiciary, fundamental rights lose their practical safeguard. The courts exist as the ultimate guarantor of civil liberties, ensuring that equal justice applies to all citizens regardless of status or political authority.`
+            },
+            {
+                id: 'seed-3',
+                title: 'Can Technology Replace Human Judges?',
+                thumbnail: 'https://raw.githubusercontent.com/ankushchowrasia/blogs-/e870d84bed6e7e16c9f7d933c186a68f6d2b30b1/Screenshot%202026-01-01%20204357.png',
+                publishedDate: 'January 1, 2026',
+                publishedDateISO: '2026-01-01',
+                content: `In the contemporary legal environment, automated tools and artificial intelligence are rapidly improving case management, legal research, and document classification. These technologies assist legal professionals by reducing administrative backlogs and organizing evidence.\n\nHowever, technology cannot replace the core function of human adjudication. Law is not a mathematical deduction; it requires equitable judgment, moral reasoning, empathy, and contextual understanding of human lives.\n\nFurthermore, automated systems reflect the data on which they are trained. Past judicial records inevitably embody societal and procedural biases. Deploying autonomous decision-making in courts risks entrenching historical inequities while eroding constitutional accountability. Technology must remain an assistive research instrument, not a substitute for human judicial conscience.`
+            }
+        ];
+
+        let allArticles = (typeof window.PRELOADED_BLOGS !== 'undefined' && window.PRELOADED_BLOGS.length) 
+            ? window.PRELOADED_BLOGS 
+            : seedArticles;
+
+        function renderArticles(list) {
+            const container = document.getElementById('articlesGrid');
+            if (!container) return;
+            if (!list || list.length === 0) {
+                container.innerHTML = `
+                    <div class="no-results" style="grid-column: 1 / -1; padding: 48px 24px; text-align: center; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 4px;">
+                        <p style="margin-bottom: 16px; color: var(--text-main); font-size: 16px;">No articles found matching the selected filter date.</p>
+                        <button onclick="resetDateFilter()" class="btn-clear" style="padding: 9px 18px; background: transparent; border: 1px solid var(--border-strong); border-radius: 4px; color: var(--text-main); cursor: pointer; font-size: 14px;">Show all articles</button>
+                    </div>
+                `;
+                return;
+            }
+            container.innerHTML = list.map(art => {
+                const plainText = (art.content || '').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+                const cleanSnippet = plainText.substring(0, 140);
+                return `
+                    <article class="article-card" onclick="openArticleModal('${art.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openArticleModal('${art.id}');}" tabindex="0" role="button" aria-label="Read ${art.title}">
+                        <div class="article-thumb">
+                            <img src="${art.thumbnail}" alt="${art.title}" loading="lazy">
+                        </div>
+                        <div class="article-body">
+                            <p class="article-date">${art.publishedDate}</p>
+                            <h2 class="article-title">${art.title}</h2>
+                            <p class="article-snippet">${cleanSnippet}...</p>
+                            <span class="article-link">
+                                Read full article
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </span>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return '';
+            const isoMatch = String(dateStr).match(/^(\d{4})-(\d{2})-(\d{2})/);
+            if (isoMatch) {
+                const year = parseInt(isoMatch[1], 10);
+                const month = parseInt(isoMatch[2], 10) - 1;
+                const day = parseInt(isoMatch[3], 10);
+                const d = new Date(year, month, day);
+                return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            }
+            const date = new Date(dateStr);
+            return isNaN(date.getTime()) ? String(dateStr) : date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+
+        function normalizeUnicodeText(str) {
+            if (!str) return '';
+            return str
+                .replace(/[\uD835][\uDC00-\uDFFF]/g, (char) => {
+                    const code = char.codePointAt(0);
+                    // Bold Latin uppercase A-Z: 0x1D400 - 0x1D419
+                    if (code >= 0x1D400 && code <= 0x1D419) return String.fromCharCode(code - 0x1D400 + 65);
+                    // Bold Latin lowercase a-z: 0x1D41A - 0x1D433
+                    if (code >= 0x1D41A && code <= 0x1D433) return String.fromCharCode(code - 0x1D41A + 97);
+                    // Italic Latin uppercase A-Z: 0x1D434 - 0x1D44D
+                    if (code >= 0x1D434 && code <= 0x1D44D) return String.fromCharCode(code - 0x1D434 + 65);
+                    // Italic Latin lowercase a-z: 0x1D44E - 0x1D467
+                    if (code >= 0x1D44E && code <= 0x1D467) return String.fromCharCode(code - 0x1D44E + 97);
+                    // Bold Italic uppercase A-Z: 0x1D468 - 0x1D481
+                    if (code >= 0x1D468 && code <= 0x1D481) return String.fromCharCode(code - 0x1D468 + 65);
+                    // Bold Italic lowercase a-z: 0x1D482 - 0x1D49B
+                    if (code >= 0x1D482 && code <= 0x1D49B) return String.fromCharCode(code - 0x1D482 + 97);
+                    // Sans-serif Bold uppercase A-Z: 0x1D5D4 - 0x1D5ED
+                    if (code >= 0x1D5D4 && code <= 0x1D5ED) return String.fromCharCode(code - 0x1D5D4 + 65);
+                    // Sans-serif Bold lowercase a-z: 0x1D5EE - 0x1D607
+                    if (code >= 0x1D5EE && code <= 0x1D607) return String.fromCharCode(code - 0x1D5EE + 97);
+                    // Bold Digits 0-9: 0x1D7CE - 0x1D7D7
+                    if (code >= 0x1D7CE && code <= 0x1D7D7) return String.fromCharCode(code - 0x1D7CE + 48);
+                    return char;
+                })
+                .replace(/[\u2013\u2014]/g, '-');
+        }
+
+        function populateMonthDropdown() {
+            const monthSelect = document.getElementById('monthFilter');
+            if (!monthSelect) return;
+            const currentSelected = monthSelect.value;
+            const monthMap = {};
+            allArticles.forEach(item => {
+                if (item.publishedDateISO && item.publishedDateISO.length >= 7) {
+                    const ym = item.publishedDateISO.slice(0, 7);
+                    monthMap[ym] = (monthMap[ym] || 0) + 1;
+                }
+            });
+            const sortedMonths = Object.keys(monthMap).sort((a, b) => b.localeCompare(a));
+            let html = `<option value="">All Dates (${allArticles.length} articles)</option>`;
+            sortedMonths.forEach(ym => {
+                const parts = ym.split('-');
+                const y = parseInt(parts[0], 10);
+                const m = parseInt(parts[1], 10) - 1;
+                const monthName = new Date(y, m, 1).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+                const count = monthMap[ym];
+                html += `<option value="${ym}">${monthName} (${count} article${count === 1 ? '' : 's'})</option>`;
+            });
+            monthSelect.innerHTML = html;
+            if (currentSelected && monthMap[currentSelected]) {
+                monthSelect.value = currentSelected;
+            }
+        }
+
+        // Blogger JSONP callback - completely bypasses CORS restrictions
+        window.handleBloggerJSONP = function(feedData) {
+            try {
+                const entries = (feedData && feedData.feed && feedData.feed.entry) ? feedData.feed.entry : [];
+                if (entries.length > 0) {
+                    const parsed = entries.map(entry => {
+                        const rawTitle = entry.title && entry.title.$t ? entry.title.$t : 'Untitled';
+                        const title = normalizeUnicodeText(rawTitle);
+                        const rawContent = entry.content && entry.content.$t ? entry.content.$t : (entry.summary ? entry.summary.$t : '');
+                        const publishedISO = entry.published && entry.published.$t ? entry.published.$t.split('T')[0] : '2026-01-01';
+                        const publishedDate = entry.published && entry.published.$t ? formatDate(entry.published.$t) : '2026';
+                        let thumbnail = '';
+                        if (entry.media$thumbnail && entry.media$thumbnail.url) {
+                            thumbnail = entry.media$thumbnail.url.replace(/=s\d+(-c)?$/, '=w800');
+                        } else {
+                            const imgMatch = rawContent.match(/<img[^>]+src=["']([^"']+)["']/i);
+                            thumbnail = imgMatch ? imgMatch[1] : 'https://raw.githubusercontent.com/ankushchowrasia/blogs-/e870d84bed6e7e16c9f7d933c186a68f6d2b30b1/Screenshot%202026-01-03%20124122.png';
+                        }
+                        const rawId = entry.id && entry.id.$t ? entry.id.$t : Math.random().toString();
+                        const idMatch = rawId.match(/\.post-(\d+)/);
+                        const id = idMatch ? idMatch[1] : rawId;
+                        return { id, title, content: rawContent, thumbnail, publishedDate, publishedDateISO: publishedISO };
+                    });
+                    parsed.sort((a, b) => new Date(b.publishedDateISO).getTime() - new Date(a.publishedDateISO).getTime());
+                    allArticles = parsed;
+                    renderArticles(allArticles);
+                    populateMonthDropdown();
+                }
+            } catch (e) {
+                console.error('JSONP parse error:', e);
+            }
+        };
+
+        async function fetchArticles() {
+            // First render whatever preloaded data we already have
+            renderArticles(allArticles);
+            populateMonthDropdown();
+
+            // 1. Try local/Vercel serverless /api/blogs endpoint
+            try {
+                const res = await fetch('/api/blogs');
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.blogs && data.blogs.length > 3) {
+                        allArticles = data.blogs;
+                        renderArticles(allArticles);
+                        populateMonthDropdown();
+                        return;
+                    }
+                }
+            } catch (err) {}
+
+            // 2. Request live Blogger feed via dynamic script tag (JSONP, zero CORS issues)
+            try {
+                const jsonpScript = document.createElement('script');
+                jsonpScript.src = 'https://ankushchowrasia1.blogspot.com/feeds/posts/default?alt=json-in-script&callback=handleBloggerJSONP&max-results=100';
+                document.head.appendChild(jsonpScript);
+            } catch (jsonpErr) {
+                console.error('JSONP script error:', jsonpErr);
+            }
+        }
+
+        function updateFilterStatus(msg) {
+            const statusEl = document.getElementById('filterStatus');
+            const statusText = document.getElementById('filterStatusText');
+            if (!statusEl || !statusText) return;
+            if (msg) {
+                statusText.textContent = msg;
+                statusEl.style.display = 'flex';
+            } else {
+                statusEl.style.display = 'none';
+            }
+        }
+
+        function applyMonthFilter() {
+            const monthSelect = document.getElementById('monthFilter');
+            const monthVal = monthSelect ? monthSelect.value : '';
+            const dateInput = document.getElementById('filterDate');
+            if (dateInput) dateInput.value = '';
+
+            if (!monthVal) {
+                updateFilterStatus('');
+                renderArticles(allArticles);
+                return;
+            }
+
+            const filtered = allArticles.filter(item => item.publishedDateISO && item.publishedDateISO.startsWith(monthVal));
+            const parts = monthVal.split('-');
+            const y = parseInt(parts[0], 10);
+            const m = parseInt(parts[1], 10) - 1;
+            const label = new Date(y, m, 1).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+            updateFilterStatus(`Showing ${filtered.length} article${filtered.length === 1 ? '' : 's'} from ${label}`);
+            renderArticles(filtered);
+        }
+
+        function applyDateFilter() {
+            const dateVal = document.getElementById('filterDate').value;
+            const monthSelect = document.getElementById('monthFilter');
+            if (monthSelect) monthSelect.value = '';
+
+            if (!dateVal) {
+                updateFilterStatus('');
+                renderArticles(allArticles);
+                return;
+            }
+
+            // 1. Exact day match
+            const exactMatches = allArticles.filter(item => item.publishedDateISO === dateVal);
+            if (exactMatches.length > 0) {
+                const pretty = formatDate(dateVal);
+                updateFilterStatus(`Showing ${exactMatches.length} article${exactMatches.length === 1 ? '' : 's'} published on ${pretty}`);
+                renderArticles(exactMatches);
+                return;
+            }
+
+            // 2. Intelligent month fallback if no post on that exact single day
+            const ym = dateVal.slice(0, 7);
+            const monthMatches = allArticles.filter(item => item.publishedDateISO && item.publishedDateISO.startsWith(ym));
+            if (monthMatches.length > 0) {
+                const pretty = formatDate(dateVal);
+                const parts = ym.split('-');
+                const y = parseInt(parts[0], 10);
+                const m = parseInt(parts[1], 10) - 1;
+                const monthName = new Date(y, m, 1).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+                updateFilterStatus(`No post on ${pretty}. Showing all ${monthMatches.length} articles from ${monthName}`);
+                renderArticles(monthMatches);
+                return;
+            }
+
+            // 3. No match
+            updateFilterStatus(`No articles found for selected date.`);
+            renderArticles([]);
+        }
+
+        function resetDateFilter() {
+            const dateInput = document.getElementById('filterDate');
+            const monthSelect = document.getElementById('monthFilter');
+            if (dateInput) dateInput.value = '';
+            if (monthSelect) monthSelect.value = '';
+            updateFilterStatus('');
+            renderArticles(allArticles);
+        }
+
+        // Modal
+        const modal = document.getElementById('articleModal');
+        const modalClose = document.getElementById('modalCloseBtn');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDate = document.getElementById('modalDate');
+        const modalBody = document.getElementById('modalBody');
+        const modalImage = document.getElementById('modalImage');
+        let lastFocusedElement = null;
+
+        window.openArticleModal = function(id) {
+            const art = allArticles.find(a => a.id === id);
+            if (!art) return;
+            lastFocusedElement = document.activeElement;
+            modalTitle.textContent = art.title;
+            modalDate.textContent = art.publishedDate;
+            if (art.content && art.content.includes('<')) {
+                modalBody.innerHTML = art.content;
+            } else {
+                modalBody.textContent = art.content;
+            }
+            if (art.thumbnail) {
+                modalImage.src = art.thumbnail;
+                modalImage.alt = art.title;
+                modalImage.style.display = 'block';
+            } else {
+                modalImage.style.display = 'none';
+            }
+            modal.classList.add('is-active');
+            document.body.style.overflow = 'hidden';
+            if (modalClose) modalClose.focus();
+        };
+
+        function closeArticleModal() {
+            modal.classList.remove('is-active');
+            document.body.style.overflow = '';
+            if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+                lastFocusedElement.focus();
+            }
+        }
+
+        if (modalClose) modalClose.addEventListener('click', closeArticleModal);
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeArticleModal();
+            });
+            window.addEventListener('keydown', (e) => {
+                if (!modal.classList.contains('is-active')) return;
+                if (e.key === 'Escape') {
+                    closeArticleModal();
+                } else if (e.key === 'Tab') {
+                    const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                    if (focusable.length === 0) return;
+                    const firstEl = focusable[0];
+                    const lastEl = focusable[focusable.length - 1];
+                    if (e.shiftKey && document.activeElement === firstEl) {
+                        e.preventDefault();
+                        lastEl.focus();
+                    } else if (!e.shiftKey && document.activeElement === lastEl) {
+                        e.preventDefault();
+                        firstEl.focus();
+                    }
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchArticles);
+    </script>
+</body>
+</html>
